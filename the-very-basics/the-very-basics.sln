@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sum-to-n-multiples", "sum-t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sum-or-product-to-n", "sum-or-product-to-n\sum-or-product-to-n.csproj", "{6E8845A7-60B4-48D7-BE16-39D49FA591CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplication-table", "multiplication-table\multiplication-table.csproj", "{FDB71BFD-011E-4B3D-972B-141E554C6E65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{6E8845A7-60B4-48D7-BE16-39D49FA591CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E8845A7-60B4-48D7-BE16-39D49FA591CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E8845A7-60B4-48D7-BE16-39D49FA591CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB71BFD-011E-4B3D-972B-141E554C6E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB71BFD-011E-4B3D-972B-141E554C6E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB71BFD-011E-4B3D-972B-141E554C6E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB71BFD-011E-4B3D-972B-141E554C6E65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
