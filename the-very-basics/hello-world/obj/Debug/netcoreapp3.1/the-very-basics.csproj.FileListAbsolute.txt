@@ -1,0 +1,10 @@
+/Users/keddy.shen/Documents/acceleration-katas/the-very-basics/the-very-basics/bin/Debug/netcoreapp3.1/the-very-basics.deps.json
+/Users/keddy.shen/Documents/acceleration-katas/the-very-basics/the-very-basics/bin/Debug/netcoreapp3.1/the-very-basics.runtimeconfig.json
+/Users/keddy.shen/Documents/acceleration-katas/the-very-basics/the-very-basics/bin/Debug/netcoreapp3.1/the-very-basics.runtimeconfig.dev.json
+/Users/keddy.shen/Documents/acceleration-katas/the-very-basics/the-very-basics/bin/Debug/netcoreapp3.1/the-very-basics.dll
+/Users/keddy.shen/Documents/acceleration-katas/the-very-basics/the-very-basics/bin/Debug/netcoreapp3.1/the-very-basics.pdb
+/Users/keddy.shen/Documents/acceleration-katas/the-very-basics/the-very-basics/obj/Debug/netcoreapp3.1/the-very-basics.csprojAssemblyReference.cache
+/Users/keddy.shen/Documents/acceleration-katas/the-very-basics/the-very-basics/obj/Debug/netcoreapp3.1/the-very-basics.AssemblyInfoInputs.cache
+/Users/keddy.shen/Documents/acceleration-katas/the-very-basics/the-very-basics/obj/Debug/netcoreapp3.1/the-very-basics.AssemblyInfo.cs
+/Users/keddy.shen/Documents/acceleration-katas/the-very-basics/the-very-basics/obj/Debug/netcoreapp3.1/the-very-basics.dll
+/Users/keddy.shen/Documents/acceleration-katas/the-very-basics/the-very-basics/obj/Debug/netcoreapp3.1/the-very-basics.pdb
