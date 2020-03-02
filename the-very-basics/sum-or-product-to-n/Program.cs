@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Linq;
 
-namespace sum_to_n
+namespace sum_or_product_to_n
 {
     class Program
     {
@@ -17,16 +18,17 @@ namespace sum_to_n
                 Console.WriteLine("Please enter a valid integer");
                 Environment.Exit(0);
             }
-
-            if (n < 0)
-            {
-                Console.WriteLine("Sum of positive integers 1 to n: 0");
-            }
-            else
+            
+            Console.WriteLine("Would you like the sum or product of 1 to n?: ");
+            var choice = Console.ReadLine();
+            if (choice.ToLower().Equals("sum"))
             {
                 Console.WriteLine("Sum of positive integers 1 to n: " + n*(n+1)/2);
             }
-
+            else
+            {
+                Console.WriteLine("Product of positive integers 1 to n: " + Enumerable.Range(1, n).Aggregate((total, next) => total * next));
+            }
         }
     }
 }
