@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Linq;
 
-namespace sum_to_n
+namespace sum_to_n_multiples
 {
     class Program
     {
@@ -19,9 +19,9 @@ namespace sum_to_n
                 Environment.Exit(0);
             }
             if (n < 0)
-                Console.WriteLine("Sum of positive integers 1 to n: 0");
+                Console.WriteLine("Sum of positive multiples of three or five: 0");
             else 
-                Console.WriteLine("Sum of positive integers 1 to n: " + n*(n+1)/2);
+                Console.WriteLine("Sum of positive multiples of three or five: " + Enumerable.Range(1, n).Where(i => i % 3 == 0 || i % 5 == 0).Sum());
         }
     }
 }
