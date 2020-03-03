@@ -1,0 +1,6 @@
+# Rider
+**/.idea/
+
+# Build
+**/bin/
+**/obj/
