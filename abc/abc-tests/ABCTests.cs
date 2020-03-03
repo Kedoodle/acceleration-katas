@@ -12,7 +12,7 @@ namespace abc_tests
         [Theory]
         [InlineData("A", true)]
         [InlineData("BARK", true)]
-        [InlineData("BOOK", true)]
+        [InlineData("BOOK", false)]
         [InlineData("TREAT", true)]
         [InlineData("COMMON", false)]
         [InlineData("SQUAD", true)]

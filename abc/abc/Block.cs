@@ -21,9 +21,14 @@ namespace abc
         private char X { get;}
         private char Y { get; }
 
-        public IEnumerable<char> getCharacters()
+        public IEnumerable<char> GetCharacters()
         {
             return new List<char> {X, Y};
+        }
+        
+        public bool HasLetter(char letter)
+        {
+            return X == letter || Y == letter;
         }
     }
 }

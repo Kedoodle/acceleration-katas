@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,24 +5,30 @@ namespace abc
 {
     public class WordBuilder
     {
-        private IEnumerable<Block> _blocks;
-        private IEnumerable<char> _characters;
+        private readonly IEnumerable<Block> _blocks;
 
         public WordBuilder(IEnumerable<Block> blocks)
         {
             _blocks = blocks;
-            _characters = GetCharactersFromBlocks(_blocks);
         }
 
-        private static IEnumerable<char> GetCharactersFromBlocks(IEnumerable<Block> blocks)
+        public bool CanMakeWord(string word)
         {
-            return blocks.SelectMany(block => block.getCharacters());
-        }
-
-        public bool CanMakeWord(string wordToBuild)
-        {
-            var availableCharacters = new List<char>(_characters);
-            return wordToBuild.All(character => availableCharacters.Remove(character));
+            if (word.Length == 0) return true;
+            var availableBlocks = new List<Block>(_blocks);
+            foreach (var letter in word)
+            {
+                var match = availableBlocks.FirstOrDefault(block => block.HasLetter(letter));
+                if (match != null)
+                {
+                    availableBlocks.Remove(match);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
