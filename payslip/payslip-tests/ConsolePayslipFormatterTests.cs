@@ -39,6 +39,22 @@ namespace payslip_tests
             var actual = _consolePayslipFormatter.FormatIncomeTax();
             Assert.Equal(expected, actual);
         }
+        
+        [Fact]
+        public void FormatNetIncome_Decimals_RoundsToNearestInteger()
+        {
+            const string expected = "4082";
+            var actual = _consolePayslipFormatter.FormatNetIncome();
+            Assert.Equal(expected, actual);
+        }        
+        
+        [Fact]
+        public void FormatSuper_Decimals_RoundsToNearestInteger()
+        {
+            const string expected = "450";
+            var actual = _consolePayslipFormatter.FormatSuper();
+            Assert.Equal(expected, actual);
+        }
 
         private static ConsolePayslipFormatter CreateSampleConsolePayslipFormatter()
         {
