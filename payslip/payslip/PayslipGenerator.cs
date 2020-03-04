@@ -19,7 +19,7 @@ namespace payslip
         {
             var payPeriods = PayslipCalculator.CalculatePayPeriods(_startDate, _endDate);
             var grossIncome = PayslipCalculator.CalculateGrossIncome(_employee.Salary, payPeriods);
-            var incomeTax = PayslipCalculator.CalculateIncomeTax(grossIncome, payPeriods);
+            var incomeTax = PayslipCalculator.CalculateIncomeTax(_employee.Salary, payPeriods);
             var netIncome = PayslipCalculator.CalculateNetIncome(grossIncome, incomeTax);
             var super = PayslipCalculator.CalculateSuper(grossIncome, _employee.SuperRate);
             var payslip = new Payslip(_employee, _startDate, _endDate, grossIncome, incomeTax, netIncome, super);
