@@ -13,48 +13,42 @@ namespace payslip
 
         public string GeneratePayslip()
         {
-            var name = FormatName(_payslip.Employee.FirstName, _payslip.Employee.LastName);
-            var payPeriod = FormatPayPeriod(_payslip.StartDate, _payslip.EndDate);
-            var grossIncome = FormatGrossIncome(_payslip.GrossIncome);
-            var incomeTax = FormatIncomeTax(_payslip.IncomeTax);
-            var netIncome = FormatNetIncome(_payslip.NetIncome);
-            var super = FormatSuper(_payslip.Super);
-            return $"Name: {name}" +
-                   $"Pay Period: {payPeriod}" +
-                   $"Gross Income: {grossIncome}" +
-                   $"Income Tax: {incomeTax}" +
-                   $"Net Income: {netIncome}" +
-                   $"Super: {super}";
+            return $"Name: {FormatName()}" +
+                   $"Pay Period: {FormatPayPeriod()}" +
+                   $"Gross Income: {FormatGrossIncome()}" +
+                   $"Income Tax: {FormatIncomeTax()}" +
+                   $"Net Income: {FormatNetIncome()}" +
+                   $"Super: {FormatSuper()}";
         }
 
-        public string FormatName(string firstName, string lastName)
+        public string FormatName()
         {
-            return $"{firstName} {lastName}";
+            return $"{_payslip.Employee.FirstName} {_payslip.Employee.LastName}";
         }
 
-        public string FormatPayPeriod(DateTime startDate, DateTime endDate)
+        public string FormatPayPeriod()
         {
-            return $"{startDate.Day,2} {startDate.Month} - {endDate.Day,2} {endDate.Month}";
+            return $"{_payslip.StartDate.Day,2} {_payslip.StartDate.Month} - {_payslip.EndDate.Day,2} {_payslip.EndDate.Month}";
         }
 
-        public string FormatGrossIncome(int grossIncome)
+        public string FormatGrossIncome()
         {
-            return grossIncome.ToString();
+            return Math.Round(_payslip.GrossIncome).ToString();
         }
 
-        public string FormatIncomeTax(int incomeTax)
+        public string FormatIncomeTax()
         {
-            return incomeTax.ToString();
+            return Math.Round(_payslip.IncomeTax).ToString();
         }
 
-        public string FormatNetIncome(int netIncome)
+        public string FormatNetIncome()
         {
-            return netIncome.ToString();
+            return Math.Round(_payslip.NetIncome).ToString();
         }
 
-        public string FormatSuper(int super)
+        public string FormatSuper()
         {
-            return super.ToString();
+            return Math.Round(_payslip.Super).ToString();
         }
     }
 }
