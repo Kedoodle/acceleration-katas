@@ -37,16 +37,33 @@ namespace payslip
 
         public static double CalculateGrossIncome(in double employeeSalary, in int payPeriods)
         {
-            return employeeSalary / 12;
+            return employeeSalary / 12 * payPeriods;
         }
 
         public static double CalculateIncomeTax(in double grossIncome, in int payPeriods)
         {
-            if (grossIncome <= 18200) return 0;
-            if (grossIncome <= 37000) return (grossIncome - 18200) * 0.19;
-            if (grossIncome <= 87000) return 3572 + (grossIncome - 37000) * 0.325;
-            if (grossIncome <= 180000) return 19822 + (grossIncome - 87000) * 0.37;
-            return 54232 + (grossIncome - 180000) * 0.45;
+            double annualIncomeTax;
+            if (grossIncome <= 18200)
+            {
+                annualIncomeTax = 0;
+            }
+            else if (grossIncome <= 37000)
+            {
+                annualIncomeTax = (grossIncome - 18200) * 0.19;
+            }
+            else if (grossIncome <= 87000)
+            {
+                annualIncomeTax = 3572 + (grossIncome - 37000) * 0.325;
+            }
+            else if (grossIncome <= 180000)
+            {
+                annualIncomeTax = 19822 + (grossIncome - 87000) * 0.37;
+            }
+            else
+            {
+                annualIncomeTax = 54232 + (grossIncome - 180000) * 0.45;
+            }
+            return annualIncomeTax / 12 * payPeriods;
         }
 
         public static double CalculateNetIncome(in double grossIncome, in double incomeTax)
