@@ -28,7 +28,7 @@ namespace payslip
 
         public string FormatPayPeriod()
         {
-            return $"{_payslip.StartDate.Day,2} {_payslip.StartDate.Month} - {_payslip.EndDate.Day,2} {_payslip.EndDate.Month}";
+            return $"{_payslip.StartDate:dd MMMM} - {_payslip.EndDate:dd MMMM}";
         }
 
         public string FormatGrossIncome()
