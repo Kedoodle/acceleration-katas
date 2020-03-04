@@ -6,19 +6,26 @@ namespace payslip_tests
 {
     public class ConsolePayslipFormatterTests
     {
+        private readonly ConsolePayslipFormatter _consolePayslipFormatter = CreateSampleConsolePayslipFormatter();
+
         [Fact]
-        public void GetName_FirstLastNames_Concatenates()
+        public void FormatName_FirstLastNames_Concatenates()
         {
             const string expected = "John Doe";
-            
-            var consolePayslipFormatter = CreateSampleConsolePayslipFormatter();
-            var actual = consolePayslipFormatter.FormatName(); 
-                
+            var actual = _consolePayslipFormatter.FormatName();
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void FormatPayPeriod_SingleDigitDates_PrependsZero()
+        {
+            const string expected = "01 March - 31 March";
+            var actual = _consolePayslipFormatter.FormatPayPeriod();
             Assert.Equal(expected, actual);
         }
 
 
-        private ConsolePayslipFormatter CreateSampleConsolePayslipFormatter()
+        private static ConsolePayslipFormatter CreateSampleConsolePayslipFormatter()
         {
             const string firstName = "John";
             const string lastName = "Doe";
