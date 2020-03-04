@@ -2,7 +2,7 @@ using System;
 
 namespace payslip
 {
-    public class ConsolePayslipFormatter(Payslip payslip) : IPayslipFormatter
+    public class ConsolePayslipFormatter : IPayslipFormatter
     {
         private readonly Payslip _payslip;
 
