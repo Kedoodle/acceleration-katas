@@ -9,6 +9,19 @@ namespace payslip_tests
         private readonly ConsolePayslipFormatter _consolePayslipFormatter = CreateSampleConsolePayslipFormatter();
 
         [Fact]
+        public void FormatPayslip_JohnDoeExample_FormatsCorrectly()
+        {
+            const string expected = "Name: John Doe\n" +
+                                    "Pay Period: 01 March - 31 March\n" +
+                                    "Gross Income: 5004\n" +
+                                    "Income Tax: 922\n" +
+                                    "Net Income: 4082\n" +
+                                    "Super: 450";
+            var actual = _consolePayslipFormatter.FormatPayslip();
+            Assert.Equal(expected, actual);
+        }
+        
+        [Fact]
         public void FormatName_FirstLastNames_Concatenates()
         {
             const string expected = "John Doe";

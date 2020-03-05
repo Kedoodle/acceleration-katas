@@ -11,13 +11,13 @@ namespace payslip
             _payslip = payslip;
         }
 
-        public string GeneratePayslip()
+        public string FormatPayslip()
         {
-            return $"Name: {FormatName()}" +
-                   $"Pay Period: {FormatPayPeriod()}" +
-                   $"Gross Income: {FormatGrossIncome()}" +
-                   $"Income Tax: {FormatIncomeTax()}" +
-                   $"Net Income: {FormatNetIncome()}" +
+            return $"Name: {FormatName()}\n" +
+                   $"Pay Period: {FormatPayPeriod()}\n" +
+                   $"Gross Income: {FormatGrossIncome()}\n" +
+                   $"Income Tax: {FormatIncomeTax()}\n" +
+                   $"Net Income: {FormatNetIncome()}\n" +
                    $"Super: {FormatSuper()}";
         }
 
