@@ -7,9 +7,6 @@ namespace payslip
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(ParseDayMonth("Please input your payment end date: "));
-            
-            
             Console.WriteLine("Welcome to the payslip generator!\n");
             
             Console.Write("Please input your name: ");
