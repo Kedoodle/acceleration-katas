@@ -18,10 +18,10 @@ namespace abc
             var availableBlocks = new List<Block>(_blocks);
             foreach (var letter in word)
             {
-                var match = availableBlocks.FirstOrDefault(block => block.HasLetter(letter));
-                if (match != null)
+                var block = availableBlocks.FirstOrDefault(block => block.HasLetter(letter));
+                if (block != null)
                 {
-                    availableBlocks.Remove(match);
+                    availableBlocks.Remove(block);
                 }
                 else
                 {
