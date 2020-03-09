@@ -4,7 +4,7 @@ namespace blackjack
     {
         private Rank Rank { get; }
         private Suit Suit { get; }
-        
+
         public Card(Rank rank, Suit suit)
         {
             Rank = rank;
