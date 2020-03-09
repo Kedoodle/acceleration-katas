@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blackjack", "blackjack\blackjack.csproj", "{A30B0C5D-4B45-4B53-A667-1311144C33FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blackjack-tests", "blackjack-tests\blackjack-tests.csproj", "{B1A71D4D-436B-4498-B5FC-823F07DFD823}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A30B0C5D-4B45-4B53-A667-1311144C33FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A30B0C5D-4B45-4B53-A667-1311144C33FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A30B0C5D-4B45-4B53-A667-1311144C33FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A30B0C5D-4B45-4B53-A667-1311144C33FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1A71D4D-436B-4498-B5FC-823F07DFD823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A71D4D-436B-4498-B5FC-823F07DFD823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1A71D4D-436B-4498-B5FC-823F07DFD823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1A71D4D-436B-4498-B5FC-823F07DFD823}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
