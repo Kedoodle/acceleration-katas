@@ -11,7 +11,7 @@ namespace blackjack
         public Deck()
         {
             Cards = new List<Card>();
-            foreach (Suit suit in typeof(Suit).GetEnumValues())
+            foreach (var suit in Suits.)
             {
                 foreach (Rank rank in typeof(Rank).GetEnumValues())
                 {
