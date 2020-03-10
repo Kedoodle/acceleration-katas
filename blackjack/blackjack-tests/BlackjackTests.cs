@@ -10,7 +10,7 @@ namespace blackjack_tests
         {
             const string expected = "[ACE, HEARTS]";
 
-            var card = new Card(Ranks.Ace, Suits.Hearts);
+            var card = new Card(Rank.Ace, Suit.Hearts);
             var actual = card.ToString();
 
             Assert.Equal(expected, actual);

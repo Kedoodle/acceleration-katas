@@ -16,12 +16,12 @@ namespace blackjack
         }
     }
 
-    public static class HandScoreCalculator()
+    public static class HandScoreCalculator
     {
         public static int Score(Hand hand)
         {
-            var score = hand.Cards.Where(card => card.Rank != Ranks.Ace).Sum(card => _rankScoreDictionary[card.Rank]); // Score non-ace cards
-            var aces = hand.Cards.Count(card => card.Rank == Ranks.Ace);
+            var score = hand.Cards.Where(card => card.Rank != Rank.Ace).Sum(card => _rankScoreDictionary[card.Rank]); // Score non-ace cards
+            var aces = hand.Cards.Count(card => card.Rank == Rank.Ace);
             if (score > 10)
             {
                 score += aces;
@@ -37,20 +37,20 @@ namespace blackjack
             return score;
         }
 
-        private static Dictionary<string, int> _rankScoreDictionary = new Dictionary<string, int>
+        private static Dictionary<Rank, int> _rankScoreDictionary = new Dictionary<Rank, int>
         {
-            {Ranks.Two, 2},
-            {Ranks.Three, 3},
-            {Ranks.Four, 4},
-            {Ranks.Five, 5},
-            {Ranks.Six, 6},
-            {Ranks.Seven, 7},
-            {Ranks.Eight, 8},
-            {Ranks.Nine, 9},
-            {Ranks.Ten, 10},
-            {Ranks.Jack, 10},
-            {Ranks.Queen, 10},
-            {Ranks.King, 10}
+            {Rank.Two, 2},
+            {Rank.Three, 3},
+            {Rank.Four, 4},
+            {Rank.Five, 5},
+            {Rank.Six, 6},
+            {Rank.Seven, 7},
+            {Rank.Eight, 8},
+            {Rank.Nine, 9},
+            {Rank.Ten, 10},
+            {Rank.Jack, 10},
+            {Rank.Queen, 10},
+            {Rank.King, 10}
         };
     }
 }
