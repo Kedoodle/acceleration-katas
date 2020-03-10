@@ -6,13 +6,18 @@ namespace blackjack
 {
     public class Hand
     {
-        public int Score { get; set; }
+        public int Score { get; private set; }
         public IEnumerable<Card> Cards { get; }
 
         public void Hit(Deck deck)
         {
             Cards.Append(deck.Draw());
             Score = HandScoreCalculator.Score(this);
+        }
+
+        public bool IsBlackjack()
+        {
+            return Score == 21;
         }
     }
 
