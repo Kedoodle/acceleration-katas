@@ -13,38 +13,4 @@ namespace blackjack
         }
         
     }
-
-    internal class Player : IPlayer
-    {
-        public Hand Hand { get; private set; }
-        public void Hit()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Stay()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-
-    internal class Dealer : IPlayer
-    {
-        public Hand Hand { get; private set; }
-        public void Hit()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Stay()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-
-    internal interface IPlayer
-    {
-        public void Hit();
-        public void Stay();
-    }
 }
