@@ -2,10 +2,10 @@ namespace blackjack
 {
     public struct Card
     {
-        public string Rank { get; }
-        public string Suit { get; }
+        public Rank Rank { get; }
+        public Suit Suit { get; }
 
-        public Card(string rank, string suit)
+        public Card(Rank rank, Suit suit)
         {
             Rank = rank;
             Suit = suit;
@@ -13,32 +13,32 @@ namespace blackjack
 
         public override string ToString()
         {
-            return $"[{Rank.ToUpper()}, {Suit.ToUpper()}]";
+            return $"[{Rank.ToString().ToUpper()}, {Suit.ToString().ToUpper()}]";
         }
     }
 
-    public static class Ranks
+    public enum Rank
     {
-        public const string Ace = "Ace";
-        public const string Two = "Two";
-        public const string Three = "Three";
-        public const string Four = "Four";
-        public const string Five = "Five";
-        public const string Six = "Six";
-        public const string Seven = "Seven";
-        public const string Eight = "Eight";
-        public const string Nine = "Nine";
-        public const string Ten = "Ten";
-        public const string Jack = "Jack";
-        public const string Queen = "Queen";
-        public const string King = "King";
+        Ace,
+        Two,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven,
+        Eight,
+        Nine,
+        Ten,
+        Jack,
+        Queen,
+        King
     }
 
-    public static class Suits
+    public enum Suit
     {
-        public const string Clubs = "Clubs";
-        public const string Diamonds = "Diamonds";
-        public const string Hearts = "Hearts";
-        public const string Spades = "Spades";
+        Clubs,
+        Diamonds,
+        Hearts,
+        Spades
     }
 }
