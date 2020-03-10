@@ -15,9 +15,9 @@ namespace blackjack
             Cards = new List<Card>();
         }
         
-        public void Hit(Deck deck)
+        public void AddCard(Card card)
         {
-            Cards.Append(deck.Draw());
+            Cards.Append(card);
             Score = HandScoreCalculator.Score(this);
         }
 
