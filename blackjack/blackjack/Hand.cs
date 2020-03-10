@@ -19,6 +19,11 @@ namespace blackjack
         {
             return Score == 21;
         }
+
+        public bool IsBust()
+        {
+            return Score > 21;
+        }
     }
 
     public static class HandScoreCalculator
