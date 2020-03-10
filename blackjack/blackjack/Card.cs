@@ -10,11 +10,6 @@ namespace blackjack
             Rank = rank;
             Suit = suit;
         }
-
-        public override string ToString()
-        {
-            return $"[{Rank.ToString().ToUpper()}, {Suit.ToString().ToUpper()}]";
-        }
     }
 
     public enum Rank

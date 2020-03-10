@@ -7,8 +7,14 @@ namespace blackjack
     public class Hand
     {
         public int Score { get; private set; }
-        public IEnumerable<Card> Cards { get; }
+        public IEnumerable<Card> Cards { get; private set; }
 
+        public Hand()
+        {
+            Score = 0;
+            Cards = new List<Card>();
+        }
+        
         public void Hit(Deck deck)
         {
             Cards.Append(deck.Draw());
