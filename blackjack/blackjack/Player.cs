@@ -14,7 +14,7 @@ namespace blackjack
 
         public Hand Hand { get; }
 
-        public void MakeMove()
+        public void DecideMove()
         {
             var move = _userInputGetter.GetMove();
             switch (move)

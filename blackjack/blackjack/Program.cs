@@ -8,7 +8,7 @@ namespace blackjack
         {
             var consoleGameRenderer = new ConsoleGameRenderer();
             var consoleUserInputGetter = new ConsoleUserInputGetter();
-            var game = new Game(consoleGameRenderer);
+            var game = new Game(consoleGameRenderer, consoleUserInputGetter);
             game.Start();
         }
     }

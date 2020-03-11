@@ -21,7 +21,7 @@ namespace blackjack
             while (_state == GameState.PlayerMove)
             {
                 _gameRenderer.DisplayGame(_state);
-                _player.MakeMove();
+                _player.DecideMove();
             }
             
         }
