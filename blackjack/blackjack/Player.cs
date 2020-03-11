@@ -13,20 +13,14 @@ namespace blackjack
 
         public Hand Hand { get; }
 
-        public void Hit()
+        public void Hit(Card card)
         {
-            throw new NotImplementedException();
+            Hand.AddCard(card);
         }
 
         public void Stay()
         {
             throw new NotImplementedException();
         }
-    }
-
-    public enum Move
-    {
-        Stay,
-        Hit
     }
 }

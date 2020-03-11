@@ -16,9 +16,9 @@ namespace blackjack
             throw new NotImplementedException();
         }
 
-        public void Hit()
+        public void Hit(Card card)
         {
-            throw new NotImplementedException();
+            Hand.AddCard(card);
         }
 
         public void Stay()

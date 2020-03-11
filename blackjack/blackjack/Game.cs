@@ -22,7 +22,11 @@ namespace blackjack
             while (_state == GameState.PlayerMove)
             {
                 _gameRenderer.DisplayGame(_state);
-                _userInputGetter.GetMove();
+                var move = _userInputGetter.GetMove();
+                if (move == Move.Hit)
+                {
+                    _player.Hit(_deck.Draw());
+                }
             }
             
         }
@@ -44,5 +48,11 @@ namespace blackjack
         DealerMove,
         DealerBust,
         Tie
+    }
+    
+    public enum Move
+    {
+        Stay,
+        Hit
     }
 }
