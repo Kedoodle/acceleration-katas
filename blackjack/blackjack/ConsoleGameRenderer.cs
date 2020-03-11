@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace blackjack
 {
@@ -14,6 +15,9 @@ namespace blackjack
                 case GameState.PlayerMove:
                     Console.WriteLine($"You are at currently at {game.Player.Hand.Score}\n" +
                                       $"with the hand {game.Player.Hand}");
+                    break;
+                case GameState.PlayerHit:
+                    Console.WriteLine($"You draw {game.Player.Hand.Cards.Last()}");
                     break;
                 case GameState.PlayerBust:
                     Console.WriteLine($"You bust at {game.Player.Hand.Score}\n" +

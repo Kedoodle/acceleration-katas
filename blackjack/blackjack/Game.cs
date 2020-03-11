@@ -33,19 +33,20 @@ namespace blackjack
                         if (_userInputGetter.GetMove() == Move.Hit)
                         {
                             Player.Hit(_deck.Draw());
-                            if (Player.Hand.IsBlackjack())
-                            {
-                                State = GameState.PlayerBlackjack;
-                            }
-                            else if (Player.Hand.IsBust())
-                            {
-                                State = GameState.PlayerBust;
-                            }
+                            State = GameState.PlayerHit;
                         }
                         else
                         {
                             State = GameState.DealerMove;
                         }
+                        break;
+                    case GameState.PlayerHit:
+                        if (Player.Hand.IsBlackjack())
+                            State = GameState.PlayerBlackjack;
+                        else if (Player.Hand.IsBust())
+                            State = GameState.PlayerBust;
+                        else
+                            State = GameState.PlayerMove;
                         break;
                     case GameState.PlayerBlackjack:
                         State = _dealer.Hand.IsBlackjack() ? GameState.Tie : GameState.DealerMove;
@@ -95,7 +96,8 @@ namespace blackjack
         Tie,
         PlayerWin,
         Exit,
-        PlayerBlackjack
+        PlayerBlackjack,
+        PlayerHit
     }
     
     public enum Move
