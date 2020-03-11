@@ -16,7 +16,18 @@ namespace blackjack
 
         public void MakeMove()
         {
-            throw new NotImplementedException();
+            var move = _userInputGetter.GetMove();
+            switch (move)
+            {
+                case Move.Hit:
+                    Hit();
+                    break;
+                case Move.Stay:
+                    Stay();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public void Hit()
