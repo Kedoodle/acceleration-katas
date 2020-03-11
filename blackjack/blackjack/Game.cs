@@ -7,10 +7,12 @@ namespace blackjack
         private Deck _deck = new Deck();
         private Player _player = new Player();
         private IGameRenderer _gameRenderer;
+        private IUserInputGetter _userInputGetter;
 
-        public Game(IGameRenderer gameRenderer, IUserInputGetter consoleUserInputGetter)
+        public Game(IGameRenderer gameRenderer, IUserInputGetter userInputGetter)
         {
             _gameRenderer = gameRenderer;
+            _userInputGetter = userInputGetter;
         }
 
         public void Start()
