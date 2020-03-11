@@ -11,7 +11,7 @@ namespace blackjack
 
         public Hand Hand { get; }
 
-        public Move DecideMove()
+        public Move GetMove()
         {
             return Hand.Score < 17 ? Move.Hit : Move.Stay;
         }

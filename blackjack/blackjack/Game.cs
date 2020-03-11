@@ -5,7 +5,7 @@ namespace blackjack
     public class Game
     {
         public GameState State { get; private set; } = GameState.Initialisation;
-        private Dealer _dealer = new Dealer();
+        public Dealer Dealer { get; private set; } = new Dealer();
         private Deck _deck = new Deck();
         public Player Player { get; } = new Player();
         private IGameRenderer _gameRenderer;
@@ -42,28 +42,71 @@ namespace blackjack
                         break;
                     case GameState.PlayerHit:
                         if (Player.Hand.IsBlackjack())
+                        {
                             State = GameState.PlayerBlackjack;
+                        }
                         else if (Player.Hand.IsBust())
+                        {
                             State = GameState.PlayerBust;
+                        }
                         else
+                        {
                             State = GameState.PlayerMove;
+                        }
                         break;
                     case GameState.PlayerBlackjack:
-                        State = _dealer.Hand.IsBlackjack() ? GameState.Tie : GameState.DealerMove;
+                        State = Dealer.Hand.IsBlackjack() ? GameState.Tie : GameState.DealerMove;
                         break;
                     case GameState.PlayerBust:
-                        State = GameState.Exit;
+                        State = GameState.DealerWin;
                         break;
                     case GameState.DealerMove:
-                        State = GameState.Exit;
+                        if (Dealer.GetMove() == Move.Hit)
+                        {
+                            Dealer.Hit(_deck.Draw());
+                            State = GameState.DealerHit;
+                        }
+                        else
+                        {
+                            if (Dealer.Hand.Score == Player.Hand.Score)
+                            {
+                                State = GameState.Tie;
+                            }
+                            else
+                            {
+                                State = Dealer.Hand.Score > Player.Hand.Score
+                                    ? GameState.DealerWin
+                                    : GameState.PlayerWin;
+                            }
+                        }
+                        break;
+                    case GameState.DealerHit:
+                        if (Dealer.Hand.IsBlackjack())
+                        {
+                            State = GameState.DealerBlackjack;
+                        }
+                        else if (Dealer.Hand.IsBust())
+                        {
+                            State = GameState.DealerBust;
+                        }
+                        else
+                        {
+                            State = GameState.DealerMove;
+                        }
+                        break;
+                    case GameState.DealerBlackjack:
+                        State = Player.Hand.IsBlackjack() ? GameState.Tie : GameState.DealerWin;
                         break;
                     case GameState.DealerBust:
-                        State = GameState.Exit;
+                        State = GameState.PlayerWin;
                         break;
                     case GameState.Tie:
                         State = GameState.Exit;
                         break;
                     case GameState.PlayerWin:
+                        State = GameState.Exit;
+                        break;
+                    case GameState.DealerWin:
                         State = GameState.Exit;
                         break;
                     case GameState.Exit:
@@ -80,9 +123,9 @@ namespace blackjack
         private void DealInitialCards()
         {
             Player.Hand.AddCard(_deck.Draw());
-            _dealer.Hand.AddCard(_deck.Draw());
+            Dealer.Hand.AddCard(_deck.Draw());
             Player.Hand.AddCard(_deck.Draw());
-            _dealer.Hand.AddCard(_deck.Draw());
+            Dealer.Hand.AddCard(_deck.Draw());
         }
     }
 
@@ -97,7 +140,10 @@ namespace blackjack
         PlayerWin,
         Exit,
         PlayerBlackjack,
-        PlayerHit
+        PlayerHit,
+        DealerWin,
+        DealerHit,
+        DealerBlackjack
     }
     
     public enum Move
