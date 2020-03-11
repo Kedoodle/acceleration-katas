@@ -6,29 +6,12 @@ namespace blackjack
     {
         private IUserInputGetter _userInputGetter;
 
-        public Player(IUserInputGetter userInputGetter)
+        public Player()
         {
             Hand = new Hand();
-            _userInputGetter = userInputGetter;
         }
 
         public Hand Hand { get; }
-
-        public void DecideMove()
-        {
-            var move = _userInputGetter.GetMove();
-            switch (move)
-            {
-                case Move.Hit:
-                    Hit();
-                    break;
-                case Move.Stay:
-                    Stay();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
 
         public void Hit()
         {
