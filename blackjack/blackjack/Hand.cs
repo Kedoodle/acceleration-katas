@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,15 +5,15 @@ namespace blackjack
 {
     public class Hand
     {
-        public int Score { get; private set; }
-        public IEnumerable<Card> Cards { get; private set; }
-
         public Hand()
         {
             Score = 0;
             Cards = new List<Card>();
         }
-        
+
+        public int Score { get; private set; }
+        public IEnumerable<Card> Cards { get; }
+
         public void AddCard(Card card)
         {
             Cards.Append(card);
@@ -34,26 +33,7 @@ namespace blackjack
 
     public static class HandScoreCalculator
     {
-        public static int Score(Hand hand)
-        {
-            var score = hand.Cards.Where(card => card.Rank != Rank.Ace).Sum(card => _rankScoreDictionary[card.Rank]); // Score non-ace cards
-            var aces = hand.Cards.Count(card => card.Rank == Rank.Ace);
-            if (score > 10)
-            {
-                score += aces;
-            }
-            else if (score == 11 - aces)
-            {
-                score = 21;
-            }
-            else
-            {
-                score += 11 + aces - 1;
-            }
-            return score;
-        }
-
-        private static Dictionary<Rank, int> _rankScoreDictionary = new Dictionary<Rank, int>
+        private static readonly Dictionary<Rank, int> _rankScoreDictionary = new Dictionary<Rank, int>
         {
             {Rank.Two, 2},
             {Rank.Three, 3},
@@ -68,5 +48,19 @@ namespace blackjack
             {Rank.Queen, 10},
             {Rank.King, 10}
         };
+
+        public static int Score(Hand hand)
+        {
+            var score = hand.Cards.Where(card => card.Rank != Rank.Ace)
+                .Sum(card => _rankScoreDictionary[card.Rank]); // Score non-ace cards
+            var aces = hand.Cards.Count(card => card.Rank == Rank.Ace);
+            if (score > 10)
+                score += aces;
+            else if (score == 11 - aces)
+                score = 21;
+            else
+                score += 11 + aces - 1;
+            return score;
+        }
     }
 }

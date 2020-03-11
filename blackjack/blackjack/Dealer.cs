@@ -1,16 +1,29 @@
+using System;
+
 namespace blackjack
 {
-    internal class Dealer : IPlayer
+    public class Dealer : IPlayer
     {
-        public Hand Hand { get; private set; }
+        public Dealer()
+        {
+            Hand = new Hand();
+        }
+
+        public Hand Hand { get; }
+
+        public void MakeMove(Move move)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Hit()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void Stay()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

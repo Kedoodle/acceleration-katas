@@ -6,7 +6,10 @@ namespace blackjack
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var consoleGameRenderer = new ConsoleGameRenderer();
+            var consoleUserInputGetter = new ConsoleUserInputGetter();
+            var game = new Game(consoleGameRenderer, consoleUserInputGetter);
+            game.Start();
         }
     }
 }

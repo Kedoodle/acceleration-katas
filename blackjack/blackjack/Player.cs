@@ -1,16 +1,35 @@
+using System;
+
 namespace blackjack
 {
-    internal class Player : IPlayer
+    public class Player : IPlayer
     {
-        public Hand Hand { get; private set; }
+        public Player()
+        {
+            Hand = new Hand();
+        }
+
+        public Hand Hand { get; }
+
+        public void MakeMove(Move move)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Hit()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void Stay()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
+    }
+
+    public enum Move
+    {
+        Stay,
+        Hit
     }
 }
