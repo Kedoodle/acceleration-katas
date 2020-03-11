@@ -55,6 +55,7 @@ namespace blackjack
             var score = hand.Cards.Where(card => card.Rank != Rank.Ace)
                 .Sum(card => _rankScoreDictionary[card.Rank]); // Score non-ace cards
             var aces = hand.Cards.Count(card => card.Rank == Rank.Ace);
+            if (aces <= 0) return score;
             if (score > 10)
                 score += aces;
             else if (score == 11 - aces)

@@ -7,13 +7,13 @@ namespace blackjack
         public Move GetMove()
         {
             var input = -1;
-            Console.Write("[0] Hit or [1] Stay?: ");
-            while (!int.TryParse(Console.ReadLine(), out input) && input != 0 && input != 1)
+            Console.Write("[1] Hit or [0] Stay?: ");
+            while (!int.TryParse(Console.ReadLine(), out input) || (input != 1 && input != 0))
             {
-                Console.Write("Invalid input! [0] Hit or [1] Stay?: ");
+                Console.Write("Invalid input! [1] Hit or [0] Stay?: ");
             }
 
-            return input == 0 ? Move.Hit : Move.Stay;
+            return input == 1 ? Move.Hit : Move.Stay;
         }
     }
 

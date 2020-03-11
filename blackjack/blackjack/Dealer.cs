@@ -11,19 +11,14 @@ namespace blackjack
 
         public Hand Hand { get; }
 
-        public void DecideMove()
+        public Move DecideMove()
         {
-            throw new NotImplementedException();
+            return Hand.Score < 17 ? Move.Hit : Move.Stay;
         }
 
         public void Hit(Card card)
         {
             Hand.AddCard(card);
-        }
-
-        public void Stay()
-        {
-            throw new NotImplementedException();
         }
     }
 }

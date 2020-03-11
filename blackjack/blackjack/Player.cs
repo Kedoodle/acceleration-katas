@@ -4,8 +4,6 @@ namespace blackjack
 {
     public class Player : IPlayer
     {
-        private IUserInputGetter _userInputGetter;
-
         public Player()
         {
             Hand = new Hand();
@@ -16,11 +14,6 @@ namespace blackjack
         public void Hit(Card card)
         {
             Hand.AddCard(card);
-        }
-
-        public void Stay()
-        {
-            throw new NotImplementedException();
         }
     }
 }

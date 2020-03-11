@@ -1,11 +1,13 @@
+using System;
+
 namespace blackjack
 {
     public class Game
     {
-        private GameState _state = GameState.Initialisation;
+        public GameState State { get; private set; } = GameState.Initialisation;
         private Dealer _dealer = new Dealer();
         private Deck _deck = new Deck();
-        private Player _player = new Player();
+        public Player Player { get; } = new Player();
         private IGameRenderer _gameRenderer;
         private IUserInputGetter _userInputGetter;
 
@@ -17,15 +19,58 @@ namespace blackjack
 
         public void Start()
         {
-            DealInitialCards();
-            _gameRenderer.DisplayGame(_state);
-            while (_state == GameState.PlayerMove)
+            while (State != GameState.Exit)
             {
-                _gameRenderer.DisplayGame(_state);
-                var move = _userInputGetter.GetMove();
-                if (move == Move.Hit)
+                _gameRenderer.DisplayGame(this);
+                switch (State)
                 {
-                    _player.Hit(_deck.Draw());
+                    case GameState.Initialisation:
+                    {
+                        DealInitialCards();
+                        State = GameState.PlayerMove;
+                        break;
+                    }
+                    case GameState.PlayerMove:
+                        var move = _userInputGetter.GetMove();
+                        if (move == Move.Hit)
+                        {
+                            Player.Hit(_deck.Draw());
+                            if (Player.Hand.IsBlackjack())
+                            {
+                                State = GameState.PlayerBlackjack;
+                            }
+                            else if (Player.Hand.IsBust())
+                            {
+                                State = GameState.PlayerBust;
+                            }
+                        }
+                        else
+                        {
+                            State = GameState.DealerMove;
+                        }
+                        break;
+                    case GameState.PlayerBust:
+                        State = GameState.Exit;
+                        break;
+                    case GameState.DealerMove:
+                        State = GameState.Exit;
+                        break;
+                    case GameState.DealerBust:
+                        State = GameState.Exit;
+                        break;
+                    case GameState.Tie:
+                        State = GameState.Exit;
+                        break;
+                    case GameState.PlayerWin:
+                        State = GameState.Exit;
+                        break;
+                    case GameState.Exit:
+                        Environment.Exit(1);
+                        break;
+                    case GameState.PlayerBlackjack:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
             
@@ -33,9 +78,9 @@ namespace blackjack
 
         private void DealInitialCards()
         {
-            _player.Hand.AddCard(_deck.Draw());
+            Player.Hand.AddCard(_deck.Draw());
             _dealer.Hand.AddCard(_deck.Draw());
-            _player.Hand.AddCard(_deck.Draw());
+            Player.Hand.AddCard(_deck.Draw());
             _dealer.Hand.AddCard(_deck.Draw());
         }
     }
@@ -47,7 +92,10 @@ namespace blackjack
         PlayerBust,
         DealerMove,
         DealerBust,
-        Tie
+        Tie,
+        PlayerWin,
+        Exit,
+        PlayerBlackjack
     }
     
     public enum Move
