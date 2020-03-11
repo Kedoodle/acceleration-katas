@@ -11,7 +11,7 @@ namespace blackjack
 
         public Hand Hand { get; }
 
-        public void MakeMove(Move move)
+        public void MakeMove()
         {
             throw new NotImplementedException();
         }

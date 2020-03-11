@@ -5,14 +5,13 @@ namespace blackjack
         private GameState _state = GameState.Initialisation;
         private Dealer _dealer = new Dealer();
         private Deck _deck = new Deck();
-        private Player _player = new Player();
+        private Player _player;
         private IGameRenderer _gameRenderer;
-        private IUserInputGetter _userInputGetter;
 
         public Game(IGameRenderer gameRenderer, IUserInputGetter userInputGetter)
         {
             _gameRenderer = gameRenderer;
-            _userInputGetter = userInputGetter;
+            _player = new Player(userInputGetter);
         }
 
         public void Start()
@@ -22,7 +21,7 @@ namespace blackjack
             while (_state == GameState.PlayerMove)
             {
                 _gameRenderer.DisplayGame(_state);
-                
+                _player.MakeMove();
             }
             
         }

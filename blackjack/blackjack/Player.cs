@@ -4,14 +4,17 @@ namespace blackjack
 {
     public class Player : IPlayer
     {
-        public Player()
+        private IUserInputGetter _userInputGetter;
+
+        public Player(IUserInputGetter userInputGetter)
         {
             Hand = new Hand();
+            _userInputGetter = userInputGetter;
         }
 
         public Hand Hand { get; }
 
-        public void MakeMove(Move move)
+        public void MakeMove()
         {
             throw new NotImplementedException();
         }
