@@ -20,6 +20,8 @@ namespace blackjack
                                       $"with the hand {game.Player.Hand}");
                     break;
                 case GameState.PlayerBlackjack:
+                    Console.WriteLine($"You hit the blackjack\n" +
+                                      $"with the hand {game.Player.Hand}");
                     break;
                 case GameState.DealerMove:
                     break;

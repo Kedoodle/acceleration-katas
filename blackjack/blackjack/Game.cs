@@ -21,18 +21,16 @@ namespace blackjack
         {
             while (State != GameState.Exit)
             {
-                _gameRenderer.DisplayGame(this);
                 switch (State)
                 {
                     case GameState.Initialisation:
                     {
                         DealInitialCards();
-                        State = GameState.PlayerMove;
+                        State = Player.Hand.IsBlackjack() ? GameState.PlayerBlackjack : GameState.PlayerMove;
                         break;
                     }
                     case GameState.PlayerMove:
-                        var move = _userInputGetter.GetMove();
-                        if (move == Move.Hit)
+                        if (_userInputGetter.GetMove() == Move.Hit)
                         {
                             Player.Hit(_deck.Draw());
                             if (Player.Hand.IsBlackjack())
@@ -48,6 +46,9 @@ namespace blackjack
                         {
                             State = GameState.DealerMove;
                         }
+                        break;
+                    case GameState.PlayerBlackjack:
+                        State = _dealer.Hand.IsBlackjack() ? GameState.Tie : GameState.DealerMove;
                         break;
                     case GameState.PlayerBust:
                         State = GameState.Exit;
@@ -67,11 +68,10 @@ namespace blackjack
                     case GameState.Exit:
                         Environment.Exit(1);
                         break;
-                    case GameState.PlayerBlackjack:
-                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+                _gameRenderer.DisplayGame(this);
             }
             
         }
