@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -5,18 +6,13 @@ namespace blackjack
 {
     public class Hand
     {
-        public Hand()
-        {
-            Score = 0;
-            Cards = new List<Card>();
-        }
 
-        public int Score { get; private set; }
-        public IEnumerable<Card> Cards { get; }
+        public int Score { get; private set; } = 0;
+        public IList<Card> Cards { get; } = new List<Card>();
 
         public void AddCard(Card card)
         {
-            Cards.Append(card);
+            Cards.Add(card);
             Score = HandScoreCalculator.Score(this);
         }
 
@@ -28,6 +24,11 @@ namespace blackjack
         public bool IsBust()
         {
             return Score > 21;
+        }
+
+        public override string ToString()
+        {
+            return $"[{string.Join(", ", Cards.Select(card => card.ToString()))}]";
         }
     }
 
