@@ -4,18 +4,19 @@ namespace blackjack
 {
     public class Game
     {
-        public GameState State { get; private set; } = GameState.Initialisation;
-        public Dealer Dealer { get; private set; } = new Dealer();
-        private Deck _deck = new Deck();
-        public Player Player { get; } = new Player();
-        private IGameRenderer _gameRenderer;
-        private IUserInputGetter _userInputGetter;
+        private readonly Deck _deck = new Deck();
+        private readonly IGameRenderer _gameRenderer;
+        private readonly IUserInputGetter _userInputGetter;
 
         public Game(IGameRenderer gameRenderer, IUserInputGetter userInputGetter)
         {
             _gameRenderer = gameRenderer;
             _userInputGetter = userInputGetter;
         }
+        
+        public GameState State { get; private set; } = GameState.Initialisation;
+        public Dealer Dealer { get; private set; } = new Dealer();
+        public Player Player { get; } = new Player();
 
         public void Start()
         {
@@ -61,6 +62,7 @@ namespace blackjack
                         State = GameState.DealerWin;
                         break;
                     case GameState.DealerMove:
+                        
                         if (Dealer.GetMove() == Move.Hit)
                         {
                             Dealer.Hit(_deck.Draw());
