@@ -14,4 +14,12 @@ namespace magic_year_tests
             Assert.Equal(expected, actual);
         }
     }
+
+    public static class Calculator
+    {
+        public static int GetMagicYear(int startYear)
+        {
+            return startYear + 65;
+        }
+    }
 }
