@@ -1,4 +1,5 @@
 using System;
+using tictactoe;
 using Xunit;
 
 namespace tictactoe_tests
@@ -10,7 +11,7 @@ namespace tictactoe_tests
         {
             const CellState expected = CellState.Empty;
             var cell = new Cell();
-            var actual = Cell.State;
+            var actual = cell.State;
             Assert.Equal(expected, actual);
         }
     }
