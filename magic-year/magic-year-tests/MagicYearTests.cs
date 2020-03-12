@@ -1,4 +1,5 @@
 using System;
+using magic_year;
 using Xunit;
 
 namespace magic_year_tests
@@ -12,14 +13,6 @@ namespace magic_year_tests
             const int startYear = 1980;
             var actual = Calculator.GetMagicYear(startYear);
             Assert.Equal(expected, actual);
-        }
-    }
-
-    public static class Calculator
-    {
-        public static int GetMagicYear(int startYear)
-        {
-            return startYear + 65;
         }
     }
 }
