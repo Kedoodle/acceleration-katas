@@ -13,13 +13,13 @@ namespace magic_year
             Console.Write("Please enter your surname: ");
             var lastName = Console.ReadLine();
             Console.Write("Please enter your annual salary: ");
-            var annualSalary = Console.ReadLine();
+            int.TryParse(Console.ReadLine(), out var annualSalary);
             Console.Write("Please enter your work start year: ");
-            var startYear = Console.ReadLine();
+            int.TryParse(Console.ReadLine(), out var startYear);
 
             var fullName = $"{firstName} {lastName}";
-            var monthlySalary = -1;
-            var magicYear = -1;
+            var monthlySalary = Calculator.GetMonthlySalary(annualSalary);
+            var magicYear = Calculator.GetMagicYear(startYear);
             
             Console.WriteLine("\nYour magic age details are:\n");
             
