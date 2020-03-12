@@ -12,19 +12,8 @@ namespace magic_year
             var firstName = Console.ReadLine();
             Console.Write("Please enter your surname: ");
             var lastName = Console.ReadLine();
-            Console.Write("Please enter your annual salary: ");
-            int annualSalary;
-            while (!int.TryParse(Console.ReadLine(), out annualSalary))
-            {
-                Console.Write("Invalid input! Please enter your annual salary: ");
-            }
-            Console.Write("Please enter your work start year: ");
-            int startYear;
-            while (!int.TryParse(Console.ReadLine(), out startYear))
-            {
-                Console.Write("Invalid input! Please enter your work start year: ");
-            }
-
+            var annualSalary = GetUserInputAsInt("Please enter your annual salary");
+            var startYear = GetUserInputAsInt("Please enter your work start year");
             var fullName = $"{firstName} {lastName}";
             var monthlySalary = Calculator.GetMonthlySalary(annualSalary);
             var magicYear = Calculator.GetMagicYear(startYear);
@@ -34,6 +23,17 @@ namespace magic_year
             Console.WriteLine($"Name: {fullName}\n" +
                               $"Monthly Salary: {monthlySalary}\n" +
                               $"Magic Year: {magicYear}");
+        }
+
+        private static int GetUserInputAsInt(string prompt)
+        {
+            Console.Write($"{prompt}: ");
+            int inputAsInt;
+            while (!int.TryParse(Console.ReadLine(), out inputAsInt))
+            {
+                Console.Write($"Invalid input! {prompt}: ");
+            }
+            return inputAsInt;
         }
     }
 }
