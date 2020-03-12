@@ -17,7 +17,13 @@ namespace magic_year
             var fullName = $"{firstName} {lastName}";
             var monthlySalary = Calculator.GetMonthlySalary(annualSalary);
             var magicYear = Calculator.GetMagicYear(startYear);
+
+            WriteToConsoleMagicAgeDetails(fullName, monthlySalary, magicYear);
             
+        }
+
+        private static void WriteToConsoleMagicAgeDetails(string fullName, int monthlySalary, int magicYear)
+        {
             Console.WriteLine("\nYour magic age details are:\n");
             
             Console.WriteLine($"Name: {fullName}\n" +
