@@ -14,5 +14,14 @@ namespace magic_year_tests
             var actual = Calculator.GetMagicYear(startYear);
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void MonthlySalary_AnnualSalary60050_Returns5004()
+        {
+            const int expected = 5004;
+            const int annualSalary = 60050;
+            var actual = Calculator.GetMonthlySalary(annualSalary);
+            Assert.Equal(expected, actual);
+        }
     }
 }
