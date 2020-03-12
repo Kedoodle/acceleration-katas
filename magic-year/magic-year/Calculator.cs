@@ -6,5 +6,10 @@ namespace magic_year
         {
             return startYear + 65;
         }
+
+        public static int GetMonthlySalary(int annualSalary)
+        {
+            return annualSalary / 12;
+        }
     }
 }
