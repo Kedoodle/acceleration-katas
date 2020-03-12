@@ -6,8 +6,12 @@ namespace tictactoe_tests
     public class TicTacToeTests
     {
         [Fact]
-        public void Test1()
+        public void Cell_OnInstantiate_HasStateEmpty()
         {
+            const CellState expected = CellState.Empty;
+            var cell = new Cell();
+            var actual = Cell.State;
+            Assert.Equal(expected, actual);
         }
     }
 }
