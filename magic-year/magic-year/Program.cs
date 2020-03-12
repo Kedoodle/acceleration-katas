@@ -13,9 +13,17 @@ namespace magic_year
             Console.Write("Please enter your surname: ");
             var lastName = Console.ReadLine();
             Console.Write("Please enter your annual salary: ");
-            int.TryParse(Console.ReadLine(), out var annualSalary);
+            int annualSalary;
+            while (!int.TryParse(Console.ReadLine(), out annualSalary))
+            {
+                Console.Write("Invalid input! Please enter your annual salary: ");
+            }
             Console.Write("Please enter your work start year: ");
-            int.TryParse(Console.ReadLine(), out var startYear);
+            int startYear;
+            while (!int.TryParse(Console.ReadLine(), out startYear))
+            {
+                Console.Write("Invalid input! Please enter your work start year: ");
+            }
 
             var fullName = $"{firstName} {lastName}";
             var monthlySalary = Calculator.GetMonthlySalary(annualSalary);
