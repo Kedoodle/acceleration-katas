@@ -23,6 +23,23 @@ namespace tictactoe_tests
         }
 
         [Fact]
+        public void Board_OnFill_IsFull()
+        {
+            var board = new Board();
+            const int GridSize = 3;
+            for (var y = 0; y < GridSize; y++)
+            {
+                for (var x = 0; x < GridSize; x++)
+                {
+                    board.SetCell(x, y, CellState.X);
+                }
+            }
+            
+            Assert.True(board.IsFull());
+        }
+        
+        
+        [Fact]
         public void Board_OnInitialise_IsNotFull()
         {
             var board = new Board();
