@@ -28,5 +28,10 @@ namespace tictactoe
         {
             return CellsArray.Cast<Cell>().All(cell => cell.IsEmpty());
         }
+
+        public void SetCell(int x, int y, CellState cellState)
+        {
+            CellsArray[x, y].State = cellState;
+        }
     }
 }

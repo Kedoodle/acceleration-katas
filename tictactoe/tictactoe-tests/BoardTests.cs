@@ -15,5 +15,17 @@ namespace tictactoe_tests
             
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void Board_OnSetCell_IsNotEmpty()
+        {
+            const bool expected = false;
+            
+            var board = new Board();
+            board.SetCell(1, 1, CellState.X);
+            var actual = board.IsEmpty();
+            
+            Assert.Equal(expected, actual);
+        }
     }
 }
