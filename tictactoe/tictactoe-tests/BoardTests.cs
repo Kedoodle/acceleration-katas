@@ -8,24 +8,18 @@ namespace tictactoe_tests
         [Fact]
         public void Board_IsEmptyOnInitialise()
         {
-            const bool expected = true;
-
             var board = new Board();
-            var actual = board.IsEmpty();
-            
-            Assert.Equal(expected, actual);
+
+            Assert.True(board.IsEmpty());
         }
 
         [Fact]
         public void Board_OnSetCell_IsNotEmpty()
         {
-            const bool expected = false;
-            
             var board = new Board();
             board.SetCell(1, 1, CellState.X);
-            var actual = board.IsEmpty();
             
-            Assert.Equal(expected, actual);
+            Assert.False(board.IsEmpty());
         }
     }
 }
