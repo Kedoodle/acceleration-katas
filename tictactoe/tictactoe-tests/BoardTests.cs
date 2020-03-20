@@ -38,7 +38,6 @@ namespace tictactoe_tests
             Assert.True(board.IsFull());
         }
         
-        
         [Fact]
         public void Board_OnInitialise_IsNotFull()
         {
