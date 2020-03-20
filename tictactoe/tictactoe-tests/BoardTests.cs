@@ -6,7 +6,7 @@ namespace tictactoe_tests
     public class BoardTests
     {
         [Fact]
-        public void Board_IsEmptyOnInitialise()
+        public void Board_OnInitialise_IsEmpty()
         {
             var board = new Board();
 
@@ -20,6 +20,14 @@ namespace tictactoe_tests
             board.SetCell(1, 1, CellState.X);
             
             Assert.False(board.IsEmpty());
+        }
+
+        [Fact]
+        public void Board_OnInitialise_IsNotFull()
+        {
+            var board = new Board();
+            
+            Assert.False(board.IsFull());
         }
     }
 }
