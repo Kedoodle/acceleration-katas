@@ -5,12 +5,13 @@ namespace tictactoe
     public class Board
     {
         private Cell[,] CellsArray;
-        private const int GridSize = 3;
 
         public Board()
         {
             InitialiseEmptyCellsArray();
         }
+        
+        public int GridSize { get; } = 3;
 
         private void InitialiseEmptyCellsArray()
         {
@@ -37,6 +38,11 @@ namespace tictactoe
         public bool IsFull()
         {
             return CellsArray.Cast<Cell>().All(cell => !cell.IsEmpty());
+        }
+
+        public Cell GetCell(int x, int y)
+        {
+            return CellsArray[x, y];
         }
     }
 }
