@@ -7,10 +7,10 @@ namespace tictactoe
     {
         public static bool IsTie(Board board)
         {
-            return board.IsFull() && !GameRules.HasWinCondition(board);
+            return board.IsFull() && !HasWinCondition(board);
         }
 
-        private static bool HasWinCondition(Board board)
+        public static bool HasWinCondition(Board board)
         {
             return HasWinningRow(board) || HasWinningColumn(board) || HasWinningDiagonal(board);
         }
@@ -39,8 +39,12 @@ namespace tictactoe
         
         public static bool HasWinningDiagonal(Board board)
         {
-            throw new NotImplementedException();
+            if (!board.GetCell(0, 0).IsEmpty()
+                && Enumerable.Range(1, board.GridSize - 1).All(xy => Equals(board.GetCell(xy, xy), board.GetCell(0, 0))))
+                return true;
+            if (!board.GetCell(board.GridSize - 1, 0).IsEmpty() && Enumerable.Range(1, board.GridSize - 1).All(xy => Equals(board.GetCell(board.GridSize - 1 - xy, xy), board.GetCell(board.GridSize - 1, 0))))
+                return true;
+            return false;
         }
-
     }
 }

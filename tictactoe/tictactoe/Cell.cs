@@ -18,7 +18,7 @@ namespace tictactoe
                 return false;
             }
             var cell = (Cell) obj; 
-            return State == cell.State;
+            return this.State == cell.State;
         }
     }
     

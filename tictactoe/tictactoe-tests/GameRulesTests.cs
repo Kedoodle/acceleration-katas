@@ -11,9 +11,9 @@ namespace tictactoe_tests
         public void IsTie_OnFullBoard_ReturnsTrue()
         {
             var board = new Board();
-            board.SetCell(0, 0, CellState.X);
-            board.SetCell(1, 0, CellState.O);
-            board.SetCell(2, 0, CellState.X);
+            board.SetCell(0, 0, CellState.O);
+            board.SetCell(1, 0, CellState.X);
+            board.SetCell(2, 0, CellState.O);
             board.SetCell(0, 1, CellState.O);
             board.SetCell(1, 1, CellState.X);
             board.SetCell(2, 1, CellState.X);
@@ -74,6 +74,30 @@ namespace tictactoe_tests
             }
             
             Assert.True(GameRules.HasWinningColumn(board));
+        }
+        
+        [Fact]
+        public void HasWinningDiagonal_TopLeftToBottomRight_ReturnsTrue()
+        {
+            var board = new Board();
+            for (var xy = 0; xy < GridSize; xy++)
+            {
+                board.SetCell(xy, xy, CellState.X);
+            }
+            
+            Assert.True(GameRules.HasWinningDiagonal(board));
+        }
+        
+        [Fact]
+        public void HasWinningDiagonal_TopRightToBottomLeft_ReturnsTrue()
+        {
+            var board = new Board();
+            for (var xy = 0; xy < GridSize; xy++)
+            {
+                board.SetCell(GridSize - 1 - xy, xy, CellState.X);
+            }
+            
+            Assert.True(GameRules.HasWinningDiagonal(board));
         }
     }
 }
