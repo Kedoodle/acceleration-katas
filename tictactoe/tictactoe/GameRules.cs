@@ -25,13 +25,13 @@ namespace tictactoe
             }
             return false;
         }
-        
-        private static bool HasWinningColumn(Board board)
+
+        public static bool HasWinningColumn(Board board)
         {
             throw new NotImplementedException();
         }
         
-        private static bool HasWinningDiagonal(Board board)
+        public static bool HasWinningDiagonal(Board board)
         {
             throw new NotImplementedException();
         }
