@@ -28,7 +28,13 @@ namespace tictactoe
 
         public static bool HasWinningColumn(Board board)
         {
-            throw new NotImplementedException();
+            for (var x = 0; x < board.GridSize; x++)
+            {
+                if (board.GetCell(x, 0).IsEmpty()) continue;
+                if (Enumerable.Range(1, board.GridSize - 1).All(y => Equals(board.GetCell(x, y), board.GetCell(x, 0))))
+                    return true;
+            }
+            return false;
         }
         
         public static bool HasWinningDiagonal(Board board)
