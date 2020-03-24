@@ -23,15 +23,6 @@ namespace tictactoe_tests
             
             Assert.True(BoardEvaluator.IsTie(board));
         }
-
-
-        private static void FillRow(Board board, int y)
-        {
-            for (var x = 0; x < board.GridSize; x++)
-            {
-                board.SetCell(x, y, CellState.X);
-            }
-        }
         
         [Fact]
         public void WinCondition_ForFilledRows_Detected()
@@ -44,31 +35,17 @@ namespace tictactoe_tests
                 Assert.True(BoardEvaluator.HasWinningRow(board));
             }
         }        
-        
+                
         [Fact]
-        public void HasWinningColumn_LeftMostColumnSame_ReturnsTrue()
+        public void WinCondition_ForFilledColumns_Detected()
         {
-            var board = new Board(GridSize);
-            const int x = 0;
-            for (var y = 0; y < GridSize; y++)
+            for (var x = 0; x < GridSize; x++)
             {
-                board.SetCell(x, y, CellState.X);
+                var board = new Board(GridSize);
+                FillColumn(board, x);
+                
+                Assert.True(BoardEvaluator.HasWinningColumn(board));
             }
-            
-            Assert.True(BoardEvaluator.HasWinningColumn(board));
-        }    
-        
-        [Fact]
-        public void HasWinningColumn_RightMostColumnSame_ReturnsTrue()
-        {
-            var board = new Board(GridSize);
-            const int x = GridSize - 1;
-            for (var y = 0; y < GridSize; y++)
-            {
-                board.SetCell(x, y, CellState.X);
-            }
-            
-            Assert.True(BoardEvaluator.HasWinningColumn(board));
         }
         
         [Fact]
@@ -93,6 +70,22 @@ namespace tictactoe_tests
             }
             
             Assert.True(BoardEvaluator.HasWinningDiagonal(board));
+        }
+
+        private static void FillRow(Board board, int y)
+        {
+            for (var x = 0; x < board.GridSize; x++)
+            {
+                board.SetCell(x, y, CellState.X);
+            }
+        }
+        
+        private static void FillColumn(Board board, int x)
+        {
+            for (var y = 0; y < board.GridSize; y++)
+            {
+                board.SetCell(x, y, CellState.X);
+            }
         }
     }
 }

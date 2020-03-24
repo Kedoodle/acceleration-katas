@@ -40,10 +40,19 @@ namespace tictactoe
         public static bool HasWinningDiagonal(Board board)
         {
             if (!board.GetCell(0, 0).IsEmpty()
-                && Enumerable.Range(1, board.GridSize - 1).All(xy => Equals(board.GetCell(xy, xy), board.GetCell(0, 0))))
+                && Enumerable.Range(1, board.GridSize - 1)
+                    .All(xy => Equals(board.GetCell(xy, xy), board.GetCell(0, 0))))
+            {
                 return true;
-            if (!board.GetCell(board.GridSize - 1, 0).IsEmpty() && Enumerable.Range(1, board.GridSize - 1).All(xy => Equals(board.GetCell(board.GridSize - 1 - xy, xy), board.GetCell(board.GridSize - 1, 0))))
+            }
+
+            if (!board.GetCell(board.GridSize - 1, 0).IsEmpty()
+                && Enumerable.Range(1, board.GridSize - 1).All(xy =>
+                    Equals(board.GetCell(board.GridSize - 1 - xy, xy), board.GetCell(board.GridSize - 1, 0))))
+            {
                 return true;
+            }
+            
             return false;
         }
     }

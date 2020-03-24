@@ -10,6 +10,7 @@ namespace tictactoe
             return State == CellState.Empty;
         }
 
+        // https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/how-to-define-value-equality-for-a-type
         public override bool Equals(object obj)
         {
             return this.Equals(obj as Cell);
