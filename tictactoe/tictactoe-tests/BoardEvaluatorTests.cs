@@ -21,7 +21,7 @@ namespace tictactoe_tests
             board.SetCell(1, 2, CellState.O);
             board.SetCell(2, 2, CellState.X);
             
-            Assert.True(GameRules.IsTie(board));
+            Assert.True(BoardEvaluator.IsTie(board));
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace tictactoe_tests
                 board.SetCell(x, y, CellState.X);
             }
             
-            Assert.True(GameRules.HasWinningRow(board));
+            Assert.True(BoardEvaluator.HasWinningRow(board));
         }
         
         [Fact]
@@ -47,7 +47,7 @@ namespace tictactoe_tests
                 board.SetCell(x, y, CellState.X);
             }
             
-            Assert.True(GameRules.HasWinningRow(board));
+            Assert.True(BoardEvaluator.HasWinningRow(board));
         }
         
         [Fact]
@@ -60,7 +60,7 @@ namespace tictactoe_tests
                 board.SetCell(x, y, CellState.X);
             }
             
-            Assert.True(GameRules.HasWinningColumn(board));
+            Assert.True(BoardEvaluator.HasWinningColumn(board));
         }    
         
         [Fact]
@@ -73,7 +73,7 @@ namespace tictactoe_tests
                 board.SetCell(x, y, CellState.X);
             }
             
-            Assert.True(GameRules.HasWinningColumn(board));
+            Assert.True(BoardEvaluator.HasWinningColumn(board));
         }
         
         [Fact]
@@ -85,7 +85,7 @@ namespace tictactoe_tests
                 board.SetCell(xy, xy, CellState.X);
             }
             
-            Assert.True(GameRules.HasWinningDiagonal(board));
+            Assert.True(BoardEvaluator.HasWinningDiagonal(board));
         }
         
         [Fact]
@@ -97,7 +97,7 @@ namespace tictactoe_tests
                 board.SetCell(GridSize - 1 - xy, xy, CellState.X);
             }
             
-            Assert.True(GameRules.HasWinningDiagonal(board));
+            Assert.True(BoardEvaluator.HasWinningDiagonal(board));
         }
     }
 }
