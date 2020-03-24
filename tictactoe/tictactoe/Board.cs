@@ -9,12 +9,12 @@ namespace tictactoe
         public Board(int gridSize)
         {
             GridSize = gridSize;
-            InitialiseEmptyCellsArray();
+            InitialiseBoard();
         }
         
         public int GridSize { get; }
 
-        private void InitialiseEmptyCellsArray()
+        private void InitialiseBoard()
         {
             CellsArray = new Cell[GridSize, GridSize];
             for (var i = 0; i < GridSize; i++)
