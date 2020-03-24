@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 
 namespace tictactoe
@@ -11,14 +12,37 @@ namespace tictactoe
             return State == CellState.Empty;
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
-            if (obj == null || this.GetType() != obj.GetType()) 
+            return this.Equals(obj as Cell);
+        }
+
+        public bool Equals(Cell cell)
+        {
+            if (ReferenceEquals(cell, null))
             {
                 return false;
             }
-            var cell = (Cell) obj; 
+            if (ReferenceEquals(this, cell))
+            {
+                return true;
+            }
+            if (this.GetType() != cell.GetType())
+            {
+                return false;
+            }
+            
             return this.State == cell.State;
+        }
+
+        public static bool operator ==(Cell lhs, Cell rhs)
+        {
+            return lhs?.Equals(rhs) ?? ReferenceEquals(rhs, null);
+        }
+
+        public static bool operator !=(Cell lhs, Cell rhs)
+        {
+            return !(lhs == rhs);
         }
     }
     
