@@ -4,7 +4,7 @@ namespace tictactoe
 {
     public class Board
     {
-        private Cell[,] CellsArray;
+        private Cell[,] _cellsArray;
 
         public Board(int gridSize)
         {
@@ -16,34 +16,34 @@ namespace tictactoe
 
         private void InitialiseBoard()
         {
-            CellsArray = new Cell[GridSize, GridSize];
+            _cellsArray = new Cell[GridSize, GridSize];
             for (var i = 0; i < GridSize; i++)
             {
                 for (var j = 0; j < GridSize; j++)
                 {
-                    CellsArray[i, j] = new Cell();
+                    _cellsArray[i, j] = new Cell();
                 }
             }
         }
 
         public bool IsEmpty()
         {
-            return CellsArray.Cast<Cell>().All(cell => cell.IsEmpty());
+            return _cellsArray.Cast<Cell>().All(cell => cell.IsEmpty());
         }
 
         public void SetCell(int x, int y, CellState cellState)
         {
-            CellsArray[x, y].State = cellState;
+            _cellsArray[x, y].State = cellState;
         }
 
         public bool IsFull()
         {
-            return CellsArray.Cast<Cell>().All(cell => !cell.IsEmpty());
+            return _cellsArray.Cast<Cell>().All(cell => !cell.IsEmpty());
         }
 
         public Cell GetCell(int x, int y)
         {
-            return CellsArray[x, y];
+            return _cellsArray[x, y];
         }
     }
 }
