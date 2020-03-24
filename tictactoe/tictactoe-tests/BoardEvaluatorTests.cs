@@ -3,7 +3,7 @@ using Xunit;
 
 namespace tictactoe_tests
 {
-    public class GameRulesTests
+    public class BoardEvaluatorTests
     {
         private const int GridSize = 3;
         

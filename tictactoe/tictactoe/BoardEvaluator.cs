@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace tictactoe
 {
-    public static class GameRules
+    public static class BoardEvaluator
     {
         public static bool IsTie(Board board)
         {
