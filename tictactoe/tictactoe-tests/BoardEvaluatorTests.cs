@@ -49,27 +49,29 @@ namespace tictactoe_tests
         }
         
         [Fact]
-        public void HasWinningDiagonal_TopLeftToBottomRight_ReturnsTrue()
+        public void WinCondition_ForFilledDiagonals_Detected()
         {
-            var board = new Board(GridSize);
-            for (var xy = 0; xy < GridSize; xy++)
-            {
-                board.SetCell(xy, xy, CellState.X);
+            // Top left to bottom right
+            {    
+                var board = new Board(GridSize);
+                for (var xy = 0; xy < GridSize; xy++)
+                {
+                    board.SetCell(xy, xy, CellState.X);
+                }
+            
+                Assert.True(BoardEvaluator.HasWinningDiagonal(board));
             }
             
-            Assert.True(BoardEvaluator.HasWinningDiagonal(board));
-        }
-        
-        [Fact]
-        public void HasWinningDiagonal_TopRightToBottomLeft_ReturnsTrue()
-        {
-            var board = new Board(GridSize);
-            for (var xy = 0; xy < GridSize; xy++)
-            {
-                board.SetCell(GridSize - 1 - xy, xy, CellState.X);
-            }
+            // Bottom left to top right
+            {    
+                var board = new Board(GridSize);
+                for (var xy = 0; xy < GridSize; xy++)
+                {
+                    board.SetCell(xy, GridSize - 1 - xy, CellState.X);
+                }
             
-            Assert.True(BoardEvaluator.HasWinningDiagonal(board));
+                Assert.True(BoardEvaluator.HasWinningDiagonal(board));
+            }
         }
 
         private static void FillRow(Board board, int y)
