@@ -26,9 +26,9 @@ namespace tictactoe
             }
         }
 
-        public bool IsEmpty()
+        public Cell GetCell(int x, int y)
         {
-            return _cellsArray.Cast<Cell>().All(cell => cell.IsEmpty());
+            return _cellsArray[x, y];
         }
 
         public void SetCell(int x, int y, CellState cellState)
@@ -36,14 +36,14 @@ namespace tictactoe
             _cellsArray[x, y].State = cellState;
         }
 
-        public bool IsFull()
+        public bool IsEmpty()
         {
-            return _cellsArray.Cast<Cell>().All(cell => !cell.IsEmpty());
+            return _cellsArray.OfType<Cell>().All(cell => cell.IsEmpty());
         }
 
-        public Cell GetCell(int x, int y)
+        public bool IsFull()
         {
-            return _cellsArray[x, y];
+            return _cellsArray.OfType<Cell>().All(cell => !cell.IsEmpty());
         }
     }
 }
