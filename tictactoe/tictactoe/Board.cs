@@ -6,12 +6,13 @@ namespace tictactoe
     {
         private Cell[,] CellsArray;
 
-        public Board()
+        public Board(int gridSize)
         {
+            GridSize = gridSize;
             InitialiseEmptyCellsArray();
         }
         
-        public int GridSize { get; } = 3;
+        public int GridSize { get; }
 
         private void InitialiseEmptyCellsArray()
         {

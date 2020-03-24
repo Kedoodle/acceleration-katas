@@ -10,7 +10,7 @@ namespace tictactoe_tests
         [Fact]
         public void IsTie_OnFullBoard_ReturnsTrue()
         {
-            var board = new Board();
+            var board = new Board(GridSize);
             board.SetCell(0, 0, CellState.O);
             board.SetCell(1, 0, CellState.X);
             board.SetCell(2, 0, CellState.O);
@@ -27,7 +27,7 @@ namespace tictactoe_tests
         [Fact]
         public void HasWinningRow_TopRowSame_ReturnsTrue()
         {
-            var board = new Board();
+            var board = new Board(GridSize);
             const int y = 0;
             for (var x = 0; x < GridSize; x++)
             {
@@ -40,7 +40,7 @@ namespace tictactoe_tests
         [Fact]
         public void HasWinningRow_BottomRowSame_ReturnsTrue()
         {
-            var board = new Board();
+            var board = new Board(GridSize);
             const int y = GridSize - 1;
             for (var x = 0; x < GridSize; x++)
             {
@@ -53,7 +53,7 @@ namespace tictactoe_tests
         [Fact]
         public void HasWinningColumn_LeftMostColumnSame_ReturnsTrue()
         {
-            var board = new Board();
+            var board = new Board(GridSize);
             const int x = 0;
             for (var y = 0; y < GridSize; y++)
             {
@@ -66,7 +66,7 @@ namespace tictactoe_tests
         [Fact]
         public void HasWinningColumn_RightMostColumnSame_ReturnsTrue()
         {
-            var board = new Board();
+            var board = new Board(GridSize);
             const int x = GridSize - 1;
             for (var y = 0; y < GridSize; y++)
             {
@@ -79,7 +79,7 @@ namespace tictactoe_tests
         [Fact]
         public void HasWinningDiagonal_TopLeftToBottomRight_ReturnsTrue()
         {
-            var board = new Board();
+            var board = new Board(GridSize);
             for (var xy = 0; xy < GridSize; xy++)
             {
                 board.SetCell(xy, xy, CellState.X);
@@ -91,7 +91,7 @@ namespace tictactoe_tests
         [Fact]
         public void HasWinningDiagonal_TopRightToBottomLeft_ReturnsTrue()
         {
-            var board = new Board();
+            var board = new Board(GridSize);
             for (var xy = 0; xy < GridSize; xy++)
             {
                 board.SetCell(GridSize - 1 - xy, xy, CellState.X);

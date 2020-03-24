@@ -5,10 +5,12 @@ namespace tictactoe_tests
 {
     public class BoardTests
     {
+        private const int GridSize = 3;
+        
         [Fact]
         public void Board_OnInitialise_IsEmpty()
         {
-            var board = new Board();
+            var board = new Board(GridSize);
 
             Assert.True(board.IsEmpty());
         }
@@ -16,7 +18,7 @@ namespace tictactoe_tests
         [Fact]
         public void Board_OnSetCell_IsNotEmpty()
         {
-            var board = new Board();
+            var board = new Board(GridSize);
             board.SetCell(1, 1, CellState.X);
             
             Assert.False(board.IsEmpty());
@@ -25,8 +27,7 @@ namespace tictactoe_tests
         [Fact]
         public void Board_OnFill_IsFull()
         {
-            var board = new Board();
-            const int GridSize = 3;
+            var board = new Board(GridSize);
             for (var y = 0; y < GridSize; y++)
             {
                 for (var x = 0; x < GridSize; x++)
@@ -41,7 +42,7 @@ namespace tictactoe_tests
         [Fact]
         public void Board_OnInitialise_IsNotFull()
         {
-            var board = new Board();
+            var board = new Board(GridSize);
             
             Assert.False(board.IsFull());
         }
