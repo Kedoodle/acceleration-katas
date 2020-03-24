@@ -24,31 +24,26 @@ namespace tictactoe_tests
             Assert.True(BoardEvaluator.IsTie(board));
         }
 
-        [Fact]
-        public void HasWinningRow_TopRowSame_ReturnsTrue()
+
+        private static void FillRow(Board board, int y)
         {
-            var board = new Board(GridSize);
-            const int y = 0;
-            for (var x = 0; x < GridSize; x++)
+            for (var x = 0; x < board.GridSize; x++)
             {
                 board.SetCell(x, y, CellState.X);
             }
-            
-            Assert.True(BoardEvaluator.HasWinningRow(board));
         }
         
         [Fact]
-        public void HasWinningRow_BottomRowSame_ReturnsTrue()
+        public void WinCondition_ForFilledRows_Detected()
         {
-            var board = new Board(GridSize);
-            const int y = GridSize - 1;
-            for (var x = 0; x < GridSize; x++)
+            for (var y = 0; y < GridSize; y++)
             {
-                board.SetCell(x, y, CellState.X);
+                var board = new Board(GridSize);
+                FillRow(board, y);
+                
+                Assert.True(BoardEvaluator.HasWinningRow(board));
             }
-            
-            Assert.True(BoardEvaluator.HasWinningRow(board));
-        }
+        }        
         
         [Fact]
         public void HasWinningColumn_LeftMostColumnSame_ReturnsTrue()
