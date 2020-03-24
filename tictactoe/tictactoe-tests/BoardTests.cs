@@ -1,3 +1,4 @@
+using System;
 using tictactoe;
 using Xunit;
 
@@ -45,6 +46,26 @@ namespace tictactoe_tests
             var board = new Board(GridSize);
             
             Assert.False(board.IsFull());
+        }
+        
+        [Fact]
+        public void FormatBoardToString_ReturnsValidString()
+        {
+
+            var expected = "OXO" + Environment.NewLine
+                                 + "..." + Environment.NewLine
+                                 + "XOX";
+                
+            var board = new Board(GridSize);
+            board.SetCell(0, 0, CellState.O);
+            board.SetCell(1, 0, CellState.X);
+            board.SetCell(2, 0, CellState.O);
+            board.SetCell(0, 2, CellState.X);
+            board.SetCell(1, 2, CellState.O);
+            board.SetCell(2, 2, CellState.X);
+            var actual = board.ToString();
+            
+            Assert.Equal(expected, actual);
         }
     }
 }

@@ -45,5 +45,10 @@ namespace tictactoe
         {
             return _cellsArray.OfType<Cell>().All(cell => !cell.IsEmpty());
         }
+        
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }
