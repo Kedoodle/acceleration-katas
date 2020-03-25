@@ -1,4 +1,6 @@
 
+using System.Collections.Generic;
+
 namespace tictactoe
 {
     public class Cell
@@ -42,6 +44,16 @@ namespace tictactoe
         public static bool operator !=(Cell lhs, Cell rhs)
         {
             return !(lhs == rhs);
+        }
+
+        public static IEnumerable<char> GetCellAsString(Cell cell)
+        {
+            return cell.State switch
+            {
+                CellState.X => "X",
+                CellState.O => "O",
+                _ => "."
+            };
         }
     }
     

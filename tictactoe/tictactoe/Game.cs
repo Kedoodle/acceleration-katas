@@ -13,9 +13,10 @@ namespace tictactoe
         public void Start()
         {
             ConsoleHandler.PrintWelcome(_board);
+            
             while (!BoardEvaluator.IsFinished(_board))
             {
-                
+                break;
             }
         }
     }

@@ -14,7 +14,7 @@ namespace tictactoe
                 for (var x = 0; x < board.GridSize; x++)
                 {
                     var cell = board.GetCell(x, y);
-                    boardAsString += GetCellAsString(cell);
+                    boardAsString += Cell.GetCellAsString(cell);
                 }
 
                 if (y < board.GridSize - 1)
@@ -24,16 +24,6 @@ namespace tictactoe
             }
             
             return boardAsString;
-        }
-
-        private static IEnumerable<char> GetCellAsString(Cell cell)
-        {
-            return cell.State switch
-            {
-                CellState.X => "X",
-                CellState.O => "O",
-                _ => "."
-            };
         }
     }
 }
