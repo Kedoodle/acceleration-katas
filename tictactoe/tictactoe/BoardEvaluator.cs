@@ -5,6 +5,11 @@ namespace tictactoe
 {
     public static class BoardEvaluator
     {
+        public static bool IsFinished(Board board)
+        {
+            return HasWinCondition(board) || IsTie(board);
+        }
+        
         public static bool IsTie(Board board)
         {
             return board.IsFull() && !HasWinCondition(board);
