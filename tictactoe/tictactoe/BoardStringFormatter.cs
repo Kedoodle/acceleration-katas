@@ -7,6 +7,7 @@ namespace tictactoe
         public static IEnumerable<char> GetBoardAsString(Board board)
         {
             var boardAsString = "";
+            
             return boardAsString;
         }
     }
