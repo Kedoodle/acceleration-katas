@@ -48,6 +48,14 @@ namespace tictactoe
         
         public override string ToString()
         {
+            var boardAsString = "";
+            for (var y = 0; y < GridSize; y++)
+            {
+                for (var x = 0; x < GridSize; x++)
+                {
+                    boardAsString += (GetCell(x, y).ToString());
+                }
+            }
             return base.ToString();
         }
     }
