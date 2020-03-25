@@ -4,20 +4,28 @@ namespace tictactoe
 {
     public static class ConsoleInputParser
     {
+        private const char CoordinateSeparator = ',';
+
         public static bool TryParseCoordinates(string userInput, out int x, out int y)
         {
-            if (HasSingleComma(userInput))
+            if (HasSingleSeparator(userInput, CoordinateSeparator))
             {
-                var commaIndex = userInput.IndexOf(',');
+                var coordinateStrings = userInput.Split(CoordinateSeparator);
+                if (int.TryParse(coordinateStrings[0], out x) && int.TryParse(coordinateStrings[1], out y))
+                {
+                    x--;
+                    y--;
+                    return true;
+                }
             }
             x = -1;
             y = -1;
             return false;
         }
 
-        private static bool HasSingleComma(string userInput)
+        private static bool HasSingleSeparator(string userInput, char separator)
         {
-            return userInput.Count(c => c == ',') == 1;
+            return userInput.Count(c => c == separator) == 1;
         }
     }
 }
