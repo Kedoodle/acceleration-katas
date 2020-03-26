@@ -16,6 +16,7 @@ namespace tictactoe
             _board = new Board(GridSize);
             _player1 = new Player("Player 1", CellState.X);
             _player2 = new Player("Player 2", CellState.O);
+            _currentPlayer = _player1;
         }
         
         public void Start()
@@ -24,13 +25,13 @@ namespace tictactoe
             
             while (!BoardEvaluator.IsFinished(_board))
             {
-                ConsolePrinter.PrintPromptPlayerMove(_player1);
+                ConsolePrinter.PromptPlayerMove(_currentPlayer);
                 var input = Console.ReadLine();
                 if (ConsoleInputParser.HasQuit(input))
                 {
-                    
+                    ConsolePrinter.PrintPlayerQuit(_currentPlayer);
+                    Environment.Exit(0);
                 }
-                break;
             }
         }
     }

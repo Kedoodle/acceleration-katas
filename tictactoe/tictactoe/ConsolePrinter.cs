@@ -20,7 +20,7 @@ namespace tictactoe
             internal const string CurrentBoard = "Here's the current board:";
         }
 
-        public static void PrintPromptPlayerMove(Player player)
+        public static void PromptPlayerMove(Player player)
         {
             Console.Write($"{player.Name} enter a coord x,y to place your {player.CellState} or enter 'q' to give up: ");
         }
