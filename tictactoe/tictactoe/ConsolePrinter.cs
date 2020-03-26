@@ -2,7 +2,7 @@ using System;
 
 namespace tictactoe
 {
-    public static class ConsoleHandler
+    public static class ConsolePrinter
     {
         public static void PrintWelcome(Board board)
         {

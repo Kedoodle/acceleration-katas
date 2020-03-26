@@ -20,11 +20,11 @@ namespace tictactoe
         
         public void Start()
         {
-            ConsoleHandler.PrintWelcome(_board);
+            ConsolePrinter.PrintWelcome(_board);
             
             while (!BoardEvaluator.IsFinished(_board))
             {
-                ConsoleHandler.PrintPromptPlayerMove(_player1);
+                ConsolePrinter.PrintPromptPlayerMove(_player1);
                 var input = Console.ReadLine();
                 if (ConsoleInputParser.HasQuit(input))
                 {
