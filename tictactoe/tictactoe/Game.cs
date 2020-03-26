@@ -11,8 +11,8 @@ namespace tictactoe
         public void Initialise()
         {
             _board = new Board(GridSize);
-            _player1 = new Player("1", CellState.X);
-            _player2 = new Player("2", CellState.O);
+            _player1 = new Player("Player 1", CellState.X);
+            _player2 = new Player("Player 2", CellState.O);
         }
         
         public void Start()
