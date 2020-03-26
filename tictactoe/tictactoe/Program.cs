@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace tictactoe
+﻿namespace tictactoe
 {
     class Program
     {

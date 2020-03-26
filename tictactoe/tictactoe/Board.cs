@@ -45,5 +45,10 @@ namespace tictactoe
         {
             return _cellsArray.OfType<Cell>().All(cell => !cell.IsEmpty());
         }
+
+        public bool ContainsCoordinates(int x, int y)
+        {
+            return x >= 0 && x < GridSize && y >= 0 && y < GridSize;
+        }
     }
 }

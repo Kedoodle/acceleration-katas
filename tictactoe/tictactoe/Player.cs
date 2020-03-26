@@ -11,7 +11,7 @@ namespace tictactoe
         public string Name { get; }
         public CellState CellState { get; }
 
-        public void MakeMove(Board board, int x, int y)
+        public void Move(Board board, int x, int y)
         {
             board.SetCell(x, y, CellState);
         }
