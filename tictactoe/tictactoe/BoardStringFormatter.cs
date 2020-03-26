@@ -14,7 +14,7 @@ namespace tictactoe
                 for (var x = 0; x < board.GridSize; x++)
                 {
                     var cell = board.GetCell(x, y);
-                    boardAsString += Cell.GetCellAsString(cell);
+                    boardAsString += Cell.GetCellStateAsString(cell.State);
                 }
 
                 if (y < board.GridSize - 1)

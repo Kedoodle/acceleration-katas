@@ -46,9 +46,9 @@ namespace tictactoe
             return !(lhs == rhs);
         }
 
-        public static IEnumerable<char> GetCellAsString(Cell cell)
+        public static IEnumerable<char> GetCellStateAsString(CellState cellState)
         {
-            return cell.State switch
+            return cellState switch
             {
                 CellState.X => "X",
                 CellState.O => "O",
