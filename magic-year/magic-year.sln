@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "magic-year", "magic-year\magic-year.csproj", "{CFA47D68-59D2-45E3-8A5F-DFFEE745AFA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "magic-year-tests", "magic-year-tests\magic-year-tests.csproj", "{A859376B-DAFB-4017-BB8D-6F255F2CEFBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFA47D68-59D2-45E3-8A5F-DFFEE745AFA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA47D68-59D2-45E3-8A5F-DFFEE745AFA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA47D68-59D2-45E3-8A5F-DFFEE745AFA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA47D68-59D2-45E3-8A5F-DFFEE745AFA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A859376B-DAFB-4017-BB8D-6F255F2CEFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A859376B-DAFB-4017-BB8D-6F255F2CEFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A859376B-DAFB-4017-BB8D-6F255F2CEFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A859376B-DAFB-4017-BB8D-6F255F2CEFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
