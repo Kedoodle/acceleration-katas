@@ -1,3 +1,5 @@
+using System;
+
 namespace tictactoe
 {
     public class Game
@@ -5,6 +7,7 @@ namespace tictactoe
         private Board _board;
         private Player _player1;
         private Player _player2;
+        private Player _currentPlayer;
         
         private const int GridSize = 3;
         
@@ -22,21 +25,13 @@ namespace tictactoe
             while (!BoardEvaluator.IsFinished(_board))
             {
                 ConsoleHandler.PrintPromptPlayerMove(_player1);
-                
+                var input = Console.ReadLine();
+                if (ConsoleInputParser.HasQuit(input))
+                {
+                    
+                }
                 break;
             }
-        }
-    }
-
-    public struct Player
-    {
-        public string Name { get; }
-        public CellState CellPiece { get; }
-
-        public Player(string name, CellState cellPiece)
-        {
-            Name = name;
-            CellPiece = cellPiece;
         }
     }
 }

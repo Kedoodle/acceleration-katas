@@ -8,7 +8,7 @@ namespace tictactoe_tests
         private const int GridSize = 3;
         
         [Fact]
-        public void IsTie_OnFullBoard_ReturnsTrue()
+        public void IsTie_OnFullBoard_WithNoWinCondition()
         {
             var board = new Board(GridSize);
             board.SetCell(0, 0, CellState.O);
@@ -25,7 +25,7 @@ namespace tictactoe_tests
         }
         
         [Fact]
-        public void WinCondition_ForFilledRows_Detected()
+        public void HasWinningRow_ForRows_WithWinCondition()
         {
             for (var y = 0; y < GridSize; y++)
             {
@@ -37,7 +37,7 @@ namespace tictactoe_tests
         }        
                 
         [Fact]
-        public void WinCondition_ForFilledColumns_Detected()
+        public void HasWinningColumn_ForColumns_WithWinCondition()
         {
             for (var x = 0; x < GridSize; x++)
             {
@@ -49,7 +49,7 @@ namespace tictactoe_tests
         }
         
         [Fact]
-        public void WinCondition_ForFilledDiagonals_Detected()
+        public void HasWinningDiagonal_ForDiagonals_WithWinCondition()
         {
             // Top left to bottom right
             {    

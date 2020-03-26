@@ -5,6 +5,12 @@ namespace tictactoe
     public static class ConsoleInputParser
     {
         private const char CoordinateSeparator = ',';
+        private const string PlayerQuitString = "q";
+
+        public static bool HasQuit(string userInput)
+        {
+            return userInput == PlayerQuitString;
+        }
 
         public static bool TryParseCoordinates(string userInput, out int x, out int y)
         {

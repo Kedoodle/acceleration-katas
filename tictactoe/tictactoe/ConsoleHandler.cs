@@ -7,8 +7,10 @@ namespace tictactoe
         public static void PrintWelcome(Board board)
         {
             Console.WriteLine(Messages.Welcome);
+            Console.WriteLine();
             Console.WriteLine(Messages.CurrentBoard);
             Console.WriteLine(BoardStringFormatter.GetBoardAsString(board));
+            Console.WriteLine();
         }
 
         private static class Messages
@@ -20,7 +22,7 @@ namespace tictactoe
 
         public static void PrintPromptPlayerMove(Player player)
         {
-            Console.Write($"{player.Name} enter a coord x,y to place your {player.CellPiece} or enter 'q' to give up: ");
+            Console.Write($"{player.Name} enter a coord x,y to place your {player.CellState} or enter 'q' to give up: ");
         }
     }
 }
