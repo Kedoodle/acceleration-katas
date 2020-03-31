@@ -13,7 +13,7 @@ namespace Algorithm
 
         public PairOfPeople Find(AgeDifferenceType ageDifferenceType)
         {
-            var tr = new List<PairOfPeople>();
+            var allPossiblePairsOfPeople = new List<PairOfPeople>();
 
             for(var i = 0; i < _people.Count - 1; i++)
             {
@@ -31,17 +31,17 @@ namespace Algorithm
                         r.YoungerPerson = _people[i];
                     }
                     r.AgeDifference = r.YoungerPerson.BirthDate - r.OlderPerson.BirthDate;
-                    tr.Add(r);
+                    allPossiblePairsOfPeople.Add(r);
                 }
             }
 
-            if(tr.Count < 1)
+            if(allPossiblePairsOfPeople.Count < 1)
             {
                 return new PairOfPeople();
             }
 
-            PairOfPeople answer = tr[0];
-            foreach(var result in tr)
+            PairOfPeople answer = allPossiblePairsOfPeople[0];
+            foreach(var result in allPossiblePairsOfPeople)
             {
                 switch(ageDifferenceType)
                 {
