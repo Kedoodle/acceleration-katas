@@ -40,7 +40,7 @@ namespace Algorithm
                 return new PairOfPeople();
             }
 
-            PairOfPeople answer = allPossiblePairsOfPeople[0];
+            var answer = allPossiblePairsOfPeople[0];
             foreach(var result in allPossiblePairsOfPeople)
             {
                 switch(ageDifferenceType)
