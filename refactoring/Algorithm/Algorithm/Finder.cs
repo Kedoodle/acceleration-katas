@@ -4,56 +4,56 @@ namespace Algorithm
 {
     public class Finder
     {
-        private readonly List<Person> _p;
+        private readonly List<Person> _people;
 
-        public Finder(List<Person> p)
+        public Finder(List<Person> people)
         {
-            _p = p;
+            _people = people;
         }
 
-        public F Find(FT ft)
+        public PairOfPeople Find(FT ft)
         {
-            var tr = new List<F>();
+            var tr = new List<PairOfPeople>();
 
-            for(var i = 0; i < _p.Count - 1; i++)
+            for(var i = 0; i < _people.Count - 1; i++)
             {
-                for(var j = i + 1; j < _p.Count; j++)
+                for(var j = i + 1; j < _people.Count; j++)
                 {
-                    var r = new F();
-                    if(_p[i].BirthDate < _p[j].BirthDate)
+                    var r = new PairOfPeople();
+                    if(_people[i].BirthDate < _people[j].BirthDate)
                     {
-                        r.P1 = _p[i];
-                        r.P2 = _p[j];
+                        r.OlderPerson = _people[i];
+                        r.YoungerPerson = _people[j];
                     }
                     else
                     {
-                        r.P1 = _p[j];
-                        r.P2 = _p[i];
+                        r.OlderPerson = _people[j];
+                        r.YoungerPerson = _people[i];
                     }
-                    r.D = r.P2.BirthDate - r.P1.BirthDate;
+                    r.AgeDifference = r.YoungerPerson.BirthDate - r.OlderPerson.BirthDate;
                     tr.Add(r);
                 }
             }
 
             if(tr.Count < 1)
             {
-                return new F();
+                return new PairOfPeople();
             }
 
-            F answer = tr[0];
+            PairOfPeople answer = tr[0];
             foreach(var result in tr)
             {
                 switch(ft)
                 {
                     case FT.One:
-                        if(result.D < answer.D)
+                        if(result.AgeDifference < answer.AgeDifference)
                         {
                             answer = result;
                         }
                         break;
 
                     case FT.Two:
-                        if(result.D > answer.D)
+                        if(result.AgeDifference > answer.AgeDifference)
                         {
                             answer = result;
                         }
