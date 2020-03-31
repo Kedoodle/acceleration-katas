@@ -12,7 +12,7 @@ namespace Algorithm.Test
             var list = new List<Person>();
             var finder = new Finder(list);
 
-            var result = finder.Find(AgeDifferenceType.One);
+            var result = finder.Find(AgeDifferenceType.Closest);
 
             Assert.Null(result.OlderPerson);
             Assert.Null(result.YoungerPerson);
@@ -24,7 +24,7 @@ namespace Algorithm.Test
             var list = new List<Person>() { sue };
             var finder = new Finder(list);
 
-            var result = finder.Find(AgeDifferenceType.One);
+            var result = finder.Find(AgeDifferenceType.Closest);
 
             Assert.Null(result.OlderPerson);
             Assert.Null(result.YoungerPerson);
@@ -36,7 +36,7 @@ namespace Algorithm.Test
             var list = new List<Person>() { sue, greg };
             var finder = new Finder(list);
 
-            var result = finder.Find(AgeDifferenceType.One);
+            var result = finder.Find(AgeDifferenceType.Closest);
 
             Assert.Same(sue, result.OlderPerson);
             Assert.Same(greg, result.YoungerPerson);
@@ -72,7 +72,7 @@ namespace Algorithm.Test
             var list = new List<Person>() { greg, mike, sarah, sue };
             var finder = new Finder(list);
 
-            var result = finder.Find(AgeDifferenceType.One);
+            var result = finder.Find(AgeDifferenceType.Closest);
 
             Assert.Same(sue, result.OlderPerson);
             Assert.Same(greg, result.YoungerPerson);
