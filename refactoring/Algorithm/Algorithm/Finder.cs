@@ -11,7 +11,7 @@ namespace Algorithm
             _people = people;
         }
 
-        public PairOfPeople Find(FT ft)
+        public PairOfPeople Find(AgeDifferenceType ageDifferenceType)
         {
             var tr = new List<PairOfPeople>();
 
@@ -43,16 +43,16 @@ namespace Algorithm
             PairOfPeople answer = tr[0];
             foreach(var result in tr)
             {
-                switch(ft)
+                switch(ageDifferenceType)
                 {
-                    case FT.One:
+                    case AgeDifferenceType.Closest:
                         if(result.AgeDifference < answer.AgeDifference)
                         {
                             answer = result;
                         }
                         break;
 
-                    case FT.Two:
+                    case AgeDifferenceType.Furthest:
                         if(result.AgeDifference > answer.AgeDifference)
                         {
                             answer = result;

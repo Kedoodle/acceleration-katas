@@ -12,7 +12,7 @@ namespace Algorithm.Test
             var list = new List<Person>();
             var finder = new Finder(list);
 
-            var result = finder.Find(FT.One);
+            var result = finder.Find(AgeDifferenceType.One);
 
             Assert.Null(result.OlderPerson);
             Assert.Null(result.YoungerPerson);
@@ -24,7 +24,7 @@ namespace Algorithm.Test
             var list = new List<Person>() { sue };
             var finder = new Finder(list);
 
-            var result = finder.Find(FT.One);
+            var result = finder.Find(AgeDifferenceType.One);
 
             Assert.Null(result.OlderPerson);
             Assert.Null(result.YoungerPerson);
@@ -36,7 +36,7 @@ namespace Algorithm.Test
             var list = new List<Person>() { sue, greg };
             var finder = new Finder(list);
 
-            var result = finder.Find(FT.One);
+            var result = finder.Find(AgeDifferenceType.One);
 
             Assert.Same(sue, result.OlderPerson);
             Assert.Same(greg, result.YoungerPerson);
@@ -48,7 +48,7 @@ namespace Algorithm.Test
             var list = new List<Person>() { greg, mike };
             var finder = new Finder(list);
 
-            var result = finder.Find(FT.Two);
+            var result = finder.Find(AgeDifferenceType.Furthest);
 
             Assert.Same(greg, result.OlderPerson);
             Assert.Same(mike, result.YoungerPerson);
@@ -60,7 +60,7 @@ namespace Algorithm.Test
             var list = new List<Person>() { greg, mike, sarah, sue };
             var finder = new Finder(list);
 
-            var result = finder.Find(FT.Two);
+            var result = finder.Find(AgeDifferenceType.Furthest);
 
             Assert.Same(sue, result.OlderPerson);
             Assert.Same(sarah, result.YoungerPerson);
@@ -72,7 +72,7 @@ namespace Algorithm.Test
             var list = new List<Person>() { greg, mike, sarah, sue };
             var finder = new Finder(list);
 
-            var result = finder.Find(FT.One);
+            var result = finder.Find(AgeDifferenceType.One);
 
             Assert.Same(sue, result.OlderPerson);
             Assert.Same(greg, result.YoungerPerson);
