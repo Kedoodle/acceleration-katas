@@ -19,19 +19,19 @@ namespace Algorithm
             {
                 for(var j = i + 1; j < _people.Count; j++)
                 {
-                    var r = new PairOfPeople();
+                    var pair = new PairOfPeople();
                     if(_people[i].BirthDate < _people[j].BirthDate)
                     {
-                        r.OlderPerson = _people[i];
-                        r.YoungerPerson = _people[j];
+                        pair.OlderPerson = _people[i];
+                        pair.YoungerPerson = _people[j];
                     }
                     else
                     {
-                        r.OlderPerson = _people[j];
-                        r.YoungerPerson = _people[i];
+                        pair.OlderPerson = _people[j];
+                        pair.YoungerPerson = _people[i];
                     }
-                    r.AgeDifference = r.YoungerPerson.BirthDate - r.OlderPerson.BirthDate;
-                    allPossiblePairsOfPeople.Add(r);
+                    pair.AgeDifference = pair.YoungerPerson.BirthDate - pair.OlderPerson.BirthDate;
+                    allPossiblePairsOfPeople.Add(pair);
                 }
             }
 
