@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Algorithm
 {
@@ -17,28 +18,7 @@ namespace Algorithm
             
             var candidates = GetAllPossiblePairsOfPeople();
 
-            var result = candidates[0];
-            foreach(var candidate in candidates)
-            {
-                switch(ageDifferenceType)
-                {
-                    case AgeDifferenceType.Closest:
-                        if(candidate.AgeDifference < result.AgeDifference)
-                        {
-                            result = candidate;
-                        }
-                        break;
-
-                    case AgeDifferenceType.Furthest:
-                        if(candidate.AgeDifference > result.AgeDifference)
-                        {
-                            result = candidate;
-                        }
-                        break;
-                }
-            }
-
-            return result;
+            return ageDifferenceType == AgeDifferenceType.Closest ? GetClosestBirthdayPair(candidates) : GetFurthestBirthdayPair(candidates);
         }
 
         private bool NotEnoughPeople()
@@ -46,7 +26,7 @@ namespace Algorithm
             return _people.Count < 2;
         }
 
-        private List<PairOfPeople> GetAllPossiblePairsOfPeople()
+        private IEnumerable<PairOfPeople> GetAllPossiblePairsOfPeople()
         {
             var allPossiblePairsOfPeople = new List<PairOfPeople>();
 
@@ -72,6 +52,16 @@ namespace Algorithm
             }
 
             return allPossiblePairsOfPeople;
+        }
+
+        private static PairOfPeople GetClosestBirthdayPair(IEnumerable<PairOfPeople> candidates)
+        {
+            return candidates.OrderBy(candidate => candidate.AgeDifference).First();
+        }
+
+        private static PairOfPeople GetFurthestBirthdayPair(IEnumerable<PairOfPeople> candidates)
+        {
+            return candidates.OrderByDescending(candidate => candidate.AgeDifference).First();
         }
     }
 }
