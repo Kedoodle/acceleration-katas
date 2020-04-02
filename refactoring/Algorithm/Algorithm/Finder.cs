@@ -13,12 +13,9 @@ namespace Algorithm
 
         public PairOfPeople Find(AgeDifferenceType ageDifferenceType)
         {
+            if (NotEnoughPeople()) return new PairOfPeople();
+            
             var allPossiblePairsOfPeople = GetAllPossiblePairsOfPeople();
-
-            if(allPossiblePairsOfPeople.Count < 1)
-            {
-                return new PairOfPeople();
-            }
 
             var answer = allPossiblePairsOfPeople[0];
             foreach(var result in allPossiblePairsOfPeople)
@@ -42,6 +39,11 @@ namespace Algorithm
             }
 
             return answer;
+        }
+
+        private bool NotEnoughPeople()
+        {
+            return _people.Count < 2;
         }
 
         private List<PairOfPeople> GetAllPossiblePairsOfPeople()
