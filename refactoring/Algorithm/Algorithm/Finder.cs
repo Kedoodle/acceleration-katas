@@ -45,8 +45,6 @@ namespace Algorithm
                         pair.OlderPerson = _people[j];
                         pair.YoungerPerson = _people[i];
                     }
-
-                    pair.AgeDifference = pair.YoungerPerson.BirthDate - pair.OlderPerson.BirthDate;
                     allPossiblePairsOfPeople.Add(pair);
                 }
             }
@@ -56,12 +54,12 @@ namespace Algorithm
 
         private static PairOfPeople GetClosestBirthdayPair(IEnumerable<PairOfPeople> candidates)
         {
-            return candidates.OrderBy(candidate => candidate.AgeDifference).First();
+            return candidates.OrderBy(candidate => candidate.GetAgeDifference()).First();
         }
 
         private static PairOfPeople GetFurthestBirthdayPair(IEnumerable<PairOfPeople> candidates)
         {
-            return candidates.OrderByDescending(candidate => candidate.AgeDifference).First();
+            return candidates.OrderByDescending(candidate => candidate.GetAgeDifference()).First();
         }
     }
 }
