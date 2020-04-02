@@ -17,28 +17,28 @@ namespace Algorithm
             
             var candidates = GetAllPossiblePairsOfPeople();
 
-            var answer = candidates[0];
+            var result = candidates[0];
             foreach(var candidate in candidates)
             {
                 switch(ageDifferenceType)
                 {
                     case AgeDifferenceType.Closest:
-                        if(candidate.AgeDifference < answer.AgeDifference)
+                        if(candidate.AgeDifference < result.AgeDifference)
                         {
-                            answer = candidate;
+                            result = candidate;
                         }
                         break;
 
                     case AgeDifferenceType.Furthest:
-                        if(candidate.AgeDifference > answer.AgeDifference)
+                        if(candidate.AgeDifference > result.AgeDifference)
                         {
-                            answer = candidate;
+                            result = candidate;
                         }
                         break;
                 }
             }
 
-            return answer;
+            return result;
         }
 
         private bool NotEnoughPeople()
