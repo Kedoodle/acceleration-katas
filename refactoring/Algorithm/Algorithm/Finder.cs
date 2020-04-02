@@ -34,18 +34,9 @@ namespace Algorithm
             {
                 for (var j = i + 1; j < _people.Count; j++)
                 {
-                    var pair = new PairOfPeople();
-                    if (_people[i].BirthDate < _people[j].BirthDate)
-                    {
-                        pair.OlderPerson = _people[i];
-                        pair.YoungerPerson = _people[j];
-                    }
-                    else
-                    {
-                        pair.OlderPerson = _people[j];
-                        pair.YoungerPerson = _people[i];
-                    }
-                    allPossiblePairsOfPeople.Add(pair);
+                    var olderPerson = _people[i].BirthDate < _people[j].BirthDate ? _people[i] : _people[j];
+                    var youngerPerson = _people[i].BirthDate < _people[j].BirthDate ? _people[j] : _people[i];
+                    allPossiblePairsOfPeople.Add(new PairOfPeople {OlderPerson = olderPerson, YoungerPerson = youngerPerson});
                 }
             }
 
