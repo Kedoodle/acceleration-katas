@@ -15,24 +15,24 @@ namespace Algorithm
         {
             if (NotEnoughPeople()) return new PairOfPeople();
             
-            var allPossiblePairsOfPeople = GetAllPossiblePairsOfPeople();
+            var candidates = GetAllPossiblePairsOfPeople();
 
-            var answer = allPossiblePairsOfPeople[0];
-            foreach(var result in allPossiblePairsOfPeople)
+            var answer = candidates[0];
+            foreach(var candidate in candidates)
             {
                 switch(ageDifferenceType)
                 {
                     case AgeDifferenceType.Closest:
-                        if(result.AgeDifference < answer.AgeDifference)
+                        if(candidate.AgeDifference < answer.AgeDifference)
                         {
-                            answer = result;
+                            answer = candidate;
                         }
                         break;
 
                     case AgeDifferenceType.Furthest:
-                        if(result.AgeDifference > answer.AgeDifference)
+                        if(candidate.AgeDifference > answer.AgeDifference)
                         {
-                            answer = result;
+                            answer = candidate;
                         }
                         break;
                 }
