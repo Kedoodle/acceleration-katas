@@ -13,27 +13,7 @@ namespace Algorithm
 
         public PairOfPeople Find(AgeDifferenceType ageDifferenceType)
         {
-            var allPossiblePairsOfPeople = new List<PairOfPeople>();
-
-            for(var i = 0; i < _people.Count - 1; i++)
-            {
-                for(var j = i + 1; j < _people.Count; j++)
-                {
-                    var pair = new PairOfPeople();
-                    if(_people[i].BirthDate < _people[j].BirthDate)
-                    {
-                        pair.OlderPerson = _people[i];
-                        pair.YoungerPerson = _people[j];
-                    }
-                    else
-                    {
-                        pair.OlderPerson = _people[j];
-                        pair.YoungerPerson = _people[i];
-                    }
-                    pair.AgeDifference = pair.YoungerPerson.BirthDate - pair.OlderPerson.BirthDate;
-                    allPossiblePairsOfPeople.Add(pair);
-                }
-            }
+            var allPossiblePairsOfPeople = GetAllPossiblePairsOfPeople();
 
             if(allPossiblePairsOfPeople.Count < 1)
             {
@@ -62,6 +42,34 @@ namespace Algorithm
             }
 
             return answer;
+        }
+
+        private List<PairOfPeople> GetAllPossiblePairsOfPeople()
+        {
+            var allPossiblePairsOfPeople = new List<PairOfPeople>();
+
+            for (var i = 0; i < _people.Count - 1; i++)
+            {
+                for (var j = i + 1; j < _people.Count; j++)
+                {
+                    var pair = new PairOfPeople();
+                    if (_people[i].BirthDate < _people[j].BirthDate)
+                    {
+                        pair.OlderPerson = _people[i];
+                        pair.YoungerPerson = _people[j];
+                    }
+                    else
+                    {
+                        pair.OlderPerson = _people[j];
+                        pair.YoungerPerson = _people[i];
+                    }
+
+                    pair.AgeDifference = pair.YoungerPerson.BirthDate - pair.OlderPerson.BirthDate;
+                    allPossiblePairsOfPeople.Add(pair);
+                }
+            }
+
+            return allPossiblePairsOfPeople;
         }
     }
 }
