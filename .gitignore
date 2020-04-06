@@ -13,3 +13,7 @@
 **/[Pp]ackages/*
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
+
+# ReSharper
+**.[Rr]e[Ss]harper
+**.DotSettings.user
