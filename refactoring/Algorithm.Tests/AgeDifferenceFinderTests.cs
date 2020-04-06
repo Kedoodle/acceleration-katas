@@ -4,13 +4,13 @@ using Xunit;
 
 namespace Algorithm.Test
 {    
-    public class FinderTests
+    public class AgeDifferenceFinderTests
     {
         [Fact]
         public void Returns_Empty_Results_When_Given_Empty_List()
         {
             var list = new List<Person>();
-            var finder = new Finder(list);
+            var finder = new AgeDifferenceFinder(list);
 
             var result = finder.Find(AgeDifferenceType.Closest);
 
@@ -22,7 +22,7 @@ namespace Algorithm.Test
         public void Returns_Empty_Results_When_Given_One_Person()
         {
             var list = new List<Person>() { sue };
-            var finder = new Finder(list);
+            var finder = new AgeDifferenceFinder(list);
 
             var result = finder.Find(AgeDifferenceType.Closest);
 
@@ -34,7 +34,7 @@ namespace Algorithm.Test
         public void Returns_Closest_Two_For_Two_People()
         {
             var list = new List<Person>() { sue, greg };
-            var finder = new Finder(list);
+            var finder = new AgeDifferenceFinder(list);
 
             var result = finder.Find(AgeDifferenceType.Closest);
 
@@ -46,7 +46,7 @@ namespace Algorithm.Test
         public void Returns_Furthest_Two_For_Two_People()
         {
             var list = new List<Person>() { greg, mike };
-            var finder = new Finder(list);
+            var finder = new AgeDifferenceFinder(list);
 
             var result = finder.Find(AgeDifferenceType.Furthest);
 
@@ -58,7 +58,7 @@ namespace Algorithm.Test
         public void Returns_Furthest_Two_For_Four_People()
         {
             var list = new List<Person>() { greg, mike, sarah, sue };
-            var finder = new Finder(list);
+            var finder = new AgeDifferenceFinder(list);
 
             var result = finder.Find(AgeDifferenceType.Furthest);
 
@@ -70,7 +70,7 @@ namespace Algorithm.Test
         public void Returns_Closest_Two_For_Four_People()
         {
             var list = new List<Person>() { greg, mike, sarah, sue };
-            var finder = new Finder(list);
+            var finder = new AgeDifferenceFinder(list);
 
             var result = finder.Find(AgeDifferenceType.Closest);
 

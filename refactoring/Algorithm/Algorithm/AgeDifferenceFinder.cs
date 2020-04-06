@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace Algorithm
 {
-    public class Finder
+    public class AgeDifferenceFinder
     {
         private readonly List<Person> _people;
 
-        public Finder(List<Person> people)
+        public AgeDifferenceFinder(List<Person> people)
         {
             _people = people;
         }

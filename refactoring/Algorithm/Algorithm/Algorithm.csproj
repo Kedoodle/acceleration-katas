@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Finder.cs" />
+    <Compile Include="AgeDifferenceFinder.cs" />
     <Compile Include="PairOfPeople.cs" />
     <Compile Include="AgeDifferenceType.cs" />
     <Compile Include="Person.cs" />

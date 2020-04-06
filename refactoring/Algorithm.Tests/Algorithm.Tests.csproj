@@ -43,7 +43,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FinderTests.cs" />
+    <Compile Include="AgeDifferenceFinderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Algorithm\Algorithm\Algorithm.csproj">
