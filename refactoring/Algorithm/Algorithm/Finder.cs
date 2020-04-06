@@ -14,16 +14,17 @@ namespace Algorithm
 
         public PairOfPeople Find(AgeDifferenceType ageDifferenceType)
         {
-            if (NotEnoughPeople()) return new PairOfPeople();
+            if (!HasEnoughPeople()) return new PairOfPeople();
             
             var candidates = GetAllPossiblePairsOfPeople();
 
             return ageDifferenceType == AgeDifferenceType.Closest ? GetClosestBirthdayPair(candidates) : GetFurthestBirthdayPair(candidates);
         }
 
-        private bool NotEnoughPeople()
+        private bool HasEnoughPeople()
         {
-            return _people.Count < 2;
+            const int peopleRequiredToMakeAPair = 2;
+            return _people.Count >= peopleRequiredToMakeAPair;
         }
 
         private IEnumerable<PairOfPeople> GetAllPossiblePairsOfPeople()
