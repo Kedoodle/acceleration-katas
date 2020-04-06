@@ -2,7 +2,7 @@
 {
     public enum AgeDifferenceType
     {
-    Closest,
-    Furthest
+        Closest,
+        Furthest
     }
 }
