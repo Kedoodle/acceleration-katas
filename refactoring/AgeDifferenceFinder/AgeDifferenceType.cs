@@ -1,4 +1,4 @@
-﻿namespace Algorithm
+﻿namespace AgeDifferenceFinder
 {
     public enum AgeDifferenceType
     {
