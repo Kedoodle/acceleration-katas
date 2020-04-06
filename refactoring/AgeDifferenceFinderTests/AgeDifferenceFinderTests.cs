@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace Algorithm.Test
+namespace AgeDifferenceFinder.Test
 {    
     public class AgeDifferenceFinderTests
     {

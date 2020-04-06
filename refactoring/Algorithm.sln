@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm", "Algorithm\Algorithm\Algorithm.csproj", "{32898DDB-69EA-44E5-B15C-A1C4EC928DB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeDifferenceFinder", "Algorithm\AgeDifferenceFinder\AgeDifferenceFinder.csproj", "{32898DDB-69EA-44E5-B15C-A1C4EC928DB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm.Tests", "Algorithm.Tests\Algorithm.Tests.csproj", "{523A600C-AD09-4095-AB10-086DAD8C042D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeDifferenceFinderTests", "AgeDifferenceFinderTests\AgeDifferenceFinderTests.csproj", "{523A600C-AD09-4095-AB10-086DAD8C042D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5BBDBE18-525F-4D28-9482-7341DD156152}"
 EndProject
