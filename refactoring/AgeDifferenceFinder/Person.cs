@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AgeDifferenceFinder
+namespace Algorithm
 {
     public class Person
     {

@@ -52,7 +52,7 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Algorithm\AgeDifferenceFinder\AgeDifferenceFinder.csproj">
+    <ProjectReference Include="..\AgeDifferenceFinder\AgeDifferenceFinder.csproj">
       <Project>{32898ddb-69ea-44e5-b15c-a1c4ec928db9}</Project>
       <Name>AgeDifferenceFinder</Name>
     </ProjectReference>

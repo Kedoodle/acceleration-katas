@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace AgeDifferenceFinder.Test
+namespace Algorithm.Tests
 {    
     public class AgeDifferenceFinderTests
     {
@@ -78,9 +78,9 @@ namespace AgeDifferenceFinder.Test
             Assert.Same(greg, result.YoungerPerson);
         }
 
-        Person sue = new Person() {Name = "Sue", BirthDate = new DateTime(1950, 1, 1)};
-        Person greg = new Person() {Name = "Greg", BirthDate = new DateTime(1952, 6, 1)};
-        Person sarah = new Person() { Name = "Sarah", BirthDate = new DateTime(1982, 1, 1) };
-        Person mike = new Person() { Name = "Mike", BirthDate = new DateTime(1979, 1, 1) };
+        Person sue = new Person {Name = "Sue", BirthDate = new DateTime(1950, 1, 1)};
+        Person greg = new Person {Name = "Greg", BirthDate = new DateTime(1952, 6, 1)};
+        Person sarah = new Person { Name = "Sarah", BirthDate = new DateTime(1982, 1, 1) };
+        Person mike = new Person { Name = "Mike", BirthDate = new DateTime(1979, 1, 1) };
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AgeDifferenceFinder
+namespace Algorithm
 {
     public class AgeDifferenceFinder
     {
