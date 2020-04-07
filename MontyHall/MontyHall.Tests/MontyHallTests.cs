@@ -48,5 +48,56 @@ namespace MontyHall.Tests
             
             Assert.True(game.GetDoor(doorIndex).HasPrize());
         }
+
+        [Theory]
+        [InlineData(DoorIndex.First, DoorIndex.First, DoorIndex.Second, ContestantDecision.Stick)]
+        [InlineData(DoorIndex.First, DoorIndex.Second, DoorIndex.Third, ContestantDecision.Switch)]
+        public void GameSimulatorContestantWins(DoorIndex prizeDoorIndex, DoorIndex contestantChoiceDoorIndex, DoorIndex goatRevealDoorIndex, ContestantDecision contestantDecision)
+        {
+            const int expectedGamesSimulated = 1;
+            const int expectedContestantWins = 1;
+            const int expectedContestantLosses = 0;
+            
+            var randomGeneratorMock = Mock.Of<IRandomGenerator>(d =>
+                d.NextPrizeDoorIndex() == prizeDoorIndex &&
+                d.NextContestantChoiceDoorIndex() == contestantChoiceDoorIndex &&
+                d.NextGoatRevealDoorIndex() == goatRevealDoorIndex &&
+                d.NextContestantDecision() == contestantDecision);
+            var gameSimulator = new GameSimulator(randomGeneratorMock);
+            gameSimulator.Simulate();
+            var actualGamesSimulated = gameSimulator.GamesSimulated;
+            var actualContestantWins = gameSimulator.ContestantWins;
+            var actualContestantLosses = gameSimulator.ContestantLosses;
+            
+            Assert.Equal(expectedGamesSimulated, actualGamesSimulated);
+            Assert.Equal(expectedContestantWins, actualContestantWins);
+            Assert.Equal(expectedContestantLosses, actualContestantLosses);
+        }
+        
+        
+        [Theory]
+        [InlineData(DoorIndex.First, DoorIndex.First, DoorIndex.Second, ContestantDecision.Switch)]
+        [InlineData(DoorIndex.First, DoorIndex.Second, DoorIndex.Third, ContestantDecision.Stick)]
+        public void GameSimulatorContestantLoses(DoorIndex prizeDoorIndex, DoorIndex contestantChoiceDoorIndex, DoorIndex goatRevealDoorIndex, ContestantDecision contestantDecision)
+        {
+            const int expectedGamesSimulated = 1;
+            const int expectedContestantWins = 0;
+            const int expectedContestantLosses = 1;
+            
+            var randomGeneratorMock = Mock.Of<IRandomGenerator>(d =>
+                d.NextPrizeDoorIndex() == prizeDoorIndex &&
+                d.NextContestantChoiceDoorIndex() == contestantChoiceDoorIndex &&
+                d.NextGoatRevealDoorIndex() == goatRevealDoorIndex &&
+                d.NextContestantDecision() == contestantDecision);
+            var gameSimulator = new GameSimulator(randomGeneratorMock);
+            gameSimulator.Simulate();
+            var actualGamesSimulated = gameSimulator.GamesSimulated;
+            var actualContestantWins = gameSimulator.ContestantWins;
+            var actualContestantLosses = gameSimulator.ContestantLosses;
+            
+            Assert.Equal(expectedGamesSimulated, actualGamesSimulated);
+            Assert.Equal(expectedContestantWins, actualContestantWins);
+            Assert.Equal(expectedContestantLosses, actualContestantLosses);
+        }
     }
 }
