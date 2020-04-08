@@ -36,5 +36,10 @@ namespace MontyHall
                 }
             }
         }
+
+        public decimal GetContestantWinPercentage()
+        {
+            return (decimal) ContestantWins / GamesSimulated;
+        }
     }
 }
