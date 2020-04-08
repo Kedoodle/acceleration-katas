@@ -28,7 +28,8 @@ namespace MontyHall
 
         public void RevealGoatDoor()
         {
-            var remainingDoorIndices = Enum.GetValues(typeof(DoorIndex)).Cast<DoorIndex>().Where(i => i != ContestantChoiceDoorIndex);
+            var remainingDoorIndices = Enum.GetValues(typeof(DoorIndex)).Cast<DoorIndex>()
+                .Where(i => i != ContestantChoiceDoorIndex);
             var goatDoorIndices = remainingDoorIndices.Where(i => GetDoor(i).HasGoat());
             GoatRevealDoorIndex = RandomGenerator.SelectGoatDoorIndex(goatDoorIndices.ToList());
         }

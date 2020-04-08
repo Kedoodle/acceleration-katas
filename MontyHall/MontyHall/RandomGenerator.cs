@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace MontyHall
 {
-    class RandomGenerator : IRandomGenerator
+    public class RandomGenerator : IRandomGenerator
     {
-        private Random _random = new Random();
-        
+        private readonly Random _random = new Random();
+
         public DoorIndex NextPrizeDoorIndex()
         {
             return GetRandomDoorIndex();

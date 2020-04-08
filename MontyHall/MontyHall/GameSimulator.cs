@@ -3,12 +3,12 @@ namespace MontyHall
     public class GameSimulator
     {
         private readonly IRandomGenerator _randomGenerator;
-        
+
         public GameSimulator(IRandomGenerator randomGenerator)
         {
             _randomGenerator = randomGenerator;
         }
-        
+
         public int GamesSimulated { get; private set; }
         public int ContestantWins { get; private set; }
         public int ContestantLosses { get; private set; }
@@ -22,19 +22,19 @@ namespace MontyHall
                     ContestantChoiceDoorIndex = _randomGenerator.NextContestantChoiceDoorIndex(),
                     ContestantDecision = contestantDecision
                 };
-                
                 game.RevealGoatDoor();
-            
-                GamesSimulated++;
-                if (game.DidContestantWin())
-                {
-                    ContestantWins++;
-                }
-                else
-                {
-                    ContestantLosses++;
-                }
+
+                UpdateScores(game);
             }
+        }
+
+        private void UpdateScores(Game game)
+        {
+            GamesSimulated++;
+            if (game.DidContestantWin())
+                ContestantWins++;
+            else
+                ContestantLosses++;
         }
 
         public decimal GetContestantWinPercentage()
