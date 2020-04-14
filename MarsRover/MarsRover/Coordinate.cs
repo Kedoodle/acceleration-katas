@@ -1,8 +1,8 @@
 namespace MarsRover
 {
-    public class Location
+    public class Coordinate
     {
-        public Location(int x, int y)
+        public Coordinate(int x, int y)
         {
             X = x;
             Y = y;
