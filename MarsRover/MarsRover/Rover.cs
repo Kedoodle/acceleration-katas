@@ -34,5 +34,63 @@ namespace MarsRover
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
+
+        public void MoveForward(Grid grid)
+        {
+            var oldCoordinate = grid.GetRoverCoordinate();
+            oldCoordinate.HasRover = false;
+
+            var newX = oldCoordinate.X;
+            var newY = oldCoordinate.Y;
+            
+            switch (Direction)
+            {
+                case Direction.North:
+                    newY++;
+                    break;
+                case Direction.South:
+                    newY--;
+                    break;
+                case Direction.East:
+                    newX++;
+                    break;
+                case Direction.West:
+                    newX--;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            grid.GetCoordinate(newX, newY).HasRover = true;
+        }
+
+        public void MoveBackward(Grid grid)
+        {
+            var oldCoordinate = grid.GetRoverCoordinate();
+            oldCoordinate.HasRover = false;
+
+            var newX = oldCoordinate.X;
+            var newY = oldCoordinate.Y;
+            
+            switch (Direction)
+            {
+                case Direction.North:
+                    newY--;
+                    break;
+                case Direction.South:
+                    newY++;
+                    break;
+                case Direction.East:
+                    newX--;
+                    break;
+                case Direction.West:
+                    newX++;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            grid.GetCoordinate(newX, newY).HasRover = true;
+        }
     }
 }

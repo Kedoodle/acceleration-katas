@@ -46,7 +46,7 @@ namespace MarsRover
             _coordinates.ForEach(coordinate => coordinate.HasRover = false);
         }
 
-        private Coordinate GetCoordinate(int x, int y)
+        public Coordinate GetCoordinate(int x, int y)
         {
             return _coordinates.FirstOrDefault(coordinate => coordinate.X == x && coordinate.Y == y);
         }
