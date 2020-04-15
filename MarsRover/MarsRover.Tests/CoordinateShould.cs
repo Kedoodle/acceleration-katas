@@ -9,9 +9,9 @@ namespace MarsRover.Tests
         {
             const int x = 0;
             const int y = 0;
-            var location = new Coordinate(x, y);
+            var coordinate = new Coordinate(x, y);
             
-            Assert.True(location.IsEmpty());
+            Assert.True(coordinate.IsEmpty());
         }
     }
 }
