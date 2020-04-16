@@ -45,22 +45,42 @@ namespace MarsRover.Tests
             Assert.Equal(expectedDirection, _rover.Direction);
         }
 
-        // [Theory]
-        // [InlineData(2, 2, Direction.North, 2, 3)]
-        // [InlineData(2, 2, Direction.South, 2, 1)]
-        // [InlineData(2, 2, Direction.East, 3, 2)]
-        // [InlineData(2, 2, Direction.West, 1, 2)]
-        // public void MoveForwardInFacingDirectionOnGrid(int startingX, int startingY, Direction direction, int expectedX, int expectedY)
-        // {
-        //     const int width = 5;
-        //     const int height = 5;
-        //     var grid = new Grid(width, height);
-        //     
-        //     _rover.MoveForward(grid);
-        //     
-        //     Assert.False(grid.GetCoordinate(startingX, startingY).HasRover);
-        //     Assert.Equal(expectedX, grid.GetRoverCoordinate().X);
-        //     Assert.Equal(expectedY, grid.GetRoverCoordinate().Y);
-        // }
+        [Theory]
+        [InlineData(Direction.North)]
+        [InlineData(Direction.South)]
+        [InlineData(Direction.East)]
+        [InlineData(Direction.West)]
+        public void MoveForward(Direction direction)
+        {
+            var stubStartingCoordinate = Mock.Of<ICoordinate>();
+            var stubEndingCoordinate = Mock.Of<ICoordinate>();
+            var stubGrid = Mock.Of<IGrid>(grid =>
+                grid.GetAdjacentCoordinateTo(It.IsAny<ICoordinate>(), It.IsAny<Direction>()) == stubEndingCoordinate);
+            
+            _rover.DropOnGrid(stubGrid, stubStartingCoordinate, direction);
+            Assert.Equal(stubStartingCoordinate, _rover.Coordinate);
+            
+            _rover.MoveForward();
+            Assert.Equal(stubEndingCoordinate, _rover.Coordinate);
+        }
+        
+        [Theory]
+        [InlineData(Direction.North)]
+        [InlineData(Direction.South)]
+        [InlineData(Direction.East)]
+        [InlineData(Direction.West)]
+        public void MoveBackward(Direction direction)
+        {
+            var stubStartingCoordinate = Mock.Of<ICoordinate>();
+            var stubEndingCoordinate = Mock.Of<ICoordinate>();
+            var stubGrid = Mock.Of<IGrid>(grid =>
+                grid.GetAdjacentCoordinateTo(It.IsAny<ICoordinate>(), It.IsAny<Direction>()) == stubEndingCoordinate);
+            
+            _rover.DropOnGrid(stubGrid, stubStartingCoordinate, direction);
+            Assert.Equal(stubStartingCoordinate, _rover.Coordinate);
+            
+            _rover.MoveBackward();
+            Assert.Equal(stubEndingCoordinate, _rover.Coordinate);
+        }
     }
 }

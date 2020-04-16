@@ -27,7 +27,7 @@ namespace MarsRover
             }
         }
 
-        public Coordinate GetCoordinate(int x, int y)
+        public ICoordinate GetCoordinate(int x, int y)
         {
             return _coordinates.FirstOrDefault(coordinate => coordinate.X == x && coordinate.Y == y);
         }
@@ -35,6 +35,11 @@ namespace MarsRover
         public bool IsEmpty()
         {
             return _coordinates.All(coordinate => coordinate.IsEmpty());
+        }
+
+        public ICoordinate GetAdjacentCoordinateTo(ICoordinate stubStartingCoordinate, Direction direction)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

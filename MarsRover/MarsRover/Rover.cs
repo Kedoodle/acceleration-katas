@@ -96,5 +96,28 @@ namespace MarsRover
         //
         //     grid.GetCoordinate(newX, newY).HasRover = true;
         // }
+        
+        public void MoveForward()
+        {
+            Coordinate = Grid.GetAdjacentCoordinateTo(Coordinate, Direction);
+        }      
+        
+        public void MoveBackward()
+        {
+            var backwardDirection = GetBackwardDirection(Direction);
+            Coordinate = Grid.GetAdjacentCoordinateTo(Coordinate, backwardDirection);
+        }
+
+        private Direction GetBackwardDirection(Direction direction)
+        {
+            return direction switch
+            {
+                Direction.North => Direction.South,
+                Direction.South => Direction.North,
+                Direction.East => Direction.West,
+                Direction.West => Direction.East,
+                _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
+            };
+        }
     }
 }
