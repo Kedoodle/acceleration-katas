@@ -32,5 +32,19 @@ namespace MarsRover.Tests
             Assert.Equal(expectedX, adjacentCoordinate.X);
             Assert.Equal(expectedY, adjacentCoordinate.Y);
         }
+        
+        [Theory]
+        [InlineData(2, 4, Direction.North, 2, 0)]
+        [InlineData(2, 0, Direction.South, 2, 4)]
+        [InlineData(4, 2, Direction.East, 0, 2)]
+        [InlineData(0, 2, Direction.West, 4, 2)]
+        public void WrapCoordinatesAroundEdge(int baseX, int baseY, Direction direction, int expectedX, int expectedY)
+        {
+            var coordinate = _grid.GetCoordinate(baseX, baseY);
+            var adjacentCoordinate = _grid.GetAdjacentCoordinateTo(coordinate, direction);
+            
+            Assert.Equal(expectedX, adjacentCoordinate.X);
+            Assert.Equal(expectedY, adjacentCoordinate.Y);
+        }
     }
 }

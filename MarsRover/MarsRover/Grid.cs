@@ -41,16 +41,16 @@ namespace MarsRover
             switch (direction)
             {
                 case Direction.North:
-                    y++;
+                    y = coordinate.Y == _height-1 ? 0 : y+1;
                     break;
                 case Direction.South:
-                    y--;
+                    y = coordinate.Y == 0 ? _height-1 : y-1;
                     break;
                 case Direction.East:
-                    x++;
+                    x = coordinate.X == _width-1 ? 0 : x+1;
                     break;
                 case Direction.West:
-                    x--;
+                    x = coordinate.X == 0 ? _width-1 : x-1;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
