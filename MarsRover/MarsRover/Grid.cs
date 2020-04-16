@@ -37,7 +37,7 @@ namespace MarsRover
             return _coordinates.All(coordinate => coordinate.IsEmpty());
         }
 
-        public ICoordinate GetAdjacentCoordinateTo(ICoordinate stubStartingCoordinate, Direction direction)
+        public ICoordinate GetAdjacentCoordinateTo(ICoordinate coordinate, Direction direction)
         {
             throw new System.NotImplementedException();
         }
