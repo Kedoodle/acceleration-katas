@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace MarsRover
 {
-    public class Grid
+    public class Grid : IGrid
     {
         private readonly int _height;
         private readonly int _width;
@@ -15,8 +15,6 @@ namespace MarsRover
             _height = height;
             InitialiseCoordinates();
         }
-        
-        public Rover Rover { get; private set; }
 
         private void InitialiseCoordinates()
         {
@@ -27,23 +25,6 @@ namespace MarsRover
                     _coordinates.Add(new Coordinate(x, y));
                 }
             }
-        }
-
-        public Coordinate GetRoverCoordinate()
-        {
-            return _coordinates.FirstOrDefault(coordinate => coordinate.HasRover);
-        }
-
-        public void PlaceRover(int x, int y, Direction direction)
-        {
-            Rover = new Rover(direction);
-            ClearRoverCoordinates();
-            GetCoordinate(x, y).HasRover = true;
-        }
-
-        private void ClearRoverCoordinates()
-        {
-            _coordinates.ForEach(coordinate => coordinate.HasRover = false);
         }
 
         public Coordinate GetCoordinate(int x, int y)

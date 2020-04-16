@@ -1,6 +1,6 @@
 namespace MarsRover
 {
-    public class Coordinate
+    public class Coordinate : ICoordinate
     {
         public Coordinate(int x, int y)
         {
@@ -10,11 +10,10 @@ namespace MarsRover
         
         public int X { get; }
         public int Y { get; }
-        public bool HasRover { get; set; } = false;
 
         public bool IsEmpty()
         {
-            return !HasRover;
+            return true;
         }
     }   
 }

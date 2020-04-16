@@ -4,13 +4,17 @@ namespace MarsRover
 {
     public class Rover
     {
+        public IGrid Grid { get; private set; }
+        public ICoordinate Coordinate { get; private set; }
         public Direction Direction { get; private set; }
 
-        public Rover(Direction direction)
+        public void DropOnGrid(IGrid grid, ICoordinate coordinate, Direction direction)
         {
+            Grid = grid;
+            Coordinate = coordinate;
             Direction = direction;
         }
-
+        
         public void TurnLeft()
         {
             Direction = Direction switch
@@ -35,62 +39,62 @@ namespace MarsRover
             };
         }
 
-        public void MoveForward(Grid grid)
-        {
-            var oldCoordinate = grid.GetRoverCoordinate();
-            oldCoordinate.HasRover = false;
-
-            var newX = oldCoordinate.X;
-            var newY = oldCoordinate.Y;
-            
-            switch (Direction)
-            {
-                case Direction.North:
-                    newY++;
-                    break;
-                case Direction.South:
-                    newY--;
-                    break;
-                case Direction.East:
-                    newX++;
-                    break;
-                case Direction.West:
-                    newX--;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            grid.GetCoordinate(newX, newY).HasRover = true;
-        }
-
-        public void MoveBackward(Grid grid)
-        {
-            var oldCoordinate = grid.GetRoverCoordinate();
-            oldCoordinate.HasRover = false;
-
-            var newX = oldCoordinate.X;
-            var newY = oldCoordinate.Y;
-            
-            switch (Direction)
-            {
-                case Direction.North:
-                    newY--;
-                    break;
-                case Direction.South:
-                    newY++;
-                    break;
-                case Direction.East:
-                    newX--;
-                    break;
-                case Direction.West:
-                    newX++;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            grid.GetCoordinate(newX, newY).HasRover = true;
-        }
+        // public void MoveForward(Grid grid)
+        // {
+        //     var oldCoordinate = grid.GetRoverCoordinate();
+        //     oldCoordinate.HasRover = false;
+        //
+        //     var newX = oldCoordinate.X;
+        //     var newY = oldCoordinate.Y;
+        //     
+        //     switch (Direction)
+        //     {
+        //         case Direction.North:
+        //             newY++;
+        //             break;
+        //         case Direction.South:
+        //             newY--;
+        //             break;
+        //         case Direction.East:
+        //             newX++;
+        //             break;
+        //         case Direction.West:
+        //             newX--;
+        //             break;
+        //         default:
+        //             throw new ArgumentOutOfRangeException();
+        //     }
+        //
+        //     grid.GetCoordinate(newX, newY).HasRover = true;
+        // }
+        //
+        // public void MoveBackward(Grid grid)
+        // {
+        //     var oldCoordinate = grid.GetRoverCoordinate();
+        //     oldCoordinate.HasRover = false;
+        //
+        //     var newX = oldCoordinate.X;
+        //     var newY = oldCoordinate.Y;
+        //     
+        //     switch (Direction)
+        //     {
+        //         case Direction.North:
+        //             newY--;
+        //             break;
+        //         case Direction.South:
+        //             newY++;
+        //             break;
+        //         case Direction.East:
+        //             newX--;
+        //             break;
+        //         case Direction.West:
+        //             newX++;
+        //             break;
+        //         default:
+        //             throw new ArgumentOutOfRangeException();
+        //     }
+        //
+        //     grid.GetCoordinate(newX, newY).HasRover = true;
+        // }
     }
 }
