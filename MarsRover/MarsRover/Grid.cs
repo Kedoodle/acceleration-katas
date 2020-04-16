@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,11 +28,6 @@ namespace MarsRover
             }
         }
 
-        public ICoordinate GetCoordinate(int x, int y)
-        {
-            return _coordinates.FirstOrDefault(coordinate => coordinate.X == x && coordinate.Y == y);
-        }
-
         public bool IsEmpty()
         {
             return _coordinates.All(coordinate => coordinate.IsEmpty());
@@ -39,7 +35,33 @@ namespace MarsRover
 
         public ICoordinate GetAdjacentCoordinateTo(ICoordinate coordinate, Direction direction)
         {
-            throw new System.NotImplementedException();
+            var x = coordinate.X;
+            var y = coordinate.Y;
+
+            switch (direction)
+            {
+                case Direction.North:
+                    y++;
+                    break;
+                case Direction.South:
+                    y--;
+                    break;
+                case Direction.East:
+                    x++;
+                    break;
+                case Direction.West:
+                    x--;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
+            }
+
+            return GetCoordinate(x, y);
+        }
+
+        public ICoordinate GetCoordinate(int x, int y)
+        {
+            return _coordinates.FirstOrDefault(coordinate => coordinate.X == x && coordinate.Y == y);
         }
     }
 }
