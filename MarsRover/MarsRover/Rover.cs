@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace MarsRover
 {
-    public class Rover
+    public class Rover : IRover
     {
         private IGrid Grid { get; set; }
         public ICoordinate Coordinate { get; private set; }
