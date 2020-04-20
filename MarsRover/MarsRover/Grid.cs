@@ -6,31 +6,31 @@ namespace MarsRover
 {
     public class Grid : IGrid
     {
-        private readonly int _height;
-        private readonly int _width;
-        private readonly List<Coordinate> _coordinates = new List<Coordinate>();
-
         public Grid(int width, int height)
         {
-            _width = width;
-            _height = height;
+            Width = width;
+            Height = height;
             InitialiseCoordinates();
         }
 
+        public int Width { get; }
+        public int Height { get; }
+        public List<Coordinate> Coordinates { get; } = new List<Coordinate>();
+
         private void InitialiseCoordinates()
         {
-            for (var x = 0; x < _width; x++)
+            for (var x = 0; x < Width; x++)
             {
-                for (var y = 0; y < _height; y++)
+                for (var y = 0; y < Height; y++)
                 {
-                    _coordinates.Add(new Coordinate(x, y));
+                    Coordinates.Add(new Coordinate(x, y));
                 }
             }
         }
 
         public bool IsEmpty()
         {
-            return _coordinates.All(coordinate => coordinate.IsEmpty());
+            return Coordinates.All(coordinate => coordinate.IsEmpty());
         }
 
         public ICoordinate GetAdjacentCoordinateTo(ICoordinate coordinate, Direction direction)
@@ -41,16 +41,16 @@ namespace MarsRover
             switch (direction)
             {
                 case Direction.North:
-                    y = coordinate.Y == _height-1 ? 0 : y+1;
+                    y = coordinate.Y == Height-1 ? 0 : y+1;
                     break;
                 case Direction.South:
-                    y = coordinate.Y == 0 ? _height-1 : y-1;
+                    y = coordinate.Y == 0 ? Height-1 : y-1;
                     break;
                 case Direction.East:
-                    x = coordinate.X == _width-1 ? 0 : x+1;
+                    x = coordinate.X == Width-1 ? 0 : x+1;
                     break;
                 case Direction.West:
-                    x = coordinate.X == 0 ? _width-1 : x-1;
+                    x = coordinate.X == 0 ? Width-1 : x-1;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
@@ -61,7 +61,7 @@ namespace MarsRover
 
         public ICoordinate GetCoordinate(int x, int y)
         {
-            return _coordinates.FirstOrDefault(coordinate => coordinate.X == x && coordinate.Y == y);
+            return Coordinates.FirstOrDefault(coordinate => coordinate.X == x && coordinate.Y == y);
         }
     }
 }
