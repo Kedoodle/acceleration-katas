@@ -1,10 +1,11 @@
 using System;
+using System.ComponentModel;
 
 namespace MarsRover
 {
     public class Rover
     {
-        public IGrid Grid { get; private set; }
+        private IGrid Grid { get; set; }
         public ICoordinate Coordinate { get; private set; }
         public Direction Direction { get; private set; }
 
@@ -23,7 +24,7 @@ namespace MarsRover
                 Direction.South => Direction.East,
                 Direction.East => Direction.North,
                 Direction.West => Direction.South,
-                _ => throw new ArgumentOutOfRangeException()
+                _ => throw new InvalidEnumArgumentException()
             };
         }
 
@@ -35,7 +36,7 @@ namespace MarsRover
                 Direction.South => Direction.West,
                 Direction.East => Direction.South,
                 Direction.West => Direction.North,
-                _ => throw new ArgumentOutOfRangeException()
+                _ => throw new InvalidEnumArgumentException()
             };
         }
         
@@ -50,7 +51,7 @@ namespace MarsRover
             Coordinate = Grid.GetAdjacentCoordinateTo(Coordinate, backwardDirection);
         }
 
-        private Direction GetBackwardDirection(Direction direction)
+        private static Direction GetBackwardDirection(Direction direction)
         {
             return direction switch
             {
@@ -58,7 +59,7 @@ namespace MarsRover
                 Direction.South => Direction.North,
                 Direction.East => Direction.West,
                 Direction.West => Direction.East,
-                _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
+                _ => throw new InvalidEnumArgumentException()
             };
         }
     }
