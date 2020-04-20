@@ -19,6 +19,15 @@ namespace MarsRover.Tests
             Assert.True(_grid.IsEmpty());
         }
 
+        [Fact]
+        public void NotBeEmptyWhenObstacleAdded()
+        {
+            var coordinate = _grid.GetCoordinate(1, 1);
+            _grid.AddObstacle(ObstacleType.Tree, coordinate);
+            
+            Assert.False(_grid.IsEmpty());
+        }
+
         [Theory]
         [InlineData(Direction.North, 2, 3)]
         [InlineData(Direction.South, 2, 1)]
