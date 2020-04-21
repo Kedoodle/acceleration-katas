@@ -4,7 +4,7 @@ namespace MarsRover
     {
         public int Width { get; } 
         public int Height { get; } 
-        ICoordinate GetCoordinate(int x, int y);
-        ICoordinate GetAdjacentCoordinateTo(ICoordinate coordinate, Direction direction);
+        ILocation GetLocation(int x, int y);
+        ILocation GetAdjacentLocationTo(ILocation location, Direction direction);
     }
 }

@@ -24,8 +24,8 @@ namespace MarsRover
 
         public IEnumerable<char> FormatRoverStatusSummary()
         {
-            var x = _rover.Coordinate.X;
-            var y = _rover.Coordinate.Y;
+            var x = _rover.Location.X;
+            var y = _rover.Location.Y;
             var direction = _rover.Direction.ToString();
             
             return $"The rover is currently at ({x}, {y}) facing {direction}.";
@@ -65,7 +65,7 @@ namespace MarsRover
 
         private int GetRoverIndex()
         {
-            return (_grid.Height-1-_rover.Coordinate.Y) * (_grid.Width+1) + _rover.Coordinate.X;
+            return (_grid.Height-1-_rover.Location.Y) * (_grid.Width+1) + _rover.Location.X;
         }
 
         private char GetRoverRepresentation(int roverIndex)

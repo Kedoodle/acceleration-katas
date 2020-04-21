@@ -1,6 +1,6 @@
 namespace MarsRover
 {
-    public interface ICoordinate
+    public interface ILocation
     {
         int X { get; }
         int Y { get; }

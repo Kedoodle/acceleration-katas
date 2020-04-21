@@ -11,63 +11,63 @@ namespace MarsRover
         {
             Width = width;
             Height = height;
-            InitialiseCoordinates();
+            InitialiseLocations();
         }
 
         public int Width { get; }
         public int Height { get; }
-        public List<ICoordinate> Coordinates { get; } = new List<ICoordinate>();
+        public List<ILocation> Locations { get; } = new List<ILocation>();
 
-        private void InitialiseCoordinates()
+        private void InitialiseLocations()
         {
             for (var x = 0; x < Width; x++)
             {
                 for (var y = 0; y < Height; y++)
                 {
-                    Coordinates.Add(new Coordinate(x, y));
+                    Locations.Add(new Location(x, y));
                 }
             }
         }
 
         public bool IsEmpty()
         {
-            return Coordinates.All(c => c.IsEmpty());
+            return Locations.All(c => c.IsEmpty());
         }
 
-        public ICoordinate GetAdjacentCoordinateTo(ICoordinate coordinate, Direction direction)
+        public ILocation GetAdjacentLocationTo(ILocation location, Direction direction)
         {
-            var x = coordinate.X;
-            var y = coordinate.Y;
+            var x = location.X;
+            var y = location.Y;
 
             switch (direction)
             {
                 case Direction.North:
-                    y = coordinate.Y == Height-1 ? 0 : y+1;
+                    y = location.Y == Height-1 ? 0 : y+1;
                     break;
                 case Direction.South:
-                    y = coordinate.Y == 0 ? Height-1 : y-1;
+                    y = location.Y == 0 ? Height-1 : y-1;
                     break;
                 case Direction.East:
-                    x = coordinate.X == Width-1 ? 0 : x+1;
+                    x = location.X == Width-1 ? 0 : x+1;
                     break;
                 case Direction.West:
-                    x = coordinate.X == 0 ? Width-1 : x-1;
+                    x = location.X == 0 ? Width-1 : x-1;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
             }
 
-            return GetCoordinate(x, y);
+            return GetLocation(x, y);
         }
 
-        public ICoordinate GetCoordinate(int x, int y)
+        public ILocation GetLocation(int x, int y)
         {
-            return Coordinates.FirstOrDefault(coordinate => coordinate.X == x && coordinate.Y == y);
+            return Locations.FirstOrDefault(location => location.X == x && location.Y == y);
         }
 
-        public static void AddObstacle(ObstacleType obstacleType, ICoordinate coordinate)
+        public static void AddObstacle(ObstacleType obstacleType, ILocation location)
         {
-            coordinate.Obstacle = obstacleType;
+            location.Obstacle = obstacleType;
         }
     }
 }

@@ -2,7 +2,7 @@ namespace MarsRover
 {
     public interface IRover
     {
-        public ICoordinate Coordinate { get; }
+        public ILocation Location { get; }
         public Direction Direction { get; }
         public void TurnLeft();
         public void TurnRight();

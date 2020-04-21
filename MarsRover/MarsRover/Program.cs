@@ -12,8 +12,8 @@ namespace MarsRover
             var rover = new Rover();
             var worldFormatter = new WorldFormatter(rover, grid);
             
-            var coordinateToDropRover = grid.GetCoordinate(1, 2);
-            rover.DropOnGrid(grid, coordinateToDropRover, Direction.South);
+            var locationToDropRover = grid.GetLocation(1, 2);
+            rover.DropOnGrid(grid, locationToDropRover, Direction.South);
             
             Console.WriteLine(worldFormatter.FormatRoverStatusSummary());
             Console.WriteLine(worldFormatter.FormatWorld());

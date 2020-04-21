@@ -23,8 +23,8 @@ namespace MarsRover.Tests
         [Fact]
         public void NotBeEmptyWhenObstacleAdded()
         {
-            var coordinate = _grid.GetCoordinate(1, 1);
-            Grid.AddObstacle(ObstacleType.Tree, coordinate);
+            var location = _grid.GetLocation(1, 1);
+            Grid.AddObstacle(ObstacleType.Tree, location);
             
             Assert.False(_grid.IsEmpty());
         }
@@ -34,13 +34,13 @@ namespace MarsRover.Tests
         [InlineData(Direction.South, 2, 1)]
         [InlineData(Direction.East, 3, 2)]
         [InlineData(Direction.West, 1, 2)]
-        public void GetAdjacentCoordinates(Direction direction, int expectedX, int expectedY)
+        public void GetAdjacentLocations(Direction direction, int expectedX, int expectedY)
         {
-            var coordinate = _grid.GetCoordinate(2, 2);
-            var adjacentCoordinate = _grid.GetAdjacentCoordinateTo(coordinate, direction);
+            var location = _grid.GetLocation(2, 2);
+            var adjacentLocation = _grid.GetAdjacentLocationTo(location, direction);
             
-            Assert.Equal(expectedX, adjacentCoordinate.X);
-            Assert.Equal(expectedY, adjacentCoordinate.Y);
+            Assert.Equal(expectedX, adjacentLocation.X);
+            Assert.Equal(expectedY, adjacentLocation.Y);
         }
         
         [Theory]
@@ -48,13 +48,13 @@ namespace MarsRover.Tests
         [InlineData(2, 0, Direction.South, 2, 4)]
         [InlineData(4, 2, Direction.East, 0, 2)]
         [InlineData(0, 2, Direction.West, 4, 2)]
-        public void WrapCoordinatesAroundEdge(int baseX, int baseY, Direction direction, int expectedX, int expectedY)
+        public void WrapLocationsAroundEdge(int baseX, int baseY, Direction direction, int expectedX, int expectedY)
         {
-            var coordinate = _grid.GetCoordinate(baseX, baseY);
-            var adjacentCoordinate = _grid.GetAdjacentCoordinateTo(coordinate, direction);
+            var location = _grid.GetLocation(baseX, baseY);
+            var adjacentLocation = _grid.GetAdjacentLocationTo(location, direction);
             
-            Assert.Equal(expectedX, adjacentCoordinate.X);
-            Assert.Equal(expectedY, adjacentCoordinate.Y);
+            Assert.Equal(expectedX, adjacentLocation.X);
+            Assert.Equal(expectedY, adjacentLocation.Y);
         }
     }
 }

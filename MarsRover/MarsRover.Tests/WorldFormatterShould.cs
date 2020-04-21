@@ -11,11 +11,11 @@ namespace MarsRover.Tests
         {
             const string expectedSummary = "The rover is currently at (1, 3) facing North.";
             
-            var coordinateMock = Mock.Of<ICoordinate>(c => 
+            var locationMock = Mock.Of<ILocation>(c => 
                 c.X == 1 &&
                 c.Y == 3);
             var roverMock = Mock.Of<IRover>(r => 
-                r.Coordinate == coordinateMock &&
+                r.Location == locationMock &&
                 r.Direction == Direction.North);
             var worldFormatter = new WorldFormatter(roverMock, Mock.Of<IGrid>());
             var actualSummary = worldFormatter.FormatRoverStatusSummary();
@@ -32,8 +32,8 @@ namespace MarsRover.Tests
             
             var grid = new Grid(3, 3);
             var rover = new Rover();
-            var coordinate = grid.GetCoordinate(0, 0);
-            rover.DropOnGrid(grid, coordinate, Direction.North);
+            var location = grid.GetLocation(0, 0);
+            rover.DropOnGrid(grid, location, Direction.North);
             var worldFormatter = new WorldFormatter(rover, grid);
             var actualWorld = worldFormatter.FormatWorld();
             

@@ -1,8 +1,8 @@
 namespace MarsRover
 {
-    public struct Coordinate : ICoordinate
+    public struct Location : ILocation
     {
-        public Coordinate(int x, int y)
+        public Location(int x, int y)
         {
             X = x;
             Y = y;

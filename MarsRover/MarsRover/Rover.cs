@@ -6,13 +6,13 @@ namespace MarsRover
     public class Rover : IRover
     {
         private IGrid Grid { get; set; }
-        public ICoordinate Coordinate { get; private set; }
+        public ILocation Location { get; private set; }
         public Direction Direction { get; private set; }
 
-        public void DropOnGrid(IGrid grid, ICoordinate coordinate, Direction direction)
+        public void DropOnGrid(IGrid grid, ILocation location, Direction direction)
         {
             Grid = grid;
-            Coordinate = coordinate;
+            Location = location;
             Direction = direction;
         }
         
@@ -42,13 +42,13 @@ namespace MarsRover
         
         public void MoveForward()
         {
-            Coordinate = Grid.GetAdjacentCoordinateTo(Coordinate, Direction);
+            Location = Grid.GetAdjacentLocationTo(Location, Direction);
         }      
         
         public void MoveBackward()
         {
             var backwardDirection = GetBackwardDirection(Direction);
-            Coordinate = Grid.GetAdjacentCoordinateTo(Coordinate, backwardDirection);
+            Location = Grid.GetAdjacentLocationTo(Location, backwardDirection);
         }
 
         private static Direction GetBackwardDirection(Direction direction)
