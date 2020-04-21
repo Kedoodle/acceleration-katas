@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace MarsRover
@@ -14,6 +15,34 @@ namespace MarsRover
             Grid = grid;
             Location = location;
             Direction = direction;
+        }
+
+        public void ProcessCommands(IEnumerable<RoverCommand> roverCommands)
+        {
+            foreach (var roverCommand in roverCommands)
+            {
+                var moveSuccessful = true;
+                
+                switch (roverCommand)
+                {
+                    case RoverCommand.TurnLeft:
+                        TurnLeft();
+                        break;
+                    case RoverCommand.TurnRight:
+                        TurnRight();
+                        break;
+                    case RoverCommand.MoveForward:
+                        moveSuccessful = MoveBackward();
+                        break;
+                    case RoverCommand.MoveBackward:
+                        moveSuccessful = MoveForward();
+                        break;
+                    default:
+                        throw new InvalidEnumArgumentException();
+                }
+
+                if (!moveSuccessful) break;
+            }
         }
         
         public void TurnLeft()
@@ -72,3 +101,4 @@ namespace MarsRover
         }
     }
 }
+
