@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace MarsRover
@@ -35,40 +36,53 @@ namespace MarsRover
         {
             _worldBuilder.Clear();
             
-            AddGrid();
-            PlaceRover();
+            BuildGrid();
+            BuildRover();
             
             return _worldBuilder.ToString();
         }
 
-        private void AddGrid()
+        private void BuildGrid()
         {
-            for (var y = 0; y < _grid.Height; y++)
+            for (var y = _grid.Height-1; y >= 0; y--)
             {
                 for (var x = 0; x < _grid.Width; x++)
                 {
-                    _worldBuilder.Append(".");
+                    var location = _grid.GetLocation(x, y);
+                    var locationRepresentation = GetLocationRepresentation(location);
+                    _worldBuilder.Append(locationRepresentation);
                 }
 
-                if (y < _grid.Height - 1)
+                if (y > 0)
                 {
                     _worldBuilder.AppendLine();
                 }
             }
         }
+
+        private static char GetLocationRepresentation(ILocation location)
+        {
+            return location.Obstacle switch
+            {
+                ObstacleType.None => '.',
+                ObstacleType.Tree => 'T',
+                ObstacleType.Boulder => 'B',
+                _ => throw new InvalidEnumArgumentException()
+            };
+        }
         
-        private void PlaceRover()
+        private void BuildRover()
         {
-            var roverIndex = GetRoverIndex();
-            _worldBuilder[roverIndex] = GetRoverRepresentation(roverIndex);
+            var roverBuilderIndex = GetBuilderIndex(_rover.Location);
+            _worldBuilder[roverBuilderIndex] = GetRoverRepresentation();
         }
 
-        private int GetRoverIndex()
+        private int GetBuilderIndex(ILocation location)
         {
-            return (_grid.Height-1-_rover.Location.Y) * (_grid.Width+1) + _rover.Location.X;
+            return (_grid.Height-1-location.Y) * (_grid.Width+1) + location.X;
         }
 
-        private char GetRoverRepresentation(int roverIndex)
+        private char GetRoverRepresentation()
         {
             return _rover.Direction switch
             {

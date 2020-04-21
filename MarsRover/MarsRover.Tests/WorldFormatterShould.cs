@@ -24,7 +24,7 @@ namespace MarsRover.Tests
         }
 
         [Fact]
-        public void FormatWorld()
+        public void BuildRoverIntoFormat()
         {
             var expectedWorld = "..." + Environment.NewLine +
                                          "..." + Environment.NewLine +
@@ -34,6 +34,30 @@ namespace MarsRover.Tests
             var rover = new Rover();
             var location = grid.GetLocation(0, 0);
             rover.DropOnGrid(grid, location, Direction.North);
+            var worldFormatter = new WorldFormatter(rover, grid);
+            var actualWorld = worldFormatter.FormatWorld();
+            
+            Assert.Equal(expectedWorld, actualWorld);
+        }
+        
+        [Fact]
+        public void BuildObstaclesIntoFormat()
+        {
+            var expectedWorld = "T.B" + Environment.NewLine +
+                                "..." + Environment.NewLine +
+                                "N..";
+            
+            var grid = new Grid(3, 3);
+            
+            var rover = new Rover();
+            var roverLocation = grid.GetLocation(0, 0);
+            rover.DropOnGrid(grid, roverLocation, Direction.North);
+
+            var treeLocation = grid.GetLocation(0, 2);
+            Grid.AddObstacle(ObstacleType.Tree, treeLocation);
+            var boulderLocation = grid.GetLocation(2, 2);
+            Grid.AddObstacle(ObstacleType.Boulder, boulderLocation);
+            
             var worldFormatter = new WorldFormatter(rover, grid);
             var actualWorld = worldFormatter.FormatWorld();
             
