@@ -1,3 +1,4 @@
+using System.Linq;
 using Xunit;
 
 namespace MarsRover.Tests
@@ -23,7 +24,7 @@ namespace MarsRover.Tests
         public void NotBeEmptyWhenObstacleAdded()
         {
             var coordinate = _grid.GetCoordinate(1, 1);
-            _grid.AddObstacle(ObstacleType.Tree, coordinate);
+            Grid.AddObstacle(ObstacleType.Tree, coordinate);
             
             Assert.False(_grid.IsEmpty());
         }

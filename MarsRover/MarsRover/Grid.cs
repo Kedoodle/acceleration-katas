@@ -16,8 +16,7 @@ namespace MarsRover
 
         public int Width { get; }
         public int Height { get; }
-        public List<Coordinate> Coordinates { get; } = new List<Coordinate>();
-        public List<IObstacle> Obstacles { get; } = new List<IObstacle>();
+        public List<ICoordinate> Coordinates { get; } = new List<ICoordinate>();
 
         private void InitialiseCoordinates()
         {
@@ -32,7 +31,7 @@ namespace MarsRover
 
         public bool IsEmpty()
         {
-            return Obstacles.Count == 0;
+            return Coordinates.All(c => c.IsEmpty());
         }
 
         public ICoordinate GetAdjacentCoordinateTo(ICoordinate coordinate, Direction direction)
@@ -66,19 +65,9 @@ namespace MarsRover
             return Coordinates.FirstOrDefault(coordinate => coordinate.X == x && coordinate.Y == y);
         }
 
-        public void AddObstacle(ObstacleType obstacleType, ICoordinate coordinate)
+        public static void AddObstacle(ObstacleType obstacleType, ICoordinate coordinate)
         {
-            switch (obstacleType)
-            {
-                case ObstacleType.Tree:
-                    Obstacles.Add(new Tree(coordinate));
-                    break;
-                case ObstacleType.Boulder:
-                    Obstacles.Add(new Boulder(coordinate));
-                    break;
-                default:
-                    throw new InvalidEnumArgumentException();
-            }
+            coordinate.Obstacle = obstacleType;
         }
     }
 }
