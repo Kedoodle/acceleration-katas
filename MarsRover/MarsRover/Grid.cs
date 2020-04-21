@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 namespace MarsRover
@@ -31,7 +30,7 @@ namespace MarsRover
 
         public bool IsEmpty()
         {
-            return Locations.All(c => c.IsEmpty());
+            return Locations.All(location => !location.HasObstacle());
         }
 
         public ILocation GetAdjacentLocationTo(ILocation location, Direction direction)

@@ -6,7 +6,7 @@ namespace MarsRover
         public Direction Direction { get; }
         public void TurnLeft();
         public void TurnRight();
-        public void MoveForward();
-        public void MoveBackward();
+        public bool MoveForward();
+        public bool MoveBackward();
     }
 }

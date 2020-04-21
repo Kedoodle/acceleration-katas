@@ -59,7 +59,8 @@ namespace MarsRover.Tests
             _rover.DropOnGrid(stubGrid, stubStartingLocation, direction);
             Assert.Equal(stubStartingLocation, _rover.Location);
             
-            _rover.MoveForward();
+            var hasMoved = _rover.MoveForward();
+            Assert.True(hasMoved);
             Assert.Equal(stubEndingLocation, _rover.Location);
         }
         
@@ -78,8 +79,30 @@ namespace MarsRover.Tests
             _rover.DropOnGrid(stubGrid, stubStartingLocation, direction);
             Assert.Equal(stubStartingLocation, _rover.Location);
             
-            _rover.MoveBackward();
+            var hasMoved = _rover.MoveBackward();
+            Assert.True(hasMoved);
             Assert.Equal(stubEndingLocation, _rover.Location);
+        }
+
+        [Fact]
+        public void NotMoveWhenObstacleDetected()
+        {
+            var stubStartingLocation = Mock.Of<ILocation>();
+            var stubEndingLocation = Mock.Of<ILocation>(location => location.HasObstacle() == true);
+            var stubGrid = Mock.Of<IGrid>(grid =>
+                grid.GetAdjacentLocationTo(It.IsAny<ILocation>(), It.IsAny<Direction>()) == stubEndingLocation);
+            
+            _rover.DropOnGrid(stubGrid, stubStartingLocation, It.IsAny<Direction>());
+            Assert.Equal(stubStartingLocation, _rover.Location);
+            
+            var hasMoved = _rover.MoveForward();
+            Assert.False(hasMoved);
+            Assert.Equal(stubStartingLocation, _rover.Location);
+            
+            hasMoved = _rover.MoveBackward();
+            Assert.False(hasMoved);
+            Assert.Equal(stubStartingLocation, _rover.Location);
+            
         }
     }
 }

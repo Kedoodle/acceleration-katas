@@ -40,15 +40,23 @@ namespace MarsRover
             };
         }
         
-        public void MoveForward()
+        public bool MoveForward()
         {
-            Location = Grid.GetAdjacentLocationTo(Location, Direction);
+            var targetLocation = Grid.GetAdjacentLocationTo(Location, Direction);
+            if (targetLocation.HasObstacle()) return false;
+            
+            Location = targetLocation;
+            return true;
         }      
         
-        public void MoveBackward()
+        public bool MoveBackward()
         {
             var backwardDirection = GetBackwardDirection(Direction);
-            Location = Grid.GetAdjacentLocationTo(Location, backwardDirection);
+            var targetLocation = Grid.GetAdjacentLocationTo(Location, backwardDirection);
+            if (targetLocation.HasObstacle()) return false;
+
+            Location = targetLocation;
+            return true;
         }
 
         private static Direction GetBackwardDirection(Direction direction)

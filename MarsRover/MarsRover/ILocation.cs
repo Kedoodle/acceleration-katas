@@ -6,6 +6,6 @@ namespace MarsRover
         int Y { get; }
         ObstacleType Obstacle { get; set; }
 
-        public bool IsEmpty();
+        public bool HasObstacle();
     }
 }

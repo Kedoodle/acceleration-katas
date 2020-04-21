@@ -13,9 +13,9 @@ namespace MarsRover
         public int Y { get; }
         public ObstacleType Obstacle { get; set; }
         
-        public bool IsEmpty()
+        public bool HasObstacle()
         {
-            return Obstacle is ObstacleType.None;
+            return !(Obstacle is ObstacleType.None);
         }
     }
 }
