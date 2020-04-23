@@ -23,8 +23,7 @@ namespace MarsRover.Tests
         [Fact]
         public void NotBeEmptyWhenObstacleAdded()
         {
-            var location = _grid.GetLocation(1, 1);
-            Grid.AddObstacle(ObstacleType.Tree, location);
+            _grid.AddObstacle(1, 1, ObstacleType.Tree);
             
             Assert.False(_grid.IsEmpty());
         }

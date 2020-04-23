@@ -52,11 +52,9 @@ namespace MarsRover.Tests
             var rover = new Rover();
             var roverLocation = grid.GetLocation(0, 0);
             rover.DropOnGrid(grid, roverLocation, Direction.North);
-
-            var treeLocation = grid.GetLocation(0, 2);
-            Grid.AddObstacle(ObstacleType.Tree, treeLocation);
-            var boulderLocation = grid.GetLocation(2, 2);
-            Grid.AddObstacle(ObstacleType.Boulder, boulderLocation);
+            
+            grid.AddObstacle(0, 2, ObstacleType.Tree);
+            grid.AddObstacle(2, 2, ObstacleType.Boulder);
             
             var worldFormatter = new WorldFormatter(rover, grid);
             var actualWorld = worldFormatter.FormatWorld();

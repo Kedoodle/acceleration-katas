@@ -64,9 +64,9 @@ namespace MarsRover
             return Locations.FirstOrDefault(location => location.X == x && location.Y == y);
         }
 
-        public static void AddObstacle(ObstacleType obstacleType, ILocation location)
+        public void AddObstacle(int x, int y, ObstacleType obstacleType)
         {
-            location.Obstacle = obstacleType;
+            GetLocation(x, y).Obstacle = obstacleType;
         }
     }
 }
