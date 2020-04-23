@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -32,10 +31,10 @@ namespace MarsRover
                         TurnRight();
                         break;
                     case RoverCommand.MoveForward:
-                        moveSuccessful = MoveBackward();
+                        moveSuccessful = MoveForward();
                         break;
                     case RoverCommand.MoveBackward:
-                        moveSuccessful = MoveForward();
+                        moveSuccessful = MoveBackward();
                         break;
                     default:
                         throw new InvalidEnumArgumentException();
