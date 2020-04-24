@@ -15,17 +15,17 @@ namespace MarsRover.Tests
         }
         
         [Fact]
-        public void BeEmptyWhenInitialised()
+        public void NotHaveObstaclesWhenInitialised()
         {
-            Assert.True(_grid.IsEmpty());
+            Assert.False(_grid.HasObstacles());
         }
 
         [Fact]
-        public void NotBeEmptyWhenObstacleAdded()
+        public void HaveObstaclesAdded()
         {
             _grid.AddObstacle(1, 1, ObstacleType.Tree);
             
-            Assert.False(_grid.IsEmpty());
+            Assert.True(_grid.HasObstacles());
         }
 
         [Theory]

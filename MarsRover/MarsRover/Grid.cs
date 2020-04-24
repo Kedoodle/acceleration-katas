@@ -28,9 +28,9 @@ namespace MarsRover
             }
         }
 
-        public bool IsEmpty()
+        public bool HasObstacles()
         {
-            return Locations.All(location => !location.HasObstacle());
+            return Locations.Any(location => location.HasObstacle());
         }
 
         public ILocation GetAdjacentLocationTo(ILocation location, Direction direction)
