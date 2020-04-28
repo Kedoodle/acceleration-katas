@@ -19,13 +19,13 @@ The Foundations part of Acceleration program includes these topics:
 ​
 The protégé will have demonstrated an understanding of the following concepts and used them while completing katas:
 ​
-- [ ] Creating a repository
-- [ ] Cloning a repository
-- [ ] Creating branches
-- [ ] Merging branches
-- [ ] Pushing branches
-- [ ] Creating a pull request
-- [ ] Reviewing a pull request, commenting on, approving, and merging a pull request
+- [x] Creating a repository
+- [x] Cloning a repository
+- [x] Creating branches
+- [x] Merging branches
+- [x] Pushing branches
+- [x] Creating a pull request
+- [x] Reviewing a pull request, commenting on, approving, and merging a pull request
 ​
 ### Keyboard Confidence
 ​
@@ -35,8 +35,8 @@ They will have demonstrated the ability to type on the keyboard as a way of inte
 ​
 They should choose an editor and become efficient using it. It would be great to be familiar with a second editor, but efficient use is not a requirement.
 ​
-- [ ] Can use keyboard shortcuts, and knows how to find them for commands
-- [ ] Can use the refactor function to rename variables, method names, classes, etc.
+- [x] Can use keyboard shortcuts, and knows how to find them for commands
+- [x] Can use the refactor function to rename variables, method names, classes, etc.
 - [ ] Is aware of ways of extending the editor through the use of plugins/extensions or configuration options
 - [ ] Can open the editor from the command line
 ​
@@ -46,7 +46,7 @@ They should be comfortable using the command line and will have demonstrated thi
 ​
 - [ ] Has completed the four checkpoints in the Unix Command Line page in General_Developer repo
 - [ ] Has written two different bash scripts to help with automating repeated operations
-- [ ] Has customised their prompt on their computer
+- [x] Has customised their prompt on their computer
 ​
 ### Pair Programming
 ​
@@ -56,21 +56,21 @@ They should have demonstrated their understanding of the different ways of pair 
 ​
 They should be aware of the following concepts, be able to describe what they are, and have used them while completing katas. These are all to be demonstrated in C# (the language of choice for Proteges):
 ​
-- [ ] Variables & Types
-- [ ] If / Else & Case Statements
-- [ ] Arrays
-- [ ] Methods & Functions
-- [ ] Collections (List, Dictionary/HashSet)
-- [ ] Looping
-- [ ] Enums
+- [x] Variables & Types
+- [x] If / Else & Case Statements
+- [x] Arrays
+- [x] Methods & Functions
+- [x] Collections (List, Dictionary/HashSet)
+- [x] Looping
+- [x] Enums
 - [ ] Classes - Public / Private / Protected Methods
-- [ ] Classes - Static methods vs Instance methods
-- [ ] Classes - Constructor & passing values through a constructor
+- [x] Classes - Static methods vs Instance methods
+- [x] Classes - Constructor & passing values through a constructor
 - [ ] Classes - Private / Protected Variables
 - [ ] Inheritance with classes (and why it should usually be avoided)
 - [ ] Composition with classes (why this is usually better than inheritance)
-- [ ] Interfaces
-- [ ] Exceptions
+- [x] Interfaces
+- [x] Exceptions
 ​
 ## Language Design
 ​
@@ -88,10 +88,10 @@ The Foundations part of Acceleration program includes these topics:
 ​
 Based on Kent Beck's recommendation there are four simple rules which if you follow them will help you build good quality software. They should be able to explain and demonstrate use of the following concepts:
 ​
-- [ ] Code Passes the Tests
-- [ ] Reveals Intention - it is easy to understand what the program is doing by reading the code
-- [ ] No Duplication - do not repeat yourself
-- [ ] Fewest elements - do not write more than you need to
+- [x] Code Passes the Tests
+- [x] Reveals Intention - it is easy to understand what the program is doing by reading the code
+- [x] No Duplication - do not repeat yourself
+- [x] Fewest elements - do not write more than you need to
 ​
 The protégé should strive for Level 3 which is defined as:
 ​
