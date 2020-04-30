@@ -110,6 +110,8 @@ They should follow the guidelines of Test Driven Development in completing the k
 > The basic TDD cycle is followed where in general each time new functionality is added to the solution an appropriate test is written first.
 ​
 - [ ] Achieved Level 3
+- [ ] Yatzy kata
+- [ ] Coffee machine kata
 ​
 ### Test Doubles
 ​
@@ -118,6 +120,8 @@ They should use where appropriate Test Doubles when testing their code. They sho
 > Leverages a test framework to utilize out of the box test doubles. Can articulate what type of test double the test framework is providing for different test scenarios. Able to swap out parts of the solution code base with appropriate test double framework implementations to isolate behaviour for testing.
 ​
 - [ ] Achieved Level 3
+- [x] Monty Hall kata
+- [x] Pluralsight course on Moq
 ​
 ### You Ain't Gonna Need It - YAGNI
 ​
@@ -142,6 +146,8 @@ They should demonstrate their knowledge of object oriented programming, and be a
 > Can implement object composition in coding problems. Consistently applies composition over inheritance in code.
 ​
 - [ ] Achieved Level 3
+- [ ] Composition kata
+- [ ] Toy block factory kata
 ​
 ### Whiteboarding
 ​
