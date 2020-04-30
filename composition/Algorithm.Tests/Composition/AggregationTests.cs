@@ -17,7 +17,7 @@ namespace Algorithm.Tests.Composition
         }
 
         [Fact]
-        public void AveragingAggregagtor_Produces_Average()
+        public void AveragingAggregator_Produces_Average()
         {
             var aggregator = new PointsAggregator(_measurements, new EmptyFilter(), new AveragingStrategy());
 
@@ -48,19 +48,17 @@ namespace Algorithm.Tests.Composition
             Assert.Equal(105, result.X);
             Assert.Equal(15, result.Y);
         }
+        
+        [Fact]
+        public void CustomHighPassSummingAggregator_Applies_Filter()
+        {                
+            var aggregator = new HighPassSummingAggregator(_measurements);
 
-        /// Uncomment this test and make it pass by building a new class to 
-        /// hide the "composition" of strategies and filters ...
-        //[Fact]
-        //public void CustomHighPassSummingAggregator_Applies_Filter()
-        //{                
-        //    var aggregator = new HighPassSummingAggregator(_measurements);
+            var result = aggregator.Aggregate();
 
-        //    var result = aggregator.Aggregate();
-
-        //    Assert.Equal(105, result.X);
-        //    Assert.Equal(15, result.Y);
-        //}
+            Assert.Equal(105, result.X);
+            Assert.Equal(15, result.Y);
+        }
 
         Measurement[] _measurements = new[]
         {
