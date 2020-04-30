@@ -28,7 +28,7 @@ namespace Algorithm.Tests.Inheritance
         }
 
         [Fact]
-        public void LowPassAveragingAggregator_Applys_Filter()
+        public void LowPassAveragingAggregator_Applies_Filter()
         {
             var aggregator = new LowPassAveragingAggregator(_measurements);
 
@@ -37,19 +37,17 @@ namespace Algorithm.Tests.Inheritance
             Assert.Equal(3, result.X);
             Assert.Equal(12, result.Y);            
         }
+        
+        [Fact]
+        public void HighPassSummingAggregator_Applies_Filter()
+        {                
+            var aggregator = new HighPassSummingAggregator(_measurements);
 
-        /// Uncomment this test and make it pass reusing as much code as 
-        /// possible from other classes that are availalbe in the Inheritance folder
-        //[Fact]
-        //public void HighPassSummingAggregator_Applys_Filter()
-        //{                
-        //    var aggregator = new HighPassSummingAggregator(_measurements);
+            var result = aggregator.Aggregate();
 
-        //    var result = aggregator.Aggregate();
-
-        //    Assert.Equal(105, result.X);
-        //    Assert.Equal(15, result.Y);
-        //}
+            Assert.Equal(105, result.X);
+            Assert.Equal(15, result.Y);
+        }
 
         Measurement[] _measurements = new[]
         {

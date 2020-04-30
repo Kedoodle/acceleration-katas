@@ -42,6 +42,7 @@
     <Compile Include="Composition\AveragingStrategy.cs" />
     <Compile Include="Composition\EmptyFilter.cs" />
     <Compile Include="Composition\HighPassFilter.cs" />
+    <Compile Include="Composition\HighPassSummingAggregator.cs" />
     <Compile Include="Composition\IAggregationStrategy.cs" />
     <Compile Include="Composition\IMeasurementFilter.cs" />
     <Compile Include="Composition\LowPassFilter.cs" />
