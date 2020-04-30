@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyBlockFactory", "ToyBlockFactory\ToyBlockFactory.csproj", "{A2E04D4F-AF31-4A6B-A1EA-9868575C830F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyBlockFactory.Tests", "ToyBlockFactory.Tests\ToyBlockFactory.Tests.csproj", "{BE03902B-DF23-4A7F-B480-8A01D74ED2F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2E04D4F-AF31-4A6B-A1EA-9868575C830F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E04D4F-AF31-4A6B-A1EA-9868575C830F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E04D4F-AF31-4A6B-A1EA-9868575C830F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E04D4F-AF31-4A6B-A1EA-9868575C830F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE03902B-DF23-4A7F-B480-8A01D74ED2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE03902B-DF23-4A7F-B480-8A01D74ED2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE03902B-DF23-4A7F-B480-8A01D74ED2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE03902B-DF23-4A7F-B480-8A01D74ED2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
