@@ -1,13 +1,11 @@
-﻿using System;
-
 namespace Minesweeper
 {
-    class Program
+    public class Game
     {
-        static void Main(string[] args)
+        public static void Start()
         {
             var consoleFieldGenerator = new ConsoleFieldGenerator();
-            ConsoleFieldGenerator.Generate();
+            
         }
     }
 }
