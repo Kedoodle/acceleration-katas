@@ -6,8 +6,6 @@ namespace Minesweeper
     {
         static void Main(string[] args)
         {
-            var consoleFieldGenerator = new ConsoleFieldGenerator();
-            ConsoleFieldGenerator.Generate();
         }
     }
 }

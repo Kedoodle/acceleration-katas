@@ -6,7 +6,7 @@ namespace Minesweeper
     {
         public int X { get; }
         public int Y { get; }
-        public bool IsMine { get; }
+        public bool IsMine { get; set; }
 
         public Cell(int x, int y, bool isMine = false)
         {
