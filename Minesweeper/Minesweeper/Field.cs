@@ -26,16 +26,15 @@ namespace Minesweeper
                 }
             }
         }
-        // get neighbouring cells
-        
-        public Cell GetCell(int x, int y)
-        {
-            return Cells.FirstOrDefault(cell => cell.X == x && cell.Y == y);
-        }
 
         public void SetMine(int x, int y)
         {
             GetCell(x, y).IsMine = true;
+        }
+        
+        public Cell GetCell(int x, int y)
+        {
+            return Cells.FirstOrDefault(cell => cell.X == x && cell.Y == y);
         }
 
         public IEnumerable<Cell> GetNeighbouringCells(int x, int y)
