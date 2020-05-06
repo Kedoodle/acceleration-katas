@@ -14,18 +14,5 @@ namespace Minesweeper
             Y = y;
             IsMine = isMine;
         }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            if (GetType() != obj.GetType()) return false;
-            var c = (Cell) obj;
-            return X == c.X && Y == c.Y && IsMine == c.IsMine;
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(X, Y, IsMine);
-        }
     }
 }

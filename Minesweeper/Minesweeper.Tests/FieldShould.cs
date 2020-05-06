@@ -30,7 +30,7 @@ namespace Minesweeper.Tests
             
             Assert.True(field.GetCell(x, y).IsMine);
         }
-
+        
         [Theory]
         [InlineData(1, 0, 5)] // top
         [InlineData(1, 2, 5)] // bottom

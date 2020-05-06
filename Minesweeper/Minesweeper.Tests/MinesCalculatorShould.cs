@@ -4,8 +4,20 @@ namespace Minesweeper.Tests
 {
     public class MinesCalculatorShould
     {
-        [Fact]
-        public void CalculateNumberOfNeighbouringMinesGivenCoordinates()
+        [Theory]
+        [InlineData(2, 0, 1)]
+        [InlineData(3, 0, 0)]
+        [InlineData(4, 0, 0)]
+        [InlineData(0, 1, 3)]
+        [InlineData(1, 1, 3)]
+        [InlineData(2, 1, 2)]
+        [InlineData(3, 1, 0)]
+        [InlineData(4, 1, 0)]
+        [InlineData(0, 2, 1)]
+        [InlineData(2, 2, 1)]
+        [InlineData(3, 2, 0)]
+        [InlineData(4, 2, 0)]
+        public void CalculateNumberOfNeighbouringMinesGivenCoordinates(int x, int y, int expectedNeighbouringMines)
         {
             const int width = 5;
             const int height = 3;
@@ -17,18 +29,7 @@ namespace Minesweeper.Tests
 
             var minesCalculator = new MinesCalculator(field);
             
-            Assert.Equal(1, minesCalculator.GetMines(2, 0));
-            Assert.Equal(0, minesCalculator.GetMines(3, 0));
-            Assert.Equal(0, minesCalculator.GetMines(4, 0));
-            Assert.Equal(3, minesCalculator.GetMines(0, 1));
-            Assert.Equal(3, minesCalculator.GetMines(1, 1));
-            Assert.Equal(2, minesCalculator.GetMines(2, 1));
-            Assert.Equal(0, minesCalculator.GetMines(3, 1));
-            Assert.Equal(0, minesCalculator.GetMines(4, 1));
-            Assert.Equal(1, minesCalculator.GetMines(0, 2));
-            Assert.Equal(1, minesCalculator.GetMines(2, 2));
-            Assert.Equal(0, minesCalculator.GetMines(3, 2));
-            Assert.Equal(0, minesCalculator.GetMines(4, 2));
+            Assert.Equal(expectedNeighbouringMines, minesCalculator.CountNeighbouringMines(x, y));
         }
     }
 }

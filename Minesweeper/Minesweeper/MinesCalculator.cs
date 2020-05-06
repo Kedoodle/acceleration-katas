@@ -11,7 +11,7 @@ namespace Minesweeper
             _field = field;
         }
 
-        public int GetMines(int x, int y)
+        public int CountNeighbouringMines(int x, int y)
         {
             return _field.GetNeighbouringCells(x, y).Count(cell => cell.IsMine);
         }

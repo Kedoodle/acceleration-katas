@@ -39,39 +39,19 @@ namespace Minesweeper
 
         public IEnumerable<Cell> GetNeighbouringCells(int x, int y)
         {
-            var neighbouringCells = new List<Cell>();
+            var neighbouringCells = new List<Cell>
+            {
+                GetCell(x-1, y),
+                GetCell(x+1, y),
+                GetCell(x, y-1),
+                GetCell(x, y+1),
+                GetCell(x-1, y-1),
+                GetCell(x+1, y-1),
+                GetCell(x-1, y+1),
+                GetCell(x+1, y+1)
+            };
             
-            if (!IsLeftEdge(x)) neighbouringCells.Add(GetCell(x-1, y));
-            if (!IsRightEdge(x)) neighbouringCells.Add(GetCell(x+1, y));
-            if (!IsTopEdge(y)) neighbouringCells.Add(GetCell(x, y-1));
-            if (!IsBottomEdge(y)) neighbouringCells.Add(GetCell(x, y+1));
-            
-            if (!IsTopEdge(y) && !IsLeftEdge(x)) neighbouringCells.Add(GetCell(x-1, y-1));
-            if (!IsTopEdge(y) && !IsRightEdge(x)) neighbouringCells.Add(GetCell(x+1, y-1));
-            if (!IsBottomEdge(y) && !IsLeftEdge(x)) neighbouringCells.Add(GetCell(x-1, y+1));
-            if (!IsBottomEdge(y) && !IsRightEdge(x)) neighbouringCells.Add(GetCell(x+1, y+1));
-            
-            return neighbouringCells;
-        }
-
-        private static bool IsLeftEdge(int x)
-        {
-            return x == 0;
-        }
-
-        private bool IsRightEdge(int x)
-        {
-            return x == Width-1;
-        }
-
-        private static bool IsTopEdge(int y)
-        {
-            return y == 0;
-        }
-
-        private bool IsBottomEdge(int y)
-        {
-            return y == Height-1;
+            return neighbouringCells.Where(cell => cell != null);
         }
     }
 }
