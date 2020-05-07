@@ -2,9 +2,9 @@ using System.IO;
 using Moq;
 using Xunit;
 
-namespace Minesweeper.Tests
+namespace Minesweeper.Tests.UnitTests
 {
-    public class ConsoleInputGetterShould
+    public class InputReaderShould
     {
         [Theory]
         [InlineData("44")]
@@ -13,7 +13,7 @@ namespace Minesweeper.Tests
         public void RequestFieldDimensions(string expectedDimensions)
         {
             var mockInputStream = Mock.Of<TextReader>(i => i.ReadLine() == expectedDimensions);
-            var consoleInputGetter = new ConsoleInputGetter(mockInputStream);
+            var consoleInputGetter = new InputReader(mockInputStream);
             
             Assert.Equal(expectedDimensions, consoleInputGetter.ReadLine());
         }

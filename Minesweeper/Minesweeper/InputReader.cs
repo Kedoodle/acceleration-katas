@@ -3,11 +3,11 @@ using System.IO;
 
 namespace Minesweeper
 {
-    public class ConsoleInputGetter
+    public class InputReader
     {
         private readonly TextReader _inputStream;
 
-        public ConsoleInputGetter(TextReader inputStream)
+        public InputReader(TextReader inputStream)
         {
             _inputStream = inputStream;
         }

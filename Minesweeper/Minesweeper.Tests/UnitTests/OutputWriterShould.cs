@@ -3,9 +3,9 @@ using System.IO;
 using Moq;
 using Xunit;
 
-namespace Minesweeper.Tests
+namespace Minesweeper.Tests.UnitTests
 {
-    public class ConsoleWriterShould
+    public class OutputWriterShould
     {
         [Fact]
         public void WriteFormattedFieldToConsole()
@@ -23,27 +23,11 @@ namespace Minesweeper.Tests
             field.SetMine(1, 2);
 
             var mockOutputStream = Mock.Of<TextWriter>();
-            var consoleWriter = new ConsoleWriter(mockOutputStream);
+            var outputWriter = new OutputWriter(mockOutputStream);
 
-            consoleWriter.WriteField(field);
+            outputWriter.WriteField(field);
             
             Mock.Get(mockOutputStream).Verify(o => o.WriteLine(expectedOutput), Times.Once);
-        }
-    }
-
-    public class ConsoleWriter
-    {
-        private readonly TextWriter _outputStream;
-
-        public ConsoleWriter(TextWriter outputStream)
-        {
-            _outputStream = outputStream;
-        }
-
-        public void WriteField(Field field)
-        {
-            var output = ConsoleFieldFormatter.GetDisplayString(field);
-            _outputStream.WriteLine(output);
         }
     }
 }

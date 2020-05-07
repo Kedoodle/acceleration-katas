@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace Minesweeper.Tests
+namespace Minesweeper.Tests.UnitTests
 {
     public class ConsoleFieldFormatterShould
     {
