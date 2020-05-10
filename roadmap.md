@@ -44,7 +44,7 @@ They should choose an editor and become efficient using it. It would be great to
 ​
 They should be comfortable using the command line and will have demonstrated this through the following:
 ​
-- [ ] Has completed the four checkpoints in the Unix Command Line page in General_Developer repo
+- [x] Has completed the four checkpoints in the Unix Command Line page in General_Developer repo
 - [ ] Has written two different bash scripts to help with automating repeated operations
 - [x] Has customised their prompt on their computer
 ​
@@ -109,9 +109,9 @@ They should follow the guidelines of Test Driven Development in completing the k
 ​
 > The basic TDD cycle is followed where in general each time new functionality is added to the solution an appropriate test is written first.
 ​
-- [ ] Achieved Level 3
+- [x] Achieved Level 3
 - [ ] Yatzy kata
-- [ ] Coffee machine kata
+- [x] Coffee machine kata
 ​
 ### Test Doubles
 ​
@@ -146,7 +146,7 @@ They should demonstrate their knowledge of object oriented programming, and be a
 > Can implement object composition in coding problems. Consistently applies composition over inheritance in code.
 ​
 - [ ] Achieved Level 3
-- [ ] Composition kata
+- [x] Composition kata
 - [ ] Toy block factory kata
 ​
 ### Whiteboarding
