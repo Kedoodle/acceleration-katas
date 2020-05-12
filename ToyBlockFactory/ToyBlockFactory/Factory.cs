@@ -14,9 +14,16 @@ namespace ToyBlockFactory
             _output = output;
         }
 
+        public List<Order> Orders { get; set; }
+
         public void Start()
         {
             _output.WriteLine("Welcome to the Toy Block Factory!");
+        }
+
+        public void TakeOrder()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
