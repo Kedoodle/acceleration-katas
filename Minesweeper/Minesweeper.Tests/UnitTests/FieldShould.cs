@@ -49,7 +49,7 @@ namespace Minesweeper.Tests.UnitTests
 
             var neighbouringCells = field.GetNeighbouringCells(x, y);
             
-            Assert.Equal(expectedCellsCount, neighbouringCells.Count());
+            Assert.Equal(expectedCellsCount, neighbouringCells.Distinct().Count());
         }
     }
 }
