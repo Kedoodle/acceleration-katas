@@ -8,8 +8,8 @@ namespace ToyBlockFactory.Tests
     {
         private readonly Mock<TextReader> _mockConsoleInput;
         private readonly Mock<TextWriter> _mockConsoleOutput;
-        private readonly ConsoleOrderTaker _consoleOrderTaker;
-        private readonly ConsoleReportGenerator _consoleReportGenerator;
+        private readonly IOrderTaker _consoleOrderTaker;
+        private readonly IReportGenerator _consoleReportGenerator;
         private readonly Factory _factory;
         
         public FactoryShould()

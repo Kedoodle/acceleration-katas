@@ -9,5 +9,6 @@ namespace ToyBlockFactory
         public IEnumerable<Block> Blocks { get; set; }
         public string CustomerName { get; set; }
         public string CustomerAddress { get; set; }
+        public int OrderNumber { get; set; }
     }
 }
