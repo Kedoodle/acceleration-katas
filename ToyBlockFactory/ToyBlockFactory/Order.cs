@@ -7,5 +7,7 @@ namespace ToyBlockFactory
     {
         public DateTime DueDate { get; set; }
         public IEnumerable<Block> Blocks { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerAddress { get; set; }
     }
 }

@@ -5,25 +5,15 @@ namespace ToyBlockFactory
 {
     public class Factory
     {
-        private readonly TextReader _input;
-        private readonly TextWriter _output;
+        private readonly ConsoleOrderTaker _consoleOrderTaker;
+        private readonly ConsoleReportGenerator _consoleReportGenerator;
 
-        public Factory(TextReader input, TextWriter output)
+        public Factory(ConsoleOrderTaker consoleOrderTaker, ConsoleReportGenerator consoleReportGenerator)
         {
-            _input = input;
-            _output = output;
+            _consoleOrderTaker = consoleOrderTaker;
+            _consoleReportGenerator = consoleReportGenerator;
         }
 
         public List<Order> Orders { get; set; }
-
-        public void Start()
-        {
-            _output.WriteLine("Welcome to the Toy Block Factory!");
-        }
-
-        public void TakeOrder()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
