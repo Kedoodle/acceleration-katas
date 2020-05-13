@@ -5,13 +5,13 @@ namespace ToyBlockFactory
 {
     public class Factory
     {
-        private readonly ConsoleOrderTaker _consoleOrderTaker;
-        private readonly ConsoleReportGenerator _consoleReportGenerator;
+        private readonly IOrderTaker _orderTaker;
+        private readonly IReportGenerator _reportGenerator;
 
-        public Factory(ConsoleOrderTaker consoleOrderTaker, ConsoleReportGenerator consoleReportGenerator)
+        public Factory(IOrderTaker orderTaker, IReportGenerator reportGenerator)
         {
-            _consoleOrderTaker = consoleOrderTaker;
-            _consoleReportGenerator = consoleReportGenerator;
+            _orderTaker = orderTaker;
+            _reportGenerator = reportGenerator;
         }
 
         public List<Order> Orders { get; set; }

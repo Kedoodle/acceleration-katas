@@ -4,7 +4,7 @@ using System.IO;
 
 namespace ToyBlockFactory
 {
-    public class ConsoleOrderTaker
+    public class ConsoleOrderTaker : IOrderTaker
     {
         private readonly TextReader _input;
         private readonly TextWriter _output;
@@ -41,8 +41,7 @@ namespace ToyBlockFactory
                 _output.WriteLine();
             }
             order.Blocks = blocks;
-
-                
+            
             return order;
         }
     }
