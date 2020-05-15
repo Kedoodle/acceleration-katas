@@ -33,66 +33,32 @@ namespace ToyBlockFactory
             _stringBuilder.AppendLine(reportHeader);
             _stringBuilder.AppendLine();
         }
+        
         private void AddBlockQuantityTable(Order order)
         {
-            AddBlockShapeAndColourQuantityTableHeaders();
-            AddBlockShapeAndColourQuantityTableRows(order);
-            _stringBuilder.AppendLine();
-            
-            // var headers = new[] {""}.Concat(Enum.GetNames(typeof(Colour)));
-            // var shapes = Enum.GetValues(typeof(Shape));
-            // var rows = from Shape shape in shapes select new[] {shape.ToString()}.Concat(GetBlockShapeAndColourCounts(blocks, shape));
-            // return "";
+            var headers = new[] {""}.Concat(Enum.GetNames(typeof(Colour))).ToArray();
+            var shapes = Enum.GetValues(typeof(Shape));
+            var rows = from Shape shape in shapes select new[] {shape.ToString()}.Concat(GetBlockShapeAndColourCounts(order.Blocks, shape));
+            var table = rows.ToStringTable(headers);
+            _stringBuilder.AppendLine(table);
         }
         
-        private void AddBlockShapeAndColourQuantityTableHeaders()
+        private static IEnumerable<string> GetBlockShapeAndColourCounts(IReadOnlyCollection<Block> blocks, Shape shape)
         {
-            var longestShape = Enum.GetNames(typeof(Shape)).Max(shape => shape.Length);
-
-            _stringBuilder.AppendFormat($"| {{0, {-longestShape}}} |", "");
-            foreach (Colour colour in Enum.GetValues(typeof(Colour)))
-            {
-                var width = colour.ToString().Length;
-                _stringBuilder.AppendFormat($" {{0, {-width}}} |", colour);
-            }
-            _stringBuilder.AppendLine();
-
-            _stringBuilder.Append(string.Format($"| {{0, {longestShape}}} |", "").Replace(' ', '-'));
-            foreach (Colour colour in Enum.GetValues(typeof(Colour)))
-            {
-                var width = colour.ToString().Length;
-                _stringBuilder.Append(string.Format($" {{0, {width}}} |", "").Replace(' ', '-'));
-            }
-            _stringBuilder.AppendLine();
+            var colours = Enum.GetValues(typeof(Colour));
+            return colours.Cast<Colour>().Select(colour => GetBlockCount(blocks, shape, colour));
         }
 
-        private void AddBlockShapeAndColourQuantityTableRows(Order order)
+        private static string GetBlockCount(IReadOnlyCollection<Block> blocks, Shape shape, Colour colour)
         {
-            var longestShape = Enum.GetNames(typeof(Shape)).Max(shape => shape.Length);
-            foreach (Shape shape in Enum.GetValues(typeof(Shape)))
-            {
-                _stringBuilder.AppendFormat($"| {{0, {-longestShape}}} |", shape);
-                foreach (Colour colour in Enum.GetValues(typeof(Colour)))
-                {
-                    var width = colour.ToString().Length;
-                    var quantity = order.Blocks.Count(b => b.Shape == shape && b.Colour == colour);
-                    _stringBuilder.AppendFormat($" {{0, {-width}}} |", quantity == 0 ? "-" : quantity.ToString());
-                }
-                _stringBuilder.AppendLine();
-            }
+            return CountBlocks(blocks, shape, colour) == 0 ? "-" : CountBlocks(blocks, shape, colour).ToString();
+        }
+
+        private static int CountBlocks(IEnumerable<Block> blocks, Shape shape, Colour colour)
+        {
+            return blocks.Count(block => block.Shape == shape && block.Colour == colour);
         }
         
-        // private static IEnumerable<string> GetBlockShapeAndColourCounts(IEnumerable<Block> blocks, Shape shape)
-        // {
-        //     var colours = Enum.GetValues(typeof(Colour));
-        //     return colours.Cast<Colour>().Select(colour => CountBlocks(blocks, shape, colour).ToString());
-        // }
-        //
-        // private static int CountBlocks(IEnumerable<Block> blocks, Shape shape, Colour colour)
-        // {
-        //     return blocks.Count(block => block.Shape == shape && block.Colour == colour);
-        // }
-
         private void AddChargesSummary(Order order)
         {
             const int formatWidth = 23;
