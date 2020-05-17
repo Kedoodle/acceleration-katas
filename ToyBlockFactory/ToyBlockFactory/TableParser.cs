@@ -89,7 +89,7 @@ namespace ToyBlockFactory
                 {
                     tableBuilder.AppendFormat($" {{0, {-columnWidths[column]}}} |", cells[row, column]);
                 }
-                tableBuilder.AppendLine();
+                if (row != height - 1) tableBuilder.AppendLine();
             }
         }
     }

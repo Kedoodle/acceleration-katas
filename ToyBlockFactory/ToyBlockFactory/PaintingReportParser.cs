@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ToyBlockFactory
 {
-    public class InvoiceReportParser : IReportParser
+    public class PaintingReportParser : IReportParser
     {
         private readonly StringBuilder _stringBuilder = new StringBuilder();
         public string ToStringReport(Order order)
@@ -13,13 +13,12 @@ namespace ToyBlockFactory
             AddReportGeneratedConfirmation();
             AddReportHeader(order);
             AddBlockQuantityTable(order);
-            AddChargesSummary(order);
             return _stringBuilder.ToString();
         }
 
         private void AddReportGeneratedConfirmation()
         {
-            _stringBuilder.AppendLine("Your invoice report has been generated:");
+            _stringBuilder.AppendLine("Your painting report has been generated:");
             _stringBuilder.AppendLine();
         }
 
@@ -40,8 +39,7 @@ namespace ToyBlockFactory
             var shapes = Enum.GetValues(typeof(Shape));
             var rows = from Shape shape in shapes select new[] {shape.ToString()}.Concat(GetBlockShapeAndColourCounts(order.Blocks, shape));
             var table = rows.ToStringTable(headers);
-            _stringBuilder.AppendLine(table);
-            _stringBuilder.AppendLine();
+            _stringBuilder.Append(table);
         }
         
         private static IEnumerable<string> GetBlockShapeAndColourCounts(IReadOnlyCollection<Block> blocks, Shape shape)
@@ -58,33 +56,6 @@ namespace ToyBlockFactory
         private static int CountBlocks(IEnumerable<Block> blocks, Shape shape, Colour colour)
         {
             return blocks.Count(block => block.Shape == shape && block.Colour == colour);
-        }
-        
-        private void AddChargesSummary(Order order)
-        {
-            const int formatWidth = 23;
-            AddShapeCharges(order, formatWidth);
-            AddRedColourSurcharge(order, formatWidth);
-        }
-        private void AddShapeCharges(Order order, int formatWidth)
-        {
-            foreach (Shape shape in Enum.GetValues(typeof(Shape)))
-            {
-                _stringBuilder.AppendFormat($"{{0, {-formatWidth}}}", shape + "s");
-                var quantity = order.Blocks.Count(b => b.Shape == shape);
-                var price = ShapeExtensions.GetPrice(shape);
-                var subtotal = quantity * price;
-                _stringBuilder.AppendLine($"{quantity} @ ${price} each = ${subtotal}");
-            }
-        }
-
-        private void AddRedColourSurcharge(Order order, int formatWidth)
-        {
-            _stringBuilder.AppendFormat($"{{0, {-formatWidth}}}", "Red colour surcharge");
-            var quantity = order.Blocks.Count(b => b.Colour == Colour.Red);
-            var price = ColourExtensions.GetPrice(Colour.Red);
-            var subtotal = quantity * price;
-            _stringBuilder.Append($"{quantity} @ ${price} each = ${subtotal}");
         }
     }
 }

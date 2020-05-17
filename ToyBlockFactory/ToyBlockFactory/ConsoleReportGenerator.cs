@@ -14,9 +14,10 @@ namespace ToyBlockFactory
 
         public void Generate(Report report, Order order)
         {
-            var reportParser = report switch
+            IReportParser reportParser = report switch
             {
                 Report.Invoice => new InvoiceReportParser(),
+                Report.Painting => new PaintingReportParser(),
                 _ => throw new InvalidEnumArgumentException()
             };
             _output.WriteLine(reportParser.ToStringReport(order));

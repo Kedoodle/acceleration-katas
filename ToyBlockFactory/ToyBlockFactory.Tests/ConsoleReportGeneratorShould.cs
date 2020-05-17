@@ -68,7 +68,21 @@ namespace ToyBlockFactory.Tests
         [Fact]
         public void GeneratePaintingReports()
         {
+            var expectedReport =
+                "Your painting report has been generated:" + Environment.NewLine +
+                Environment.NewLine +
+                "Name: Mark Pearl Address: 1 Bob Avenue, Auckland Due Date: 19 Jan 2019 Order #: 0001" +
+                Environment.NewLine +
+                Environment.NewLine +
+                "|          | Red | Blue | Yellow |" + Environment.NewLine +
+                "|----------|-----|------|--------|" + Environment.NewLine +
+                "| Square   | 1   | -    | 1      |" + Environment.NewLine +
+                "| Triangle | -   | 2    | -      |" + Environment.NewLine +
+                "| Circle   | -   | 1    | 2      |";
+                
+            _consoleReportGenerator.Generate(Report.Painting, _order);
             
+            _mockConsoleOutput.Verify(m => m.WriteLine(expectedReport), Times.Once);
         }
     }
 }
