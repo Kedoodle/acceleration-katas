@@ -9,6 +9,7 @@ namespace ToyBlockFactory
             var consoleOrderTaker = new ConsoleOrderTaker(Console.In, Console.Out);
             var consoleReportGenerator = new ConsoleReportGenerator(Console.Out);
             var factory = new Factory(consoleOrderTaker, consoleReportGenerator);
+            
             factory.TakeOrder();
             factory.GenerateReports(1);
         }
