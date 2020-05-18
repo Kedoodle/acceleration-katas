@@ -17,6 +17,7 @@ namespace ToyBlockFactory
             IReportParser reportParser = report switch
             {
                 Report.Invoice => new InvoiceReportParser(),
+                Report.CuttingList => new CuttingListReportParser(),
                 Report.Painting => new PaintingReportParser(),
                 _ => throw new InvalidEnumArgumentException()
             };

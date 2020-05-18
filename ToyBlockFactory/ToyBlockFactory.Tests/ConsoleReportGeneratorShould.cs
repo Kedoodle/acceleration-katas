@@ -62,7 +62,21 @@ namespace ToyBlockFactory.Tests
         [Fact]
         public void GenerateCuttingListReports()
         {
+            var expectedReport =
+                "Your cutting list has been generated:" + Environment.NewLine +
+                Environment.NewLine +
+                "Name: Mark Pearl Address: 1 Bob Avenue, Auckland Due Date: 19 Jan 2019 Order #: 0001" +
+                Environment.NewLine +
+                Environment.NewLine +
+                "|          | Qty |" + Environment.NewLine +
+                "|----------|-----|" + Environment.NewLine +
+                "| Square   | 2   |" + Environment.NewLine +
+                "| Triangle | 2   |" + Environment.NewLine +
+                "| Circle   | 3   |";
+                
+            _consoleReportGenerator.Generate(Report.CuttingList, _order);
             
+            _mockConsoleOutput.Verify(m => m.WriteLine(expectedReport), Times.Once);
         }
         
         [Fact]

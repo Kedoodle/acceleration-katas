@@ -8,6 +8,7 @@ namespace ToyBlockFactory
     public class InvoiceReportParser : IReportParser
     {
         private readonly StringBuilder _stringBuilder = new StringBuilder();
+        
         public string ToStringReport(Order order)
         {
             AddReportGeneratedConfirmation();
@@ -50,14 +51,10 @@ namespace ToyBlockFactory
             return colours.Cast<Colour>().Select(colour => GetBlockCount(blocks, shape, colour));
         }
 
-        private static string GetBlockCount(IReadOnlyCollection<Block> blocks, Shape shape, Colour colour)
+        private static string GetBlockCount(IEnumerable<Block> blocks, Shape shape, Colour colour)
         {
-            return CountBlocks(blocks, shape, colour) == 0 ? "-" : CountBlocks(blocks, shape, colour).ToString();
-        }
-
-        private static int CountBlocks(IEnumerable<Block> blocks, Shape shape, Colour colour)
-        {
-            return blocks.Count(block => block.Shape == shape && block.Colour == colour);
+            var count = blocks.Count(block => block.Shape == shape && block.Colour == colour);
+            return count == 0 ? "-" : count.ToString();
         }
         
         private void AddChargesSummary(Order order)
