@@ -16,7 +16,7 @@ namespace ToyBlockFactory
             _reportGenerator = reportGenerator;
         }
 
-        private List<Order> Orders { get; } = new List<Order>();
+        public List<Order> Orders { get; } = new List<Order>();
 
         public void TakeOrder()
         {

@@ -1,4 +1,4 @@
-using System.IO;
+using System.Linq;
 using Moq;
 using Xunit;
 
@@ -6,19 +6,20 @@ namespace ToyBlockFactory.Tests
 {
     public class FactoryShould
     {
-        private readonly Mock<TextReader> _mockConsoleInput;
-        private readonly Mock<TextWriter> _mockConsoleOutput;
-        private readonly IOrderTaker _consoleOrderTaker;
-        private readonly IReportGenerator _consoleReportGenerator;
-        private readonly Factory _factory;
-        
-        public FactoryShould()
+        [Fact]
+        public void AssignOrderNumbers()
         {
-            _mockConsoleInput = new Mock<TextReader>();
-            _mockConsoleOutput = new Mock<TextWriter>();
-            _consoleOrderTaker = new ConsoleOrderTaker(_mockConsoleInput.Object, _mockConsoleOutput.Object);
-            _consoleReportGenerator = new ConsoleReportGenerator(_mockConsoleOutput.Object);
-            _factory = new Factory(_consoleOrderTaker, _consoleReportGenerator);
+            var mockOrderTaker = new Mock<IOrderTaker>();
+            mockOrderTaker.SetupSequence(m => m.TakeOrder())
+                .Returns(new Order())
+                .Returns(new Order());
+            var mockReportGenerator = Mock.Of<IReportGenerator>();
+            var factory = new Factory(mockOrderTaker.Object, mockReportGenerator);
+            
+            factory.TakeOrder();
+            factory.TakeOrder();
+            
+            Assert.NotEqual(factory.Orders.First().OrderNumber, factory.Orders.Last().OrderNumber);
         }
     }
 }
