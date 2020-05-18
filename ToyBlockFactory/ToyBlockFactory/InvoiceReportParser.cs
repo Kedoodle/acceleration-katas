@@ -81,7 +81,7 @@ namespace ToyBlockFactory
             var quantity = order.Blocks.Count(b => b.Colour == Colour.Red);
             var price = ColourExtensions.GetPrice(Colour.Red);
             var subtotal = quantity * price;
-            _stringBuilder.Append($"{quantity} @ ${price} each = ${subtotal}");
+            _stringBuilder.AppendLine($"{quantity} @ ${price} each = ${subtotal}");
         }
     }
 }

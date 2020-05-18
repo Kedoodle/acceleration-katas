@@ -40,7 +40,7 @@ namespace ToyBlockFactory
             var shapes = Enum.GetValues(typeof(Shape));
             var rows = from Shape shape in shapes select new[] {shape.ToString()}.Concat(GetBlockShapeAndColourCounts(order.Blocks, shape));
             var table = rows.ToStringTable(headers);
-            _stringBuilder.Append(table);
+            _stringBuilder.AppendLine(table);
         }
         
         private static IEnumerable<string> GetBlockShapeAndColourCounts(IReadOnlyCollection<Block> blocks, Shape shape)

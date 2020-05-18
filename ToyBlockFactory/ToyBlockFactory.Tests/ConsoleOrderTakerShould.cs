@@ -41,7 +41,7 @@ namespace ToyBlockFactory.Tests
             var order = _consoleOrderTaker.TakeOrder();
             
             Assert.Equal(expectedDueDate, order.DueDate);
-            Assert.Equal(7, order.Blocks.Count());
+            Assert.Equal(7, order.Blocks.Count);
             Assert.Equal(2, order.Blocks.Count(b => b.Shape == Shape.Square));
             Assert.Equal(2, order.Blocks.Count(b => b.Shape == Shape.Triangle));
             Assert.Equal(3, order.Blocks.Count(b => b.Shape == Shape.Circle));
@@ -49,18 +49,18 @@ namespace ToyBlockFactory.Tests
             Assert.Equal(3, order.Blocks.Count(b => b.Colour == Colour.Blue));
             Assert.Equal(3, order.Blocks.Count(b => b.Colour == Colour.Yellow));
             
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input your Name: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input your Address: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input your Due Date: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input the number of Red Squares: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input the number of Blue Squares: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input the number of Yellow Squares: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input the number of Red Triangles: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input the number of Blue Triangles: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input the number of Yellow Triangles: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input the number of Red Circles: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input the number of Blue Circles: "), Times.Once);
-            _mockConsoleOutput.Verify(m => m.WriteLine("Please input the number of Yellow Circles: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input your Name: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input your Address: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input your Due Date: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input the number of Red Squares: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input the number of Blue Squares: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input the number of Yellow Squares: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input the number of Red Triangles: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input the number of Blue Triangles: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input the number of Yellow Triangles: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input the number of Red Circles: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input the number of Blue Circles: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Please input the number of Yellow Circles: "), Times.Once);
         }
     }
 }

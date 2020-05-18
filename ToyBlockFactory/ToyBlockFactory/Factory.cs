@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace ToyBlockFactory
 {
     public class Factory
     {
+        private int _nextOrderNumber = 1;
         private readonly IOrderTaker _orderTaker;
         private readonly IReportGenerator _reportGenerator;
 
@@ -14,6 +16,21 @@ namespace ToyBlockFactory
             _reportGenerator = reportGenerator;
         }
 
-        public List<Order> Orders { get; set; }
+        private List<Order> Orders { get; } = new List<Order>();
+
+        public void TakeOrder()
+        {
+            var order = _orderTaker.TakeOrder();
+            order.OrderNumber = _nextOrderNumber++;
+            Orders.Add(order);
+        }
+
+        public void GenerateReports(int orderNumber)
+        {
+            var order = Orders.FirstOrDefault(o => o.OrderNumber == orderNumber);
+            _reportGenerator.Generate(Report.Invoice, order);
+            _reportGenerator.Generate(Report.CuttingList, order);
+            _reportGenerator.Generate(Report.Painting, order);
+        }
     }
 }

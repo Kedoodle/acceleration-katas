@@ -52,7 +52,7 @@ namespace ToyBlockFactory.Tests
                 "Squares                2 @ $1 each = $2" + Environment.NewLine +
                 "Triangles              2 @ $2 each = $4" + Environment.NewLine +
                 "Circles                3 @ $3 each = $9" + Environment.NewLine +
-                "Red colour surcharge   1 @ $1 each = $1";
+                "Red colour surcharge   1 @ $1 each = $1" + Environment.NewLine;
                 
             _consoleReportGenerator.Generate(Report.Invoice, _order);
             
@@ -65,14 +65,13 @@ namespace ToyBlockFactory.Tests
             var expectedReport =
                 "Your cutting list has been generated:" + Environment.NewLine +
                 Environment.NewLine +
-                "Name: Mark Pearl Address: 1 Bob Avenue, Auckland Due Date: 19 Jan 2019 Order #: 0001" +
-                Environment.NewLine +
+                "Name: Mark Pearl Address: 1 Bob Avenue, Auckland Due Date: 19 Jan 2019 Order #: 0001" + Environment.NewLine +
                 Environment.NewLine +
                 "|          | Qty |" + Environment.NewLine +
                 "|----------|-----|" + Environment.NewLine +
                 "| Square   | 2   |" + Environment.NewLine +
                 "| Triangle | 2   |" + Environment.NewLine +
-                "| Circle   | 3   |";
+                "| Circle   | 3   |" + Environment.NewLine;
                 
             _consoleReportGenerator.Generate(Report.CuttingList, _order);
             
@@ -85,14 +84,13 @@ namespace ToyBlockFactory.Tests
             var expectedReport =
                 "Your painting report has been generated:" + Environment.NewLine +
                 Environment.NewLine +
-                "Name: Mark Pearl Address: 1 Bob Avenue, Auckland Due Date: 19 Jan 2019 Order #: 0001" +
-                Environment.NewLine +
+                "Name: Mark Pearl Address: 1 Bob Avenue, Auckland Due Date: 19 Jan 2019 Order #: 0001" + Environment.NewLine +
                 Environment.NewLine +
                 "|          | Red | Blue | Yellow |" + Environment.NewLine +
                 "|----------|-----|------|--------|" + Environment.NewLine +
                 "| Square   | 1   | -    | 1      |" + Environment.NewLine +
                 "| Triangle | -   | 2    | -      |" + Environment.NewLine +
-                "| Circle   | -   | 1    | 2      |";
+                "| Circle   | -   | 1    | 2      |" + Environment.NewLine;
                 
             _consoleReportGenerator.Generate(Report.Painting, _order);
             

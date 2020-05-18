@@ -18,11 +18,11 @@ namespace ToyBlockFactory
         public Order TakeOrder()
         {
             var order = new Order();
-            _output.WriteLine("Please input your Name: ");
+            _output.Write("Please input your Name: ");
             order.CustomerName = _input.ReadLine();
-            _output.WriteLine("Please input your Address: ");
+            _output.Write("Please input your Address: ");
             order.CustomerAddress = _input.ReadLine();
-            _output.WriteLine("Please input your Due Date: ");
+            _output.Write("Please input your Due Date: ");
             order.DueDate = DateTime.Parse(_input.ReadLine());
             _output.WriteLine();
             
@@ -31,7 +31,7 @@ namespace ToyBlockFactory
             {
                 foreach (Colour colour in Enum.GetValues(typeof(Colour)))
                 {
-                    _output.WriteLine($"Please input the number of {colour} {shape}s: ");
+                    _output.Write($"Please input the number of {colour} {shape}s: ");
                     if (!int.TryParse(_input.ReadLine(), out var n)) n = 0;
                     for (var i = 0; i < n; i++)
                     {
