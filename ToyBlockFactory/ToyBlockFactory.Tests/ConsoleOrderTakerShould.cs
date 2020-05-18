@@ -21,13 +21,16 @@ namespace ToyBlockFactory.Tests
         }
         
         [Fact]
-        public void GetOrderFromInput()
+        public void GetOrderFromValidatedInput()
         {
             var expectedDueDate = new DateTime(2019, 1, 19);
             _mockConsoleInput.SetupSequence(m => m.ReadLine())
                 .Returns("Mark Pearl") // Name
                 .Returns("1 Bob Avenue, Auckland") // Address
+                .Returns("Gibberish") // Invalid date
                 .Returns("19 Jan 2019") // Date
+                .Returns("-1") // Invalid red squares (negative integer)
+                .Returns("Gibberish") // Invalid red squares (not integer)
                 .Returns("1") // Red squares
                 .Returns("") // Blue squares
                 .Returns("1") // Yellow squares
@@ -61,6 +64,9 @@ namespace ToyBlockFactory.Tests
             _mockConsoleOutput.Verify(m => m.Write("Please input the number of Red Circles: "), Times.Once);
             _mockConsoleOutput.Verify(m => m.Write("Please input the number of Blue Circles: "), Times.Once);
             _mockConsoleOutput.Verify(m => m.Write("Please input the number of Yellow Circles: "), Times.Once);
+            
+            _mockConsoleOutput.Verify(m => m.Write("Invalid date! Please input your Due Date: "), Times.Once);
+            _mockConsoleOutput.Verify(m => m.Write("Invalid positive integer! Please input the number of Red Squares: "), Times.Exactly(2));
         }
     }
 }
