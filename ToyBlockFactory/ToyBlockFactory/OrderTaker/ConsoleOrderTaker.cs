@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace ToyBlockFactory
+namespace ToyBlockFactory.OrderTaker
 {
     public class ConsoleOrderTaker : IOrderTaker
     {

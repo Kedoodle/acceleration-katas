@@ -1,4 +1,4 @@
-namespace ToyBlockFactory
+namespace ToyBlockFactory.OrderTaker
 {
     public interface IOrderTaker
     {

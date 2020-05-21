@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ToyBlockFactory
+namespace ToyBlockFactory.ReportGenerator
 {
-    public class CuttingListReportParser : IReportParser
+    public class PaintingReportParser : IReportParser
     {
         private readonly StringBuilder _stringBuilder = new StringBuilder();
         
@@ -13,13 +13,13 @@ namespace ToyBlockFactory
         {
             AddReportGeneratedConfirmation();
             AddReportHeader(order);
-            AddShapeQuantityTable(order);
+            AddBlockQuantityTable(order);
             return _stringBuilder.ToString();
         }
 
         private void AddReportGeneratedConfirmation()
         {
-            _stringBuilder.AppendLine("Your cutting list has been generated:");
+            _stringBuilder.AppendLine("Your painting report has been generated:");
             _stringBuilder.AppendLine();
         }
 
@@ -34,18 +34,24 @@ namespace ToyBlockFactory
             _stringBuilder.AppendLine();
         }
         
-        private void AddShapeQuantityTable(Order order)
+        private void AddBlockQuantityTable(Order order)
         {
-            var headers = new[] {"", "Qty"};
+            var headers = new[] {""}.Concat(Enum.GetNames(typeof(Colour))).ToArray();
             var shapes = Enum.GetValues(typeof(Shape));
-            var rows = from Shape shape in shapes select new[] {shape.ToString(), GetShapeCount(order.Blocks, shape)};
+            var rows = from Shape shape in shapes select new[] {shape.ToString()}.Concat(GetBlockShapeAndColourCounts(order.Blocks, shape));
             var table = rows.ToStringTable(headers);
             _stringBuilder.AppendLine(table);
         }
         
-        private static string GetShapeCount(IEnumerable<Block> blocks, Shape shape)
+        private static IEnumerable<string> GetBlockShapeAndColourCounts(IReadOnlyCollection<Block> blocks, Shape shape)
         {
-            var count = blocks.Count(block => block.Shape == shape);
+            var colours = Enum.GetValues(typeof(Colour));
+            return colours.Cast<Colour>().Select(colour => GetBlockCount(blocks, shape, colour));
+        }
+
+        private static string GetBlockCount(IEnumerable<Block> blocks, Shape shape, Colour colour)
+        {
+            var count = blocks.Count(block => block.Shape == shape && block.Colour == colour);
             return count == 0 ? "-" : count.ToString();
         }
     }

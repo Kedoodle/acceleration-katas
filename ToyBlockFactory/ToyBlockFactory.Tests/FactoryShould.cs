@@ -1,5 +1,7 @@
 using System.Linq;
 using Moq;
+using ToyBlockFactory.OrderTaker;
+using ToyBlockFactory.ReportGenerator;
 using Xunit;
 
 namespace ToyBlockFactory.Tests

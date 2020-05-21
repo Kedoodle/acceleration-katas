@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Moq;
+using ToyBlockFactory.ReportGenerator;
 using Xunit;
 
 namespace ToyBlockFactory.Tests

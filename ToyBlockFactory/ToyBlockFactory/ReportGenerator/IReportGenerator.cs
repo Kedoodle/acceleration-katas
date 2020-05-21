@@ -1,4 +1,4 @@
-namespace ToyBlockFactory
+namespace ToyBlockFactory.ReportGenerator
 {
     public interface IReportGenerator
     {

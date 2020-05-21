@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.IO;
 
-namespace ToyBlockFactory
+namespace ToyBlockFactory.ReportGenerator
 {
     public class ConsoleReportGenerator : IReportGenerator
     {

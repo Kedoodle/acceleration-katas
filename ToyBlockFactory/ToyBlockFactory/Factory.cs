@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using ToyBlockFactory.OrderTaker;
+using ToyBlockFactory.ReportGenerator;
 
 namespace ToyBlockFactory
 {

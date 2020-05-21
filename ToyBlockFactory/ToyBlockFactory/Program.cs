@@ -1,4 +1,6 @@
 ﻿using System;
+using ToyBlockFactory.OrderTaker;
+using ToyBlockFactory.ReportGenerator;
 
 namespace ToyBlockFactory
 {

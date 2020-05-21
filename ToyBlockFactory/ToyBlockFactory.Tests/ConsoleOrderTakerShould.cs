@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using Moq;
+using ToyBlockFactory.OrderTaker;
 using Xunit;
 
 namespace ToyBlockFactory.Tests
