@@ -18,7 +18,7 @@ namespace ToyBlockFactory
 
         public List<Order> Orders { get; } = new List<Order>();
 
-        public void TakeOrder()
+        public void CreateOrder()
         {
             var order = _orderTaker.TakeOrder();
             order.OrderNumber = _nextOrderNumber++;

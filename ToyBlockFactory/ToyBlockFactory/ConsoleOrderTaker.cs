@@ -22,22 +22,9 @@ namespace ToyBlockFactory
                 CustomerName = AskString("Please input your Name: "),
                 CustomerAddress = AskString("Please input your Address: "),
                 DueDate = AskDueDate("Please input your Due Date: "),
-                Blocks = new List<Block>()
+                Blocks = AskBlocks()
             };
             _output.WriteLine();
-            
-            foreach (Shape shape in Enum.GetValues(typeof(Shape)))
-            {
-                foreach (Colour colour in Enum.GetValues(typeof(Colour)))
-                {
-                    var numberOfBlocks = AskNumberOfBlocks($"Please input the number of {colour} {shape}s: ");
-                    for (var i = 0; i < numberOfBlocks; i++)
-                    {
-                        order.Blocks.Add(new Block(shape, colour));
-                    }
-                }
-                _output.WriteLine();
-            }
             
             return order;
         }
@@ -59,6 +46,26 @@ namespace ToyBlockFactory
             }
 
             return dueDate;
+        }
+
+        private List<Block> AskBlocks()
+        {
+            var blocks = new List<Block>();
+            
+            foreach (Shape shape in Enum.GetValues(typeof(Shape)))
+            {
+                foreach (Colour colour in Enum.GetValues(typeof(Colour)))
+                {
+                    var numberOfBlocks = AskNumberOfBlocks($"Please input the number of {colour} {shape}s: ");
+                    for (var i = 0; i < numberOfBlocks; i++)
+                    {
+                        blocks.Add(new Block(shape, colour));
+                    }
+                }
+                _output.WriteLine();
+            }
+
+            return blocks;
         }
 
         private int AskNumberOfBlocks(string prompt)

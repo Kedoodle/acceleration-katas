@@ -16,8 +16,8 @@ namespace ToyBlockFactory.Tests
             var mockReportGenerator = Mock.Of<IReportGenerator>();
             var factory = new Factory(mockOrderTaker.Object, mockReportGenerator);
             
-            factory.TakeOrder();
-            factory.TakeOrder();
+            factory.CreateOrder();
+            factory.CreateOrder();
             
             Assert.NotEqual(factory.Orders.First().OrderNumber, factory.Orders.Last().OrderNumber);
         }

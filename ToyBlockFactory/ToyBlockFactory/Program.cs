@@ -10,7 +10,7 @@ namespace ToyBlockFactory
             var consoleReportGenerator = new ConsoleReportGenerator(Console.Out);
             var factory = new Factory(consoleOrderTaker, consoleReportGenerator);
             
-            factory.TakeOrder();
+            factory.CreateOrder();
             factory.GenerateReports(1);
         }
     }
